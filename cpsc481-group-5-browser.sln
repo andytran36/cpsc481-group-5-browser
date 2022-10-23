@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cpsc481-group-5-browser", "cpsc481-group-5-browser.csproj", "{40EF12D7-1493-41B2-B818-B2F16ED70076}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40EF12D7-1493-41B2-B818-B2F16ED70076}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40EF12D7-1493-41B2-B818-B2F16ED70076}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40EF12D7-1493-41B2-B818-B2F16ED70076}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40EF12D7-1493-41B2-B818-B2F16ED70076}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5BE86662-4D17-48E5-B423-4FC7C15F6797}
+	EndGlobalSection
+EndGlobal
