@@ -30,11 +30,15 @@ namespace cpsc481_group_5_browser
 
         private void go_Click(object sender, RoutedEventArgs e)
         {
-            string WebPage = textBox1.Text.Trim();
-            webBrowser1.Navigate(WebPage);
+            
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Frame_Navigated(object sender, NavigationEventArgs e)
         {
 
         }
