@@ -24,12 +24,12 @@ VerticalScrollBarVisibility="Hidden" Height="28" Padding="2,5,0,0"/>
     <Viewbox>
         <Border x:Name="Bar" BorderBrush="#FF6D6D6D" BorderThickness="0,0,0,1" Margin="0,0,0,648" Width="1261">
             <Grid ShowGridLines="True" Height="40">
-                <Image x:Name="home" HorizontalAlignment="Left" VerticalAlignment="Center" Width="31" Height="28" Source="/home.png" Margin="203,0,0,0"/>
+                <Image x:Name="home" HorizontalAlignment="Left" VerticalAlignment="Center" Width="31" Height="28" Source="/assets/home.png" Margin="203,0,0,0"/>
                 <TextBox x:Name="searchbox" Template="{StaticResource roundtextbox}" HorizontalAlignment="Left" TextWrapping="Wrap" Text="search" VerticalAlignment="Center" Width="698" Padding="2,5,0,0" Margin="304,0,0,0"/>
-                <Image x:Name="settings" HorizontalAlignment="Left" Height="28" Margin="1167,0,0,0" VerticalAlignment="Center" Width="35" Source="/settings.png"/>
-                <Image x:Name="_lock" HorizontalAlignment="Left" Height="30" Margin="1063,0,0,0" VerticalAlignment="Center" Width="35" Source="/lock.png"/>
-                <Image x:Name="test" HorizontalAlignment="Left" Height="20" Margin="15,0,0,0" VerticalAlignment="Center" Width="32" Source="/back.png"/>
-                <Image x:Name="forward" HorizontalAlignment="Left" Height="20" Margin="100,0,0,0" VerticalAlignment="Center" Width="32" Source="/forwar.png"/>
+                <Image x:Name="settings" HorizontalAlignment="Left" Height="28" Margin="1167,0,0,0" VerticalAlignment="Center" Width="35" Source="/assets/settings.png"/>
+                <Image x:Name="_lock" HorizontalAlignment="Left" Height="30" Margin="1063,0,0,0" VerticalAlignment="Center" Width="35" Source="/assets/lock.png"/>
+                <Image x:Name="back" HorizontalAlignment="Left" Height="20" Margin="15,0,0,0" VerticalAlignment="Center" Width="32" Source="/assets/back.png"/>
+                <Image x:Name="forward" HorizontalAlignment="Left" Height="20" Margin="100,0,0,0" VerticalAlignment="Center" Width="32" Source="/assets/forward.png"/>
             </Grid>
         </Border>
     </Viewbox>
