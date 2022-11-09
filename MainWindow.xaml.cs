@@ -13,8 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
-using System.Windows.Forms;
-using System.Diagnostics;
 
 
 namespace cpsc481_group_5_browser

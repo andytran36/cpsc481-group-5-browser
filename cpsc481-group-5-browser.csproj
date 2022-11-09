@@ -10,11 +10,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="assets\Disney_D.png" />
+    <None Remove="assets\LeapFrog-logo.png" />
+    <None Remove="assets\Scholastic.png" />
+    <None Remove="assets\Symbol-Minecraft.png" />
     <None Remove="back.png" />
     <None Remove="forwar.png" />
     <None Remove="home.png" />
     <None Remove="lock.png" />
+    <None Remove="pbs.png" />
     <None Remove="settings.png" />
+    <None Remove="starfall.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="assets\Disney_D.png" />
+    <Resource Include="assets\LeapFrog-logo.png" />
+    <Resource Include="assets\Scholastic.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +35,8 @@
     <Resource Include="assets\home.png" />
     <Resource Include="assets\lock.png" />
     <Resource Include="assets\settings.png" />
+    <Resource Include="assets\pbs.png" />
+    <Resource Include="assets\Symbol-Minecraft.png" />
   </ItemGroup>
 
 </Project>
