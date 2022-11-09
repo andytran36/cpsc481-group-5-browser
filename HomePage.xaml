@@ -1,0 +1,44 @@
+﻿<Page x:Class="cpsc481_group5_browser.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:cpsc481_group5_browser"
+      mc:Ignorable="d" 
+      d:DesignHeight="647.04" d:DesignWidth="1253"
+      Title="HomePage">
+
+    <Viewbox>
+        <Grid Height="647.04" Width="1253">
+            <Rectangle HorizontalAlignment="Center" Height="530" Stroke="Black" VerticalAlignment="Center" Width="1098" Fill="White"/>
+            <Label Content="BOOKMARKS" HorizontalAlignment="Left" Margin="106,74,0,0" VerticalAlignment="Top" FontSize="40" Height="79" Width="256"/>
+            <Border BorderBrush="Black" BorderThickness="1" Margin="626,59,77,323"/>
+            <Border BorderBrush="Black" BorderThickness="1" Margin="626,323,77,58"/>
+            <Label Content="SUGGESTED" HorizontalAlignment="Left" Margin="645,74,0,0" VerticalAlignment="Top" FontSize="40" Height="79" Width="256"/>
+            <Label Content="RECENTLY VIEWED" HorizontalAlignment="Left" Margin="645,346,0,0" VerticalAlignment="Top" FontSize="40" Height="79" Width="346"/>
+            <Border x:Name="suggestedborder1" BorderBrush="Black" BorderThickness="1" Margin="645,158,454,366">
+                <Image x:Name="pbs" Source="/assets/pbs.png"/>
+            </Border>
+            <Border x:Name="rvborder1" BorderBrush="Black" BorderThickness="1" Margin="645,425,454,98">
+                <Image x:Name="minecraft" Source="/assets/Symbol-Minecraft.png" Stretch="UniformToFill"/>
+
+            </Border>
+            <Border x:Name="bookmarkborder1" BorderBrush="Black" BorderThickness="1" Margin="106,158,947,323">
+                <Image x:Name="leapfrog" Margin="17,1,17,4" Stretch="UniformToFill" Source="/assets/LeapFrog-logo.png"/>
+            </Border>
+            <Border x:Name="suggestedborder2" BorderBrush="Black" BorderThickness="1" Margin="824,158,275,366">
+                <Image x:Name="scholastic2" Source="/assets/Scholastic.png" Stretch="Fill"/>
+            </Border>
+            <Border x:Name="suggestedborder3" BorderBrush="Black" BorderThickness="1" Margin="996,158,103,366">
+                <Image x:Name="funbrain" Source="/assets/funbrain.png"/>
+            </Border>
+            <Border x:Name="rvborder2" BorderBrush="Black" BorderThickness="1" Margin="824,426,275,98">
+                <Image x:Name="scholastic" Source="/assets/Scholastic.png" Stretch="Fill"/>
+            </Border>
+            <Border x:Name="rvborder3" BorderBrush="Black" BorderThickness="1" Margin="996,425,103,99">
+                <Image x:Name="disney" Source="/assets/Disney_D.png"/>
+            </Border>
+
+        </Grid>
+    </Viewbox>
+</Page>
