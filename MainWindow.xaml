@@ -1,4 +1,4 @@
-﻿<Window x:Class="cpsc481_group_5_browser.MainWindow"
+﻿<Window x:Name="Window" x:Class="cpsc481_group_5_browser.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -21,32 +21,32 @@
                 <ColumnDefinition Width="45px"></ColumnDefinition>
                 <ColumnDefinition Width="45px"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            
-            <Button Grid.Row="0" Grid.Column="0">
-                <Image x:Name="back" HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/back.png"/>
+
+            <Button x:Name="back" Grid.Row="0" Grid.Column="0" Click="back_Click">
+                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/back.png"/>
             </Button>
 
-            <Button Grid.Row="0" Grid.Column="1">
-                <Image x:Name="forward" HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/forward.png"/>
+            <Button x:Name="forward" Grid.Row="0" Grid.Column="1" Click="forward_Click">
+                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/forward.png"/>
             </Button>
 
-            <Button  Grid.Row="0" Grid.Column="2">
-                <Image x:Name="home" HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="/assets/home.png"/>
+            <Button x:Name="home" Grid.Row="0" Grid.Column="2" Click="home_Click">
+                <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="/assets/home.png"/>
             </Button>
 
-            <TextBox Grid.Row="0" Grid.Column="3" KeyDown="area_KeyDown" x:Name="area" Foreground="Black" FontSize="20" FontWeight="SemiBold" Margin="14 0 14 0"></TextBox>
+            <TextBox Grid.Row="0" Grid.Column="3" KeyDown="area_KeyDown" x:Name="searchBox" Foreground="Black" FontSize="20" FontWeight="SemiBold" Margin="14 0 14 0"></TextBox>
 
-            <Button  Grid.Row="0" Grid.Column="4">
-                <Image x:Name="_lock" HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/lock.png"/>
+            <Button x:Name="lock" Grid.Row="0" Grid.Column="4" Click="lock_Click">
+                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/lock.png"/>
             </Button>
 
-            <Button Grid.Row="0" Grid.Column="5">
-                <Image x:Name="settings" HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/settings.png"/>
+            <Button x:Name="settings" Grid.Row="0" Grid.Column="5" Click="settings_Click">
+                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/settings.png"/>
             </Button>
 
         </Grid>
 
         <Border BorderThickness="1" BorderBrush="Gray"></Border>
-        <WebBrowser Grid.Row="1" x:Name="webBrowser" HorizontalAlignment="Center"/>
+        <WebBrowser Grid.Row="1" x:Name="webBrowser" HorizontalAlignment="Center" LoadCompleted="webBrowser_LoadCompleted"/>
     </Grid>
 </Window>
