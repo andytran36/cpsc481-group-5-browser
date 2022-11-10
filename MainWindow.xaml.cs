@@ -12,8 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 
 
 namespace cpsc481_group_5_browser
@@ -41,6 +41,15 @@ namespace cpsc481_group_5_browser
         private void Frame_Navigated(object sender, NavigationEventArgs e)
         {
 
+        }
+
+        private void area_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                string WebPage = area.Text.Trim();
+                webBrowser.Navigate(WebPage);
+            }
         }
     }
 }
