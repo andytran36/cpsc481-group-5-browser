@@ -34,6 +34,7 @@ namespace cpsc481_group5_browser
             {
                 args.PinAccepted = true;
             }
+            PinInput.Clear();
             Handler_PinContinueClicked?.Invoke(this, args);
         }
 
