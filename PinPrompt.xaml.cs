@@ -18,8 +18,9 @@ namespace cpsc481_group5_browser
     /// <summary>
     /// Interaction logic for PinPrompt.xaml
     /// </summary>
-    public partial class PinPrompt : Page
-    {
+    public partial class PinPrompt : UserControl {
+        public event EventHandler<PinArgs> Handler_PinContinueClicked;
+
         public PinPrompt()
         {
             InitializeComponent();
@@ -27,7 +28,19 @@ namespace cpsc481_group5_browser
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            PinArgs args = new PinArgs();
+            args.PinAccepted = false;
+            if(PinInput.Password.Length == 6)
+            {
+                args.PinAccepted = true;
+            }
+            Handler_PinContinueClicked?.Invoke(this, args);
         }
+
+        public class PinArgs: EventArgs
+        {
+            public bool PinAccepted { get; set; }
+        }
+
     }
 }
