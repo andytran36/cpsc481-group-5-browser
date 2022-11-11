@@ -18,7 +18,7 @@ namespace cpsc481_group5_browser
     /// <summary>
     /// Interaction logic for HomePage.xaml
     /// </summary>
-    public partial class HomePage : Page
+    public partial class HomePage : UserControl
     {
         public HomePage()
         {

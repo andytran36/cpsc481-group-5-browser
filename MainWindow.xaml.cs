@@ -26,6 +26,7 @@ namespace cpsc481_group_5_browser
         Browser BrowserScreen;
         UserSelect UserSelectScreen;
         CreateNewUser CreateNewUserScreen;
+        HomePage HomeScreen;
 
         // Hardcoded Values
         List<string> UserNames = new List<string>
@@ -42,6 +43,7 @@ namespace cpsc481_group_5_browser
             BrowserScreen = new Browser();
             UserSelectScreen = new UserSelect(UserNames);
             CreateNewUserScreen = new CreateNewUser();
+            HomeScreen = new HomePage();
 
             // Browser Handlers
             BrowserScreen.Handler_BrowserSettingsClicked += new EventHandler(Handle_SettingsClicked);
@@ -74,7 +76,8 @@ namespace cpsc481_group_5_browser
         private void Handle_UserProfileClicked(object sender, EventArgs e)
         {
             Debug.WriteLine("User Profile clicked");
-            this.contentControl.Content = BrowserScreen;
+            //this.contentControl.Content = BrowserScreen;
+            this.contentControl.Content = HomeScreen;
         }
 
         private void Handle_CreateNewUserClicked(object sender, EventArgs e)
