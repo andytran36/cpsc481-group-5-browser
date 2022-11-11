@@ -32,6 +32,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
 using cpsc481_group5_browser;
+using cpsc481_group_5_browser;
 
 
 namespace cpsc481_group5_browser {
