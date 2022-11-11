@@ -15,73 +15,82 @@ using System.Windows.Shapes;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Diagnostics;
-
+using cpsc481_group5_browser;
+using static cpsc481_group5_browser.CreateNewUser;
 
 namespace cpsc481_group_5_browser
 {
     public partial class MainWindow : Window
     {
-        List<string> History; // list of webpages visited since the browser was opened
+
+        Browser BrowserScreen;
+        UserSelect UserSelectScreen;
+        CreateNewUser CreateNewUserScreen;
+
+        // Hardcoded Values
+        List<string> UserNames = new List<string>
+            {
+                "John",
+                "Bob",
+            };
+
         public MainWindow()
         {
             InitializeComponent();
-            History = new List<string>();
-            LoadPage("https://www.google.ca");
+
+            // Initialize all the screens
+            BrowserScreen = new Browser();
+            UserSelectScreen = new UserSelect(UserNames);
+            CreateNewUserScreen = new CreateNewUser();
+
+            // Browser Handlers
+            BrowserScreen.Handler_BrowserSettingsClicked += new EventHandler(Handle_SettingsClicked);
+
+            // User Select Handlers
+            UserSelectScreen.Handler_UserProfileClicked += new EventHandler(Handle_UserProfileClicked);
+            UserSelectScreen.Handler_UserSelectSettingsClicked += new EventHandler(Handle_SettingsClicked);
+            UserSelectScreen.Handler_CreateNewUserClicked += new EventHandler(Handle_CreateNewUserClicked);
+
+            // Create New User Handlers
+            CreateNewUserScreen.Handler_CreateNewUserHomeClicked += new EventHandler(Handle_HomeClicked);
+            CreateNewUserScreen.Handler_CreateNewUserSettingsClicked += new EventHandler(Handle_SettingsClicked);
+            CreateNewUserScreen.Handler_CreateNewUserCreateClicked += new EventHandler<CreateNewUserArgs>(Handle_CreateNewUserCreateClicked);
+
+            // Set Screen to User Select on System Startup
+            this.contentControl.Content = UserSelectScreen;
         }
 
-        // Routing
-        void LoadPage(string Url)
+        private void Handle_HomeClicked(object sender, EventArgs e)
         {
-            searchBox.Text = Url;
-            History.Add(Url);
-            webBrowser.Navigate(Url);
+            this.contentControl.Content = UserSelectScreen;
         }
 
-        private void back_Click(object sender, RoutedEventArgs e)
+        private void Handle_SettingsClicked(object sender, EventArgs e)
         {
-            if (this.webBrowser.CanGoBack)
-            {
-                this.webBrowser.GoBack();
-            }
+            Debug.WriteLine("settings clicked");
+            // Navigate to Parental Settings
         }
 
-        private void forward_Click(object sender, RoutedEventArgs e)
+        private void Handle_UserProfileClicked(object sender, EventArgs e)
         {
-            if (this.webBrowser.CanGoForward)
-            {
-                this.webBrowser.GoForward();
-            }
+            Debug.WriteLine("User Profile clicked");
+            this.contentControl.Content = BrowserScreen;
         }
 
-        private void home_Click(object sender, RoutedEventArgs e)
+        private void Handle_CreateNewUserClicked(object sender, EventArgs e)
         {
-            searchBox.Text = "https://www.google.com".Trim();
-            History.Add("https://www.google.com".Trim());
-            webBrowser.Navigate(searchBox.Text);
+            Debug.WriteLine("Create New User Screen clicked");
+
+            // Check for password first and then navigate here
+            this.contentControl.Content = CreateNewUserScreen;
         }
 
-        private void area_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void Handle_CreateNewUserCreateClicked(object sender, CreateNewUserArgs e)
         {
-            if (e.Key == Key.Enter && e.IsDown)
-            {
-                string Page = searchBox.Text.Trim();
-                LoadPage(Page);
-            }
-        }
-
-        private void webBrowser_LoadCompleted(object sender, NavigationEventArgs e)
-        {
-            string Url = e.Uri.ToString();
-            searchBox.Text = Url;
-        }
-        // End Routing
-
-        private void lock_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void settings_Click(object sender, RoutedEventArgs e)
-        {
+            Debug.WriteLine("Create New User Create Button clicked");
+            UserNames.Add(e.Name);
+            UserSelectScreen.UpdateUserNames(UserNames);
+            this.contentControl.Content = UserSelectScreen;
         }
     }
 }
