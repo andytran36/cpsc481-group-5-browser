@@ -16,12 +16,7 @@
             <Label Content="PLEASE ENTER PIN" HorizontalAlignment="Center" Margin="0,165,0,0" VerticalAlignment="Top" FontSize="30" FontWeight="Bold"/>
             <Button Content="Continue" HorizontalAlignment="Left" Margin="433,463,0,0" VerticalAlignment="Top" Background="White" Height="54" Width="162" Click="Button_Click" FontSize="20"/>
             <Label Content="Cancel" HorizontalAlignment="Left" Margin="687,472,0,0" VerticalAlignment="Top" IsEnabled="False" FontSize="20" Foreground="#FF282828"/>
-            <PasswordBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Height="181" BorderBrush="Black" Margin="316,240,0,0" MaxLength="1" FontSize="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <PasswordBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Height="181" BorderBrush="Black" Margin="422,240,0,0" MaxLength="1" FontSize="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <PasswordBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Height="181" BorderBrush="Black" Margin="528,240,0,0" MaxLength="1" FontSize="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <PasswordBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Height="181" BorderBrush="Black" Margin="634,240,0,0" MaxLength="1" FontSize="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <PasswordBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Height="181" BorderBrush="Black" Margin="740,240,0,0" MaxLength="1" FontSize="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <PasswordBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Height="181" BorderBrush="Black" Margin="846,240,0,0" MaxLength="1" FontSize="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <PasswordBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="528" Height="181" BorderBrush="Black" Margin="0,246,0,0" MaxLength="6" FontSize="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
         </Grid>
     </Viewbox>
