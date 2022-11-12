@@ -16,9 +16,9 @@ using System.Windows.Shapes;
 namespace cpsc481_group5_browser
 {
     /// <summary>
-    /// Interaction logic for BlockPage.xaml
+    /// Interaction logic for TimeLimit.xaml
     /// </summary>
-    public partial class BlockPage : UserControl
+    public partial class TimeLimit : UserControl
     {
         List<string> History;
 
@@ -26,7 +26,7 @@ namespace cpsc481_group5_browser
         // Event Listeners
         public event EventHandler Handler_BrowserSettingsClicked;
 
-        public BlockPage()
+        public TimeLimit()
         {
             InitializeComponent();
         }

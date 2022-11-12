@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="cpsc481_group5_browser.BlockPage"
+﻿<UserControl x:Class="cpsc481_group5_browser.TimeLimit"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -50,12 +50,13 @@
 
         <Grid Grid.Row="1">
             <Rectangle HorizontalAlignment="Center" Height="266" Stroke="Black" VerticalAlignment="Center" Width="476" Fill="White"/>
-            <Label Content="SITE BLOCKED" HorizontalAlignment="Center" Margin="0,102,0,0" VerticalAlignment="Top" FontSize="30" FontWeight="Bold"/>
-            <Button Content="Go Back" HorizontalAlignment="Left" Margin="217,231,0,0" VerticalAlignment="Top" Background="White" Height="54" Width="162" Click="Button_Click" FontSize="20" FontWeight="Bold"/>
+            <Label Content="TIME'S UP!" HorizontalAlignment="Left" Margin="345,102,0,0" VerticalAlignment="Top" FontSize="30" FontWeight="Bold"/>
+            <Button Content="Exit" HorizontalAlignment="Left" Margin="217,231,0,0" VerticalAlignment="Top" Background="White" Height="54" Width="162" Click="Button_Click" FontSize="20" FontWeight="Bold"/>
             <Label HorizontalAlignment="Left" Margin="433,240,0,0" VerticalAlignment="Top" IsEnabled="False" FontSize="20" Foreground="#FF282828">
                 <TextBlock TextWrapping="Wrap" Text="Request Access" TextDecorations="Underline"/>
             </Label>
+            <Image HorizontalAlignment="Left" Height="41" Margin="304,110,0,0" VerticalAlignment="Top" Width="45" Source="/assets/timer.png"/>
         </Grid>
-        <TextBlock HorizontalAlignment="Center" Margin="0,154,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="62" Width="244" FontSize="20"><Run Text="This site has been blocked "/><Run Text="by parental settings"/></TextBlock>
+        <TextBlock HorizontalAlignment="Center" Margin="0,154,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="62" Width="244" FontSize="20" Text="You have reached the daily limit of browsing time"/>
     </Grid>
 </UserControl>
