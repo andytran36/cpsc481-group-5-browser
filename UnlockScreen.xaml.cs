@@ -18,10 +18,10 @@ namespace cpsc481_group5_browser
     /// <summary>
     /// Interaction logic for PinPrompt.xaml
     /// </summary>
-    public partial class LockScreen : UserControl {
+    public partial class UnlockScreen : UserControl {
         public event EventHandler Handler_LockScreenClicked;
 
-        public LockScreen()
+        public UnlockScreen()
         {
             InitializeComponent();
         }
