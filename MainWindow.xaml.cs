@@ -26,6 +26,7 @@ namespace cpsc481_group_5_browser
         Browser BrowserScreen;
         UserSelect UserSelectScreen;
         CreateNewUser CreateNewUserScreen;
+        PinPrompt EnterPinScreen;
 
         // Hardcoded Values
         List<string> UserNames = new List<string>
@@ -42,6 +43,7 @@ namespace cpsc481_group_5_browser
             BrowserScreen = new Browser();
             UserSelectScreen = new UserSelect(UserNames);
             CreateNewUserScreen = new CreateNewUser();
+            EnterPinScreen = new PinPrompt();
 
             // Browser Handlers
             BrowserScreen.Handler_BrowserSettingsClicked += new EventHandler(Handle_SettingsClicked);
@@ -56,6 +58,9 @@ namespace cpsc481_group_5_browser
             CreateNewUserScreen.Handler_CreateNewUserSettingsClicked += new EventHandler(Handle_SettingsClicked);
             CreateNewUserScreen.Handler_CreateNewUserCreateClicked += new EventHandler<CreateNewUserArgs>(Handle_CreateNewUserCreateClicked);
 
+            //Pin Screen Handlers
+            EnterPinScreen.Handler_PinContinueClicked += new EventHandler<PinPrompt.PinArgs>(Handle_PinContinueClicked);
+
             // Set Screen to User Select on System Startup
             this.contentControl.Content = UserSelectScreen;
         }
@@ -69,6 +74,7 @@ namespace cpsc481_group_5_browser
         {
             Debug.WriteLine("settings clicked");
             // Navigate to Parental Settings
+            this.contentControl.Content = EnterPinScreen;
         }
 
         private void Handle_UserProfileClicked(object sender, EventArgs e)
@@ -92,5 +98,18 @@ namespace cpsc481_group_5_browser
             UserSelectScreen.UpdateUserNames(UserNames);
             this.contentControl.Content = UserSelectScreen;
         }
+
+        private void Handle_PinContinueClicked(object sender, PinPrompt.PinArgs e)
+        {
+            if (e.PinAccepted)
+            {
+                Debug.WriteLine("To settings");
+            }
+            else
+            {
+                Debug.WriteLine("Error");
+            }
+        }
+        
     }
 }
