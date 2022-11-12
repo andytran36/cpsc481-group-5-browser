@@ -19,7 +19,7 @@ namespace cpsc481_group5_browser
     /// Interaction logic for PinPrompt.xaml
     /// </summary>
     public partial class UnlockScreen : UserControl {
-        public event EventHandler Handler_LockScreenClicked;
+        public event EventHandler Handler_UnlockScreenClicked;
 
         public UnlockScreen()
         {
@@ -67,7 +67,7 @@ namespace cpsc481_group5_browser
                 args.PinAccepted = true;
             }
             PinInput.Clear();
-            Handler_LockScreenClicked?.Invoke(this, args);
+            Handler_UnlockScreenClicked?.Invoke(this, args);
         }
         private void Lock_Click(object sender, RoutedEventArgs e)
         {
