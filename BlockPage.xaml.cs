@@ -72,5 +72,10 @@ namespace cpsc481_group5_browser
         {
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

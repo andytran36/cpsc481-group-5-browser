@@ -48,6 +48,14 @@
 
         <Border BorderThickness="1" BorderBrush="Black"></Border>
 
-
+        <Grid Grid.Row="1">
+            <Rectangle HorizontalAlignment="Center" Height="266" Stroke="Black" VerticalAlignment="Center" Width="476" Fill="White"/>
+            <Label Content="SITE BLOCKED" HorizontalAlignment="Center" Margin="0,102,0,0" VerticalAlignment="Top" FontSize="30" FontWeight="Bold"/>
+            <Button Content="Go Back" HorizontalAlignment="Left" Margin="217,231,0,0" VerticalAlignment="Top" Background="White" Height="54" Width="162" Click="Button_Click" FontSize="20" FontWeight="Bold"/>
+            <Label HorizontalAlignment="Left" Margin="433,240,0,0" VerticalAlignment="Top" IsEnabled="False" FontSize="20" Foreground="#FF282828">
+                <TextBlock TextWrapping="Wrap" Text="Request Access" TextDecorations="Underline"/>
+            </Label>
+        </Grid>
+        <TextBlock HorizontalAlignment="Center" Margin="0,154,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="62" Width="244" FontSize="20"><Run Text="This site has been blocked "/><Run Text="by parental settings"/></TextBlock>
     </Grid>
 </UserControl>
