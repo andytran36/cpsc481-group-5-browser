@@ -55,11 +55,10 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            
+
             <Grid x:Name="bookmark">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
-                    <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
@@ -68,7 +67,6 @@
                 <Grid x:Name="bookmarkrow1" Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50"/>
-                        <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
@@ -89,14 +87,53 @@
                         <ColumnDefinition Width="50"/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                 </Grid>
-
-
             </Grid>
 
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition/>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Content="SUGGESTED" FontSize="25"/>
+                <Label Content="RECENTLY VIEWED" Grid.Row="2" FontSize="25"/>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="2,2,2,2">
+                        <Image Source="/assets/pbs.png"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Margin="2,2,2,2">
+                        <Image Source="/assets/funbrain.png"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="0,1,1,1" Grid.ColumnSpan="2" Margin="0,-40,0,0"/>
+
+                </Grid>
+
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="2,2,2,2">
+                        <Image Source="/assets/Scholastic.png" Stretch="Fill"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Margin="2,2,2,2">
+                        <Image Source="/assets/Disney_D.png"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.ColumnSpan="2" Margin="0,-40,0,0"/>
+
+                </Grid>
+            </Grid>
         </Grid>
 
-        </Grid>
+    </Grid>
 </UserControl>
