@@ -25,6 +25,7 @@ namespace cpsc481_group5_browser
         public ParentalSettings()
         {
             InitializeComponent();
+            this.Loaded += new RoutedEventHandler(ParentalSettingsLoaded);
         }
 
         private void Back_Clicked(object sender, MouseButtonEventArgs e)
@@ -35,6 +36,22 @@ namespace cpsc481_group5_browser
         private void changebob(object sender, MouseButtonEventArgs e)
         {
             Handler_BobChangeClicked.Invoke(this, new EventArgs());
+        }
+
+        private void ParentalSettingsLoaded(object sender, RoutedEventArgs e)
+        {
+            Window w = Window.GetWindow(contactarrow);
+
+            if (w != null)
+            {
+                w.LocationChanged += delegate (object sender2, EventArgs args)
+                {
+                    //contact movement
+                    var contactoffset = contactpopup.HorizontalOffset;
+                    contactpopup.HorizontalOffset = contactoffset + 1;
+                    contactpopup.HorizontalOffset = contactoffset;
+                };
+            }
         }
     }
 }
