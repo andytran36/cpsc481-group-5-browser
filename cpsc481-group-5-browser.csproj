@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="assets\bookmark.png" />
     <None Remove="assets\timer.png" />
     <None Remove="assets\Disney_D.png" />
     <None Remove="assets\funbrain.png" />
@@ -27,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="assets\bookmark.png" />
     <Resource Include="assets\Disney_D.png" />
     <Resource Include="assets\funbrain.png" />
     <Resource Include="assets\LeapFrog-logo.png" />
