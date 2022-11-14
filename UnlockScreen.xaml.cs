@@ -69,11 +69,18 @@ namespace cpsc481_group5_browser
             PinInput.Clear();
             Handler_UnlockScreenClicked?.Invoke(this, args);
         }
+
         private void Lock_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
         private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Unlock_Click(object sender, RoutedEventArgs e)
         {
 
         }

@@ -55,7 +55,7 @@
             <Button Content="Unlock" HorizontalAlignment="Left" Margin="433,463,0,0" VerticalAlignment="Top" Background="White" Height="54" Width="162" Click="Button_Click" FontSize="20"/>
             <Label Content="Cancel" HorizontalAlignment="Left" Margin="687,472,0,0" VerticalAlignment="Top" IsEnabled="False" FontSize="20" Foreground="#FF282828"/>
             <PasswordBox x:Name="PinInput" HorizontalAlignment="Center" VerticalAlignment="Top" Width="528" Height="181" BorderBrush="Black" Margin="0,246,0,0" MaxLength="6" FontSize="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <TextBlock Margin="375,180,375,0" VerticalAlignment="Top" Height="53" Width="503" FontSize="20" TextWrapping="Wrap" ><Run Text="Locking the page will prevent any navigation away from "/><Run Language="en-ca" Text="&#x9;"/><Run Text="the current page and changing users"/></TextBlock>
+            <TextBlock Margin="375,180,375,0" VerticalAlignment="Top" Height="53" Width="503" FontSize="20" TextWrapping="Wrap" ><Run Text="Unlocking the page will allow navigation away from "/><Run Language="en-ca" Text="&#x9;"/><Run Text="the current page and changing users"/></TextBlock>
         </Grid>
     </Grid>
 </UserControl>
