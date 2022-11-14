@@ -21,6 +21,7 @@ namespace cpsc481_group5_browser
     public partial class ParentalSettings : UserControl
     {
         public event EventHandler Handler_BackClicked;
+        public event EventHandler Handler_BobChangeClicked;
         public ParentalSettings()
         {
             InitializeComponent();
@@ -29,6 +30,11 @@ namespace cpsc481_group5_browser
         private void Back_Clicked(object sender, MouseButtonEventArgs e)
         {
             Handler_BackClicked?.Invoke(this, new EventArgs());
+        }
+
+        private void changebob(object sender, MouseButtonEventArgs e)
+        {
+            Handler_BobChangeClicked.Invoke(this, new EventArgs());
         }
     }
 }

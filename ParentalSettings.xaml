@@ -120,7 +120,7 @@
                             <Image Source="/assets/user.png" Margin="3,5,3,5"/>
                         </Border>
                         <Label Grid.Column="1" Content="Bob" Margin="0,27,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
-                        <Label Grid.Column="3" Margin="0,27,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center">
+                        <Label Grid.Column="3" Margin="0,27,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" MouseLeftButtonUp="changebob">
                             <TextBlock TextWrapping="Wrap" Text="CHANGE" TextDecorations="Underline"/>
                         </Label>
                         <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,0,80" Grid.ColumnSpan="4"/>

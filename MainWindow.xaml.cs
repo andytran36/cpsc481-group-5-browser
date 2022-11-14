@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +29,7 @@ namespace cpsc481_group_5_browser
         LockScreen LockScreen;
         PinPrompt EnterPinScreen;
         ParentalSettings ParentalSettingsScreen;
+        ChangeUserSetting ChangeUserSettingsScreen;
 
         // Hardcoded Values
         List<string> UserNames = new List<string>
@@ -48,6 +49,7 @@ namespace cpsc481_group_5_browser
             LockScreen = new LockScreen();
             EnterPinScreen = new PinPrompt();
             ParentalSettingsScreen = new ParentalSettings();
+            ChangeUserSettingsScreen = new ChangeUserSetting();
 
             // Browser Handlers
             BrowserScreen.Handler_BrowserSettingsClicked += new EventHandler(Handle_SettingsClicked);
@@ -69,6 +71,9 @@ namespace cpsc481_group_5_browser
 
             //Pin Screen Handlers
             EnterPinScreen.Handler_PinContinueClicked += new EventHandler<PinPrompt.PinArgs>(Handle_PinContinueClicked);
+
+            //Parental Settings Screen Handlers
+            ParentalSettingsScreen.Handler_BobChangeClicked += new EventHandler(Handle_BobChangeSettingsClicked);
 
             // Set Screen to User Select on System Startup
             this.contentControl.Content = UserSelectScreen;
@@ -126,6 +131,11 @@ namespace cpsc481_group_5_browser
             {
                 Debug.WriteLine("Error");
             }
+        }
+        
+        private void Handle_BobChangeSettingsClicked(object sender, EventArgs e)
+        {
+            this.contentControl.Content = ChangeUserSettingsScreen;
         }
     }
 }
