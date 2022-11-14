@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="assets\timer.png" />
     <None Remove="back.png" />
     <None Remove="forwar.png" />
     <None Remove="home.png" />
@@ -23,6 +24,7 @@
     <Resource Include="assets\home.png" />
     <Resource Include="assets\lock.png" />
     <Resource Include="assets\settings.png" />
+    <Resource Include="assets\timer.png" />
   </ItemGroup>
 
 </Project>

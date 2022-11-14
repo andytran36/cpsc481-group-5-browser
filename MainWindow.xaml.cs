@@ -26,6 +26,7 @@ namespace cpsc481_group_5_browser
         Browser BrowserScreen;
         UserSelect UserSelectScreen;
         CreateNewUser CreateNewUserScreen;
+        TimeLimit TimeLimitScreen;
 
         // Hardcoded Values
         List<string> UserNames = new List<string>
@@ -42,6 +43,7 @@ namespace cpsc481_group_5_browser
             BrowserScreen = new Browser();
             UserSelectScreen = new UserSelect(UserNames);
             CreateNewUserScreen = new CreateNewUser();
+            TimeLimitScreen = new TimeLimit();
 
             // Browser Handlers
             BrowserScreen.Handler_BrowserSettingsClicked += new EventHandler(Handle_SettingsClicked);
@@ -69,6 +71,8 @@ namespace cpsc481_group_5_browser
         {
             Debug.WriteLine("settings clicked");
             // Navigate to Parental Settings
+            //NOTES: temporary way to get to time limit screen
+            //this.contentControl.Content = TimeLimitScreen;
         }
 
         private void Handle_UserProfileClicked(object sender, EventArgs e)
