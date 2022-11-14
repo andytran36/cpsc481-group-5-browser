@@ -36,6 +36,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="assets\forwardarrow.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="assets\back.png" />
     <Resource Include="assets\forward.png" />
     <Resource Include="assets\home.png" />
