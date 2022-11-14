@@ -18,10 +18,10 @@ namespace cpsc481_group5_browser
     /// <summary>
     /// Interaction logic for PinPrompt.xaml
     /// </summary>
-    public partial class PinPrompt : UserControl {
+    public partial class PasswordPrompt : UserControl {
         public event EventHandler<PinArgs> Handler_PinContinueClicked;
 
-        public PinPrompt()
+        public PasswordPrompt()
         {
             InitializeComponent();
         }
