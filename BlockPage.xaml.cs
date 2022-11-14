@@ -12,85 +12,70 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Drawing;
-using System.Diagnostics;
 
 namespace cpsc481_group5_browser
 {
     /// <summary>
-    /// Interaction logic for Browser.xaml
+    /// Interaction logic for BlockPage.xaml
     /// </summary>
-    public partial class Browser : UserControl
+    public partial class BlockPage : UserControl
     {
         List<string> History;
 
 
         // Event Listeners
         public event EventHandler Handler_BrowserSettingsClicked;
-        public event EventHandler Handler_LockedScreenClicked;
 
-        public Browser()
+        public BlockPage()
         {
             InitializeComponent();
-            History = new List<string>();
-            LoadPage("https://www.google.ca");
         }
 
         // Routing
         void LoadPage(string Url)
         {
-            SearchBox.Text = Url;
-            History.Add(Url);
-            WebBrowser.Navigate(Url);
+
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            if (this.WebBrowser.CanGoBack)
-            {
-                this.WebBrowser.GoBack();
-            }
+
         }
 
         private void Forward_Click(object sender, RoutedEventArgs e)
         {
-            if (this.WebBrowser.CanGoForward)
-            {
-                this.WebBrowser.GoForward();
-            }
+
         }
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {
-            SearchBox.Text = "https://www.google.com".Trim();
-            History.Add("https://www.google.com".Trim());
-            WebBrowser.Navigate(SearchBox.Text);
+
         }
 
         private void SearchBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if (e.Key == Key.Enter && e.IsDown)
-            {
-                string Page = SearchBox.Text.Trim();
-                LoadPage(Page);
-            }
+
         }
 
         private void WebBrowser_LoadCompleted(object sender, NavigationEventArgs e)
         {
-            string Url = e.Uri.ToString();
-            SearchBox.Text = Url;
+
         }
         // End Routing
 
         private void Lock_Click(object sender, RoutedEventArgs e)
         {
-            Handler_LockedScreenClicked?.Invoke(this, new EventArgs());
+
         }
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
-            Handler_BrowserSettingsClicked?.Invoke(this, new EventArgs());
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

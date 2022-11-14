@@ -15,6 +15,7 @@
     <None Remove="assets\LeapFrog-logo.png" />
     <None Remove="assets\Scholastic.png" />
     <None Remove="assets\Symbol-Minecraft.png" />
+    <None Remove="assets\user.png" />
     <None Remove="back.png" />
     <None Remove="forwar.png" />
     <None Remove="home.png" />
@@ -39,6 +40,7 @@
     <Resource Include="assets\settings.png" />
     <Resource Include="assets\pbs.png" />
     <Resource Include="assets\Symbol-Minecraft.png" />
+    <Resource Include="assets\user.png" />
   </ItemGroup>
 
 </Project>
