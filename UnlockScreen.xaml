@@ -19,6 +19,8 @@
                 <ColumnDefinition Width="45px"></ColumnDefinition>
                 <ColumnDefinition Width="45px"></ColumnDefinition>
                 <ColumnDefinition Width="12*"></ColumnDefinition>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="45"></ColumnDefinition>
                 <ColumnDefinition Width="45px"></ColumnDefinition>
                 <ColumnDefinition Width="45px"></ColumnDefinition>
             </Grid.ColumnDefinitions>
@@ -35,13 +37,19 @@
                 <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="/assets/home.png"/>
             </Button>
 
-            <TextBox Grid.Row="0" Grid.Column="3" KeyDown="SearchBox_KeyDown" x:Name="SearchBox" Foreground="Black" FontSize="20" FontWeight="SemiBold" Margin="14 0 14 0"></TextBox>
+            <TextBox Grid.Row="0" Grid.Column="3" KeyDown="SearchBox_KeyDown" x:Name="SearchBox" Foreground="Black" FontSize="20" FontWeight="SemiBold" Margin="14,0,5,0" Grid.ColumnSpan="2"></TextBox>
 
-            <Button x:Name="Unlock" Grid.Row="0" Grid.Column="4" Click="Unlock_Click">
+            <Image Source="/assets/bookmark.png" Grid.Column="4" Margin="1,5,5,5" />
+
+            <Button Grid.Column="5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                <Image Source="/assets/user.png" />
+            </Button>
+
+            <Button x:Name="Lock" Grid.Row="0" Grid.Column="6" Click="Lock_Click">
                 <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/lock.png"/>
             </Button>
 
-            <Button x:Name="Settings" Grid.Row="0" Grid.Column="5" Click="Settings_Click">
+            <Button x:Name="Settings" Grid.Row="0" Grid.Column="7" Click="Settings_Click">
                 <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/settings.png"/>
             </Button>
 
