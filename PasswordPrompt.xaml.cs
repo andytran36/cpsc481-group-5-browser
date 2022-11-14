@@ -12,14 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static cpsc481_group5_browser.LockScreen;
 
 namespace cpsc481_group5_browser
 {
     /// <summary>
-    /// Interaction logic for PinPrompt.xaml
+    /// Interaction logic for PasswordPrompt.xaml
     /// </summary>
     public partial class PasswordPrompt : UserControl {
-        public event EventHandler<PinArgs> Handler_PinContinueClicked;
+        public event EventHandler<PasswordArgs> Handler_PasswordContinueClicked;
 
         public PasswordPrompt()
         {
@@ -28,19 +29,19 @@ namespace cpsc481_group5_browser
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PinArgs args = new PinArgs();
-            args.PinAccepted = false;
-            if(PinInput.Password.Length == 6)
+            PasswordArgs args = new PasswordArgs();
+            args.PasswordAccepted = false;
+            if(PasswordInput.Password.Length == 6)
             {
-                args.PinAccepted = true;
+                args.PasswordAccepted = true;
             }
-            PinInput.Clear();
-            Handler_PinContinueClicked?.Invoke(this, args);
+            PasswordInput.Clear();
+            Handler_PasswordContinueClicked?.Invoke(this, args);
         }
 
-        public class PinArgs: EventArgs
+        public class PasswordArgs : EventArgs
         {
-            public bool PinAccepted { get; set; }
+            public bool PasswordAccepted { get; set; }
         }
 
     }

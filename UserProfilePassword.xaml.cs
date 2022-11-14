@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace cpsc481_group5_browser
 {
     /// <summary>
-    /// Interaction logic for UserProfilePin.xaml
+    /// Interaction logic for UserProfilePassword.xaml
     /// </summary>
     public partial class UserProfilePassword : UserControl
     {

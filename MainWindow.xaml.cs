@@ -29,7 +29,7 @@ namespace cpsc481_group_5_browser
         TimeLimit TimeLimitScreen;
         HomePage HomeScreen;
         LockScreen LockScreen;
-        PasswordPrompt EnterPinScreen;
+        PasswordPrompt SettingsPasswordScreen;
         ParentalSettings ParentalSettingsScreen;
         ChangeUserSetting ChangeUserSettingsScreen;
         UserProfilePassword UserProfilePasswordScreen;
@@ -52,7 +52,7 @@ namespace cpsc481_group_5_browser
             TimeLimitScreen = new TimeLimit();
             HomeScreen = new HomePage();
             LockScreen = new LockScreen();
-            EnterPinScreen = new PasswordPrompt();
+            SettingsPasswordScreen = new PasswordPrompt();
             ParentalSettingsScreen = new ParentalSettings();
             ChangeUserSettingsScreen = new ChangeUserSetting();
             UserProfilePasswordScreen = new UserProfilePassword();
@@ -75,10 +75,10 @@ namespace cpsc481_group_5_browser
             CreateNewUserScreen.Handler_CreateNewUserSettingsClicked += new EventHandler(Handle_SettingsClicked);
             CreateNewUserScreen.Handler_CreateNewUserCreateClicked += new EventHandler<CreateNewUserArgs>(Handle_CreateNewUserCreateClicked);
 
-            //Pin Screen Handlers
-            EnterPinScreen.Handler_PinContinueClicked += new EventHandler<PasswordPrompt.PinArgs>(Handle_PinContinueClicked);
+            // Password Screen Handlers
+            SettingsPasswordScreen.Handler_PasswordContinueClicked += new EventHandler<PasswordPrompt.PasswordArgs>(Handle_PasswordContinueClicked);
 
-            //Parental Settings Screen Handlers
+            // Parental Settings Screen Handlers
             ParentalSettingsScreen.Handler_BobChangeClicked += new EventHandler(Handle_BobChangeSettingsClicked);
 
             // Set Screen to User Select on System Startup
@@ -97,7 +97,7 @@ namespace cpsc481_group_5_browser
             // Navigate to Parental Settings
             //NOTES: temporary way to get to time limit screen
             //this.contentControl.Content = TimeLimitScreen;
-            this.contentControl.Content = EnterPinScreen;
+            this.contentControl.Content = SettingsPasswordScreen;
         }
 
         private void Handle_UserProfileClicked(object sender, EventArgs e)
@@ -131,9 +131,9 @@ namespace cpsc481_group_5_browser
             this.contentControl.Content = LockScreen;
         }
         
-        private void Handle_PinContinueClicked(object sender, PasswordPrompt.PinArgs e)
+        private void Handle_PasswordContinueClicked(object sender, PasswordPrompt.PasswordArgs e)
         {
-            if (e.PinAccepted)
+            if (e.PasswordAccepted)
             {
                 Debug.WriteLine("To settings");
                 this.contentControl.Content = ParentalSettingsScreen;

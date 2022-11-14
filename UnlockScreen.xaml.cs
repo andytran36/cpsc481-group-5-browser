@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace cpsc481_group5_browser
 {
     /// <summary>
-    /// Interaction logic for PinPrompt.xaml
+    /// Interaction logic for PasswordPrompt.xaml
     /// </summary>
     public partial class UnlockScreen : UserControl {
         public event EventHandler Handler_UnlockScreenClicked;
@@ -60,13 +60,13 @@ namespace cpsc481_group5_browser
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PinArgs args = new PinArgs();
-            args.PinAccepted = false;
-            if(PinInput.Password.Length == 6)
+            PasswordArgs args = new PasswordArgs();
+            args.PasswordAccepted = false;
+            if(PasswordInput.Password.Length == 6)
             {
-                args.PinAccepted = true;
+                args.PasswordAccepted = true;
             }
-            PinInput.Clear();
+            PasswordInput.Clear();
             Handler_UnlockScreenClicked?.Invoke(this, args);
         }
 
@@ -85,9 +85,9 @@ namespace cpsc481_group5_browser
 
         }
 
-        public class PinArgs: EventArgs
+        public class PasswordArgs: EventArgs
         {
-            public bool PinAccepted { get; set; }
+            public bool PasswordAccepted { get; set; }
         }
 
     }
