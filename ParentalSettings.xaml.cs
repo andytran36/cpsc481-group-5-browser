@@ -90,5 +90,21 @@ namespace cpsc481_group5_browser
         {
            
         }
+
+        private void ParentalSettingsLoaded(object sender, RoutedEventArgs e)
+        {
+            Window w = Window.GetWindow(passwordarrow);
+
+            if (w != null)
+            {
+                w.LocationChanged += delegate (object sender2, EventArgs args)
+                {
+                    //contact movement
+                    var passwordoffset = passwordpopup.HorizontalOffset;
+                    passwordpopup.HorizontalOffset = passwordoffset + 1;
+                    passwordpopup.HorizontalOffset = passwordoffset;
+                };
+            }
+        }
     }
 }
