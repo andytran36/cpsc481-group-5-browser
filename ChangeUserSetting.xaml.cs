@@ -24,5 +24,42 @@ namespace cpsc481_group5_browser
         {
             InitializeComponent();
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Forward_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void SearchBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            
+        }
+
+        private void WebBrowser_LoadCompleted(object sender, NavigationEventArgs e)
+        {
+            string Url = e.Uri.ToString();
+            SearchBox.Text = Url;
+        }
+        // End Routing
+
+        private void Lock_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
