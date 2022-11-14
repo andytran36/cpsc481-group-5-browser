@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +26,11 @@ namespace cpsc481_group_5_browser
         Browser BrowserScreen;
         UserSelect UserSelectScreen;
         CreateNewUser CreateNewUserScreen;
+        HomePage HomeScreen;
         LockScreen LockScreen;
+        PinPrompt EnterPinScreen;
+        ParentalSettings ParentalSettingsScreen;
+        ChangeUserSetting ChangeUserSettingsScreen;
 
         // Hardcoded Values
         List<string> UserNames = new List<string>
@@ -43,7 +47,11 @@ namespace cpsc481_group_5_browser
             BrowserScreen = new Browser();
             UserSelectScreen = new UserSelect(UserNames);
             CreateNewUserScreen = new CreateNewUser();
+            HomeScreen = new HomePage();
             LockScreen = new LockScreen();
+            EnterPinScreen = new PinPrompt();
+            ParentalSettingsScreen = new ParentalSettings();
+            ChangeUserSettingsScreen = new ChangeUserSetting();
 
             // Browser Handlers
             BrowserScreen.Handler_BrowserSettingsClicked += new EventHandler(Handle_SettingsClicked);
@@ -63,6 +71,12 @@ namespace cpsc481_group_5_browser
             CreateNewUserScreen.Handler_CreateNewUserSettingsClicked += new EventHandler(Handle_SettingsClicked);
             CreateNewUserScreen.Handler_CreateNewUserCreateClicked += new EventHandler<CreateNewUserArgs>(Handle_CreateNewUserCreateClicked);
 
+            //Pin Screen Handlers
+            EnterPinScreen.Handler_PinContinueClicked += new EventHandler<PinPrompt.PinArgs>(Handle_PinContinueClicked);
+
+            //Parental Settings Screen Handlers
+            ParentalSettingsScreen.Handler_BobChangeClicked += new EventHandler(Handle_BobChangeSettingsClicked);
+
             // Set Screen to User Select on System Startup
             this.contentControl.Content = UserSelectScreen;
 
@@ -77,12 +91,14 @@ namespace cpsc481_group_5_browser
         {
             Debug.WriteLine("settings clicked");
             // Navigate to Parental Settings
+            this.contentControl.Content = EnterPinScreen;
         }
 
         private void Handle_UserProfileClicked(object sender, EventArgs e)
         {
             Debug.WriteLine("User Profile clicked");
-            this.contentControl.Content = BrowserScreen;
+            //this.contentControl.Content = BrowserScreen;
+            this.contentControl.Content = HomeScreen;
         }
 
         private void Handle_CreateNewUserClicked(object sender, EventArgs e)
@@ -105,6 +121,24 @@ namespace cpsc481_group_5_browser
         {
             Debug.WriteLine("Lock Screen clicked");
             this.contentControl.Content = LockScreen;
+        }
+        
+        private void Handle_PinContinueClicked(object sender, PinPrompt.PinArgs e)
+        {
+            if (e.PinAccepted)
+            {
+                Debug.WriteLine("To settings");
+                this.contentControl.Content = ParentalSettingsScreen;
+            }
+            else
+            {
+                Debug.WriteLine("Error");
+            }
+        }
+        
+        private void Handle_BobChangeSettingsClicked(object sender, EventArgs e)
+        {
+            this.contentControl.Content = ChangeUserSettingsScreen;
         }
     }
 }
