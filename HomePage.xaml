@@ -15,37 +15,37 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="browserbar" Grid.Row="0">
+        <Grid Grid.Row="0" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="45"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="45"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="45"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="45"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="45"/>
+                <ColumnDefinition Width="45px"></ColumnDefinition>
+                <ColumnDefinition Width="45px"></ColumnDefinition>
+                <ColumnDefinition Width="45px"></ColumnDefinition>
+                <ColumnDefinition Width="12*"></ColumnDefinition>
+                <ColumnDefinition Width="45px"></ColumnDefinition>
+                <ColumnDefinition Width="45px"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="Settings" Grid.Row="0" Grid.Column="10" Margin="2,2,2,2">
+            <Button x:Name="Back" Grid.Row="0" Grid.Column="0" Click="Back_Click">
+                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/back.png"/>
+            </Button>
+
+            <Button x:Name="Forward" Grid.Row="0" Grid.Column="1" Click="Forward_Click">
+                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/forward.png"/>
+            </Button>
+
+            <Button x:Name="Home" Grid.Row="0" Grid.Column="2" Click="Home_Click">
+                <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="/assets/home.png"/>
+            </Button>
+
+            <TextBox Grid.Row="0" Grid.Column="3" KeyDown="SearchBox_KeyDown" x:Name="SearchBox" Foreground="Black" FontSize="20" FontWeight="SemiBold" Margin="14 0 14 0"></TextBox>
+
+            <Button x:Name="Lock" Grid.Row="0" Grid.Column="4" Click="Lock_Click">
+                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/lock.png"/>
+            </Button>
+
+            <Button x:Name="Settings" Grid.Row="0" Grid.Column="5" Click="Settings_Click">
                 <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/settings.png"/>
             </Button>
-            <Button Grid.Row="0" Grid.Column="0" Margin="2,2,2,2">
-                <Image Source="/assets/back.png" />
-            </Button>
-            <Button Grid.Column="2" Margin="2,2,2,2">
-                <Image Source="/assets/forward.png" />
-            </Button>
-            <Button Grid.Column="4" Margin="2,2,2,2">
-                <Image Source="/assets/home.png" />
-            </Button>
-            <Button Grid.Column="8" Margin="2,2,2,2" HorizontalContentAlignment="Stretch">
-                <Image Source="/assets/lock.png" Margin="-3,0,4,0" />
-            </Button>
-            <TextBox Grid.Column="6" TextWrapping="Wrap" Text="SEARCH" VerticalContentAlignment="Center" Margin="2,2,2,2"/>
 
         </Grid>
 
