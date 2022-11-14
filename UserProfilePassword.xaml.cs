@@ -18,9 +18,9 @@ namespace cpsc481_group5_browser
     /// <summary>
     /// Interaction logic for UserProfilePin.xaml
     /// </summary>
-    public partial class UserProfilePin : UserControl
+    public partial class UserProfilePassword : UserControl
     {
-        public UserProfilePin()
+        public UserProfilePassword()
         {
             InitializeComponent();
         }

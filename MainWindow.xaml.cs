@@ -29,10 +29,10 @@ namespace cpsc481_group_5_browser
         TimeLimit TimeLimitScreen;
         HomePage HomeScreen;
         LockScreen LockScreen;
-        PinPrompt EnterPinScreen;
+        PasswordPrompt EnterPinScreen;
         ParentalSettings ParentalSettingsScreen;
         ChangeUserSetting ChangeUserSettingsScreen;
-        UserProfilePin userProfilePinScreen;
+        UserProfilePassword UserProfilePasswordScreen;
 
         // Hardcoded Values
         List<string> UserNames = new List<string>
@@ -52,10 +52,10 @@ namespace cpsc481_group_5_browser
             TimeLimitScreen = new TimeLimit();
             HomeScreen = new HomePage();
             LockScreen = new LockScreen();
-            EnterPinScreen = new PinPrompt();
+            EnterPinScreen = new PasswordPrompt();
             ParentalSettingsScreen = new ParentalSettings();
             ChangeUserSettingsScreen = new ChangeUserSetting();
-            userProfilePinScreen = new UserProfilePin();
+            UserProfilePasswordScreen = new UserProfilePassword();
 
             // Browser Handlers
             BrowserScreen.Handler_BrowserSettingsClicked += new EventHandler(Handle_SettingsClicked);
@@ -76,7 +76,7 @@ namespace cpsc481_group_5_browser
             CreateNewUserScreen.Handler_CreateNewUserCreateClicked += new EventHandler<CreateNewUserArgs>(Handle_CreateNewUserCreateClicked);
 
             //Pin Screen Handlers
-            EnterPinScreen.Handler_PinContinueClicked += new EventHandler<PinPrompt.PinArgs>(Handle_PinContinueClicked);
+            EnterPinScreen.Handler_PinContinueClicked += new EventHandler<PasswordPrompt.PinArgs>(Handle_PinContinueClicked);
 
             //Parental Settings Screen Handlers
             ParentalSettingsScreen.Handler_BobChangeClicked += new EventHandler(Handle_BobChangeSettingsClicked);
@@ -106,7 +106,7 @@ namespace cpsc481_group_5_browser
             //this.contentControl.Content = BrowserScreen;
             //NOTES: keep home screen line for screen shot
             //this.contentControl.Content = HomeScreen;
-            this.contentControl.Content = userProfilePinScreen;
+            this.contentControl.Content = UserProfilePasswordScreen;
         }
 
         private void Handle_CreateNewUserClicked(object sender, EventArgs e)
@@ -131,7 +131,7 @@ namespace cpsc481_group_5_browser
             this.contentControl.Content = LockScreen;
         }
         
-        private void Handle_PinContinueClicked(object sender, PinPrompt.PinArgs e)
+        private void Handle_PinContinueClicked(object sender, PasswordPrompt.PinArgs e)
         {
             if (e.PinAccepted)
             {
