@@ -50,7 +50,7 @@
 
         <Grid Grid.Row="1">
             <Rectangle HorizontalAlignment="Center" Height="266" Stroke="Black" VerticalAlignment="Center" Width="476" Fill="White"/>
-            <Grid HorizontalAlignment="Center" Height="266" Width="476">
+            <Grid HorizontalAlignment="Center" Height="266" Width="476" VerticalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
