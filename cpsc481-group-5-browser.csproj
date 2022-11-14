@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="assets\timer.png" />
     <None Remove="assets\Disney_D.png" />
     <None Remove="assets\funbrain.png" />
     <None Remove="assets\LeapFrog-logo.png" />
@@ -38,6 +39,7 @@
     <Resource Include="assets\home.png" />
     <Resource Include="assets\lock.png" />
     <Resource Include="assets\settings.png" />
+    <Resource Include="assets\timer.png" />
     <Resource Include="assets\pbs.png" />
     <Resource Include="assets\Symbol-Minecraft.png" />
     <Resource Include="assets\user.png" />
