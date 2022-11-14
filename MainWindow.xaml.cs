@@ -32,6 +32,7 @@ namespace cpsc481_group_5_browser
         PinPrompt EnterPinScreen;
         ParentalSettings ParentalSettingsScreen;
         ChangeUserSetting ChangeUserSettingsScreen;
+        UserProfilePin userProfilePinScreen;
 
         // Hardcoded Values
         List<string> UserNames = new List<string>
@@ -54,6 +55,7 @@ namespace cpsc481_group_5_browser
             EnterPinScreen = new PinPrompt();
             ParentalSettingsScreen = new ParentalSettings();
             ChangeUserSettingsScreen = new ChangeUserSetting();
+            userProfilePinScreen = new UserProfilePin();
 
             // Browser Handlers
             BrowserScreen.Handler_BrowserSettingsClicked += new EventHandler(Handle_SettingsClicked);
@@ -102,7 +104,9 @@ namespace cpsc481_group_5_browser
         {
             Debug.WriteLine("User Profile clicked");
             //this.contentControl.Content = BrowserScreen;
-            this.contentControl.Content = HomeScreen;
+            //NOTES: keep home screen line for screen shot
+            //this.contentControl.Content = HomeScreen;
+            this.contentControl.Content = userProfilePinScreen;
         }
 
         private void Handle_CreateNewUserClicked(object sender, EventArgs e)
