@@ -103,10 +103,10 @@ namespace cpsc481_group_5_browser
         private void Handle_UserProfileClicked(object sender, EventArgs e)
         {
             Debug.WriteLine("User Profile clicked");
-            //this.contentControl.Content = BrowserScreen;
+            this.contentControl.Content = BrowserScreen;
             //NOTES: keep home screen line for screen shot
             //this.contentControl.Content = HomeScreen;
-            this.contentControl.Content = UserProfilePasswordScreen;
+            //this.contentControl.Content = UserProfilePasswordScreen;
         }
 
         private void Handle_CreateNewUserClicked(object sender, EventArgs e)
