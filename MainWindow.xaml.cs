@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +26,7 @@ namespace cpsc481_group_5_browser
         Browser BrowserScreen;
         UserSelect UserSelectScreen;
         CreateNewUser CreateNewUserScreen;
+        LockScreen LockScreen;
         PinPrompt EnterPinScreen;
         ParentalSettings ParentalSettingsScreen;
         ChangeUserSetting ChangeUserSettingsScreen;
@@ -45,12 +46,18 @@ namespace cpsc481_group_5_browser
             BrowserScreen = new Browser();
             UserSelectScreen = new UserSelect(UserNames);
             CreateNewUserScreen = new CreateNewUser();
+            LockScreen = new LockScreen();
             EnterPinScreen = new PinPrompt();
             ParentalSettingsScreen = new ParentalSettings();
             ChangeUserSettingsScreen = new ChangeUserSetting();
 
             // Browser Handlers
             BrowserScreen.Handler_BrowserSettingsClicked += new EventHandler(Handle_SettingsClicked);
+            BrowserScreen.Handler_LockedScreenClicked += new EventHandler(Handle_LockScreenClicked);
+
+
+            // LockScreen Handlers
+            LockScreen.Handler_LockScreenClicked += new EventHandler(Handle_LockScreenClicked);
 
             // User Select Handlers
             UserSelectScreen.Handler_UserProfileClicked += new EventHandler(Handle_UserProfileClicked);
@@ -70,6 +77,7 @@ namespace cpsc481_group_5_browser
 
             // Set Screen to User Select on System Startup
             this.contentControl.Content = UserSelectScreen;
+
         }
 
         private void Handle_HomeClicked(object sender, EventArgs e)
@@ -106,6 +114,12 @@ namespace cpsc481_group_5_browser
             this.contentControl.Content = UserSelectScreen;
         }
 
+        private void Handle_LockScreenClicked(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Lock Screen clicked");
+            this.contentControl.Content = LockScreen;
+        }
+        
         private void Handle_PinContinueClicked(object sender, PinPrompt.PinArgs e)
         {
             if (e.PinAccepted)
