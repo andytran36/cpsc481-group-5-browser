@@ -27,7 +27,7 @@ namespace cpsc481_group5_browser
 
         // Event Listeners
         public event EventHandler Handler_BrowserSettingsClicked;
-
+        public event EventHandler Handler_LockedScreenClicked;
 
         public Browser()
         {
@@ -85,7 +85,7 @@ namespace cpsc481_group5_browser
 
         private void Lock_Click(object sender, RoutedEventArgs e)
         {
-
+            Handler_LockedScreenClicked?.Invoke(this, new EventArgs());
         }
 
         private void Settings_Click(object sender, RoutedEventArgs e)
