@@ -41,7 +41,7 @@
             </Border>
             
             
-            <Image Source="/assets/bookmark.png" Grid.Column="4" Margin="1,5,5,5" Width="25" />
+            <Image Grid.Column="4" Margin="1,5,5,5" Width="25" Source="/assets/bookmark.png" />
 
             <Button Grid.Column="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" BorderThickness="0">
                 <Image Source="/assets/user.png" Width="30"/>
@@ -52,7 +52,7 @@
             </Button>
 
             <Button x:Name="Settings" Grid.Column="7" Click="Settings_Click" Background="{x:Null}" BorderThickness="0">
-                <Image Height="25" Width="35" Source="/assets/setting.png"/>
+                <Image Height="25"  Width="35" Source="/assets/setting.png"/>
             </Button>
 
         </Grid>
