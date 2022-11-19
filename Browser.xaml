@@ -32,7 +32,7 @@
             </Button>
 
             <Button x:Name="Home" Grid.Column="2" Click="Home_Click" Background="{x:Null}" BorderThickness="0"  >
-                <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="/assets/home.png"/>
+                <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="assets/home.png"/>
             </Button>
 
             <Border Grid.Column="3" BorderThickness="1" BorderBrush="Black" CornerRadius="20" Margin="0,3,0,3" Background="White">
