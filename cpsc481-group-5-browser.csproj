@@ -11,6 +11,9 @@
 
   <ItemGroup>
     <None Remove="assets\bookmark.png" />
+    <None Remove="assets\left-arrow.png" />
+    <None Remove="assets\right-arrow.png" />
+    <None Remove="assets\setting.png" />
     <None Remove="assets\timer.png" />
     <None Remove="assets\Disney_D.png" />
     <None Remove="assets\funbrain.png" />
@@ -32,6 +35,8 @@
     <Resource Include="assets\Disney_D.png" />
     <Resource Include="assets\funbrain.png" />
     <Resource Include="assets\LeapFrog-logo.png" />
+    <Resource Include="assets\left-arrow.png" />
+    <Resource Include="assets\right-arrow.png" />
     <Resource Include="assets\Scholastic.png" />
   </ItemGroup>
 
@@ -42,6 +47,7 @@
   <ItemGroup>
     <Resource Include="assets\home.png" />
     <Resource Include="assets\lock.png" />
+    <Resource Include="assets\setting.png" />
     <Resource Include="assets\settings.png" />
     <Resource Include="assets\timer.png" />
     <Resource Include="assets\pbs.png" />

@@ -32,7 +32,7 @@
             </Button>
 
             <Button x:Name="Home" Grid.Column="2" Click="Home_Click" Background="{x:Null}" BorderThickness="0"  >
-                <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="assets/home.png"/>
+                <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="/assets/home.png"/>
             </Button>
 
             <Border Grid.Column="3" BorderThickness="1" BorderBrush="Black" CornerRadius="20" Margin="0,3,0,3" Background="White">
@@ -48,11 +48,11 @@
             </Button>
 
             <Button x:Name="Lock" Grid.Column="6" Click="Lock_Click" Background="{x:Null}" BorderThickness="0">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/lock.png"/>
+                <Image Height="25" Width="35" Source="/assets/lock.png"/>
             </Button>
 
             <Button x:Name="Settings" Grid.Column="7" Click="Settings_Click" Background="{x:Null}" BorderThickness="0">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/settings.png"/>
+                <Image Height="25" Width="35" Source="/assets/setting.png"/>
             </Button>
 
         </Grid>
