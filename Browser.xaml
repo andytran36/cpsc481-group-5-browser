@@ -25,12 +25,12 @@
             </Grid.ColumnDefinitions>
             <Button x:Name="Back" Grid.Column="0" Click="Back_Click" Background="{x:Null}" BorderThickness="0"  
     Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/back.png"/>
+                <Image HorizontalAlignment="Left" Height="35" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/back.png"/>
             </Button>
 
             <Button x:Name="Forward" Grid.Column="1" Click="Forward_Click" Background="{x:Null}" BorderThickness="0"  
     Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/forward.png"/>
+                <Image HorizontalAlignment="Left" Height="35" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/forward.png"/>
             </Button>
 
             <Button x:Name="Home" Grid.Column="2" Click="Home_Click" Background="{x:Null}" BorderThickness="0"  

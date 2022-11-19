@@ -40,8 +40,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="assets\back.png" />
-    <Resource Include="assets\forward.png" />
     <Resource Include="assets\home.png" />
     <Resource Include="assets\lock.png" />
     <Resource Include="assets\settings.png" />
