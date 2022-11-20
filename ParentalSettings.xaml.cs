@@ -90,6 +90,5 @@ namespace cpsc481_group5_browser
         {
            
         }
-
     }
 }
