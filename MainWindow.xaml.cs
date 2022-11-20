@@ -26,13 +26,13 @@ namespace cpsc481_group_5_browser
         Browser BrowserScreen;
         UserSelect UserSelectScreen;
         CreateNewUser CreateNewUserScreen;
-        TimeLimit TimeLimitScreen;
+        TimeLimit TimeLimitPopup;
         HomePage HomeScreen;
-        LockScreen LockScreen;
-        PasswordPrompt SettingsPasswordScreen;
+        LockScreen LockScreenPopup;
+        PasswordPrompt SettingsPasswordPrompt;
         ParentalSettings ParentalSettingsScreen;
         ChangeUserSetting ChangeUserSettingsScreen;
-        UserProfilePassword UserProfilePasswordScreen;
+        UserProfilePassword UserProfilePasswordPopup;
 
         // Hardcoded Values
         List<string> UserNames = new List<string>
@@ -49,13 +49,13 @@ namespace cpsc481_group_5_browser
             BrowserScreen = new Browser();
             UserSelectScreen = new UserSelect(UserNames);
             CreateNewUserScreen = new CreateNewUser();
-            TimeLimitScreen = new TimeLimit();
+            TimeLimitPopup = new TimeLimit();
             HomeScreen = new HomePage();
-            LockScreen = new LockScreen();
-            SettingsPasswordScreen = new PasswordPrompt();
+            LockScreenPopup = new LockScreen();
+            SettingsPasswordPrompt = new PasswordPrompt();
             ParentalSettingsScreen = new ParentalSettings();
             ChangeUserSettingsScreen = new ChangeUserSetting();
-            UserProfilePasswordScreen = new UserProfilePassword();
+            UserProfilePasswordPopup = new UserProfilePassword();
 
             // Browser Handlers
             BrowserScreen.Handler_BrowserSettingsClicked += new EventHandler(Handle_SettingsClicked);
@@ -63,12 +63,13 @@ namespace cpsc481_group_5_browser
 
 
             // LockScreen Handlers
-            LockScreen.Handler_LockScreenClicked += new EventHandler(Handle_LockScreenClicked);
+            LockScreenPopup.Handler_LockClicked += new EventHandler(Handle_LockScreenClicked);
 
             // User Select Handlers
             UserSelectScreen.Handler_UserProfileClicked += new EventHandler(Handle_UserProfileClicked);
             UserSelectScreen.Handler_UserSelectSettingsClicked += new EventHandler(Handle_SettingsClicked);
             UserSelectScreen.Handler_CreateNewUserClicked += new EventHandler(Handle_CreateNewUserClicked);
+            UserSelectScreen.Handler_ToSettings += new EventHandler(Handle_ToSettings);
 
             // Create New User Handlers
             CreateNewUserScreen.Handler_CreateNewUserHomeClicked += new EventHandler(Handle_HomeClicked);
@@ -76,7 +77,7 @@ namespace cpsc481_group_5_browser
             CreateNewUserScreen.Handler_CreateNewUserCreateClicked += new EventHandler<CreateNewUserArgs>(Handle_CreateNewUserCreateClicked);
 
             // Password Screen Handlers
-            SettingsPasswordScreen.Handler_PasswordContinueClicked += new EventHandler<PasswordPrompt.PasswordArgs>(Handle_PasswordContinueClicked);
+            
 
             // Parental Settings Screen Handlers
             ParentalSettingsScreen.Handler_BobChangeClicked += new EventHandler(Handle_BobChangeSettingsClicked);
@@ -94,19 +95,14 @@ namespace cpsc481_group_5_browser
         private void Handle_SettingsClicked(object sender, EventArgs e)
         {
             Debug.WriteLine("settings clicked");
-            // Navigate to Parental Settings
-            //NOTES: temporary way to get to time limit screen
-            //this.contentControl.Content = TimeLimitScreen;
-            this.contentControl.Content = SettingsPasswordScreen;
+            //TODO: deal with popup
+            this.contentControl.Content = SettingsPasswordPrompt;
         }
 
         private void Handle_UserProfileClicked(object sender, EventArgs e)
         {
+            //TODO: deal with popup
             Debug.WriteLine("User Profile clicked");
-            this.contentControl.Content = BrowserScreen;
-            //NOTES: keep home screen line for screen shot
-            //this.contentControl.Content = HomeScreen;
-            //this.contentControl.Content = UserProfilePasswordScreen;
         }
 
         private void Handle_CreateNewUserClicked(object sender, EventArgs e)
@@ -128,25 +124,19 @@ namespace cpsc481_group_5_browser
         private void Handle_LockScreenClicked(object sender, EventArgs e)
         {
             Debug.WriteLine("Lock Screen clicked");
-            this.contentControl.Content = LockScreen;
-        }
-        
-        private void Handle_PasswordContinueClicked(object sender, PasswordPrompt.PasswordArgs e)
-        {
-            if (e.PasswordAccepted)
-            {
-                Debug.WriteLine("To settings");
-                this.contentControl.Content = ParentalSettingsScreen;
-            }
-            else
-            {
-                Debug.WriteLine("Error");
-            }
+            //TODO: deal with popup
+            this.contentControl.Content = LockScreenPopup;
         }
         
         private void Handle_BobChangeSettingsClicked(object sender, EventArgs e)
         {
             this.contentControl.Content = ChangeUserSettingsScreen;
+        }
+
+        private void Handle_ToSettings(object sender, EventArgs e)
+        {
+            //Goes to settings after password confirmed
+            this.contentControl.Content = ParentalSettingsScreen;
         }
     }
 }

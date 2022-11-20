@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,8 @@ namespace cpsc481_group5_browser
         public event EventHandler Handler_UserProfileClicked;
         public event EventHandler Handler_CreateNewUserClicked;
         public event EventHandler Handler_UserSelectSettingsClicked;
+        public event EventHandler Handler_ToSettings;
+        UserProfilePassword ProfilePassword;
 
         public UserSelect(List<string> UserNames)
         {
@@ -50,7 +53,10 @@ namespace cpsc481_group5_browser
 
         private void Profile_Click(object sender, RoutedEventArgs e)
         {
-            Handler_UserProfileClicked?.Invoke(this, new EventArgs());
+            Profilepasswordpopup.IsOpen = true;
+            ProfilePassword = Profilepasswordcontent;
+            ProfilePassword.Handler_ContinueClicked += new EventHandler<UserProfilePassword.PasswordArgs>(ProfileContinue_Clicked);
+            ProfilePassword.Handler_CancelClicked += new EventHandler(ProfileCancel_Clicked);
         }
 
         private void CreateNewUser_Click(object sender, RoutedEventArgs e)
@@ -75,6 +81,29 @@ namespace cpsc481_group5_browser
                 UsersGrid.Children.Add(btn);
                 index += 2;
             }
+        }
+
+        private void ProfileCancel_Clicked(object sender, EventArgs e)
+        {
+            Debug.WriteLine("User select cancel clicked");
+            Profilepasswordpopup.Visibility = Visibility.Collapsed;
+            Profilepasswordpopup.IsOpen = false;
+        }
+
+        private void ProfileContinue_Clicked(object sender, UserProfilePassword.PasswordArgs e)
+        {
+            Debug.WriteLine("User select continue clicked");
+            if (e.PasswordAccepted)
+            {
+                Profilepasswordpopup.Visibility = Visibility.Collapsed;
+                Profilepasswordpopup.IsOpen = false;
+                Handler_ToSettings?.Invoke(this, new EventArgs());
+            }
+            else
+            {
+                Debug.WriteLine("Profile password error");
+            }
+
         }
     }
 }

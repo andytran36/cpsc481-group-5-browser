@@ -24,58 +24,28 @@ namespace cpsc481_group5_browser
 
 
         // Event Listeners
-        public event EventHandler Handler_BrowserSettingsClicked;
+        public event EventHandler Handler_ContinueClicked;
 
         public TimeLimit()
         {
             InitializeComponent();
         }
 
-        // Routing
-        void LoadPage(string Url)
+        private void Continuebtn_Click(object sender, RoutedEventArgs e)
         {
-
+            PasswordArgs args = new PasswordArgs();
+            args.PasswordAccepted = false;
+            if (Passwordinput.Password.Length >= 6)
+            {
+                args.PasswordAccepted = true;
+            }
+            Passwordinput.Clear();
+            Handler_ContinueClicked?.Invoke(this, args);
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
+        public class PasswordArgs : EventArgs
         {
-
-        }
-
-        private void Forward_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Home_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void SearchBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-
-        }
-
-        private void WebBrowser_LoadCompleted(object sender, NavigationEventArgs e)
-        {
-
-        }
-        // End Routing
-
-        private void Lock_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Settings_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
+            public bool PasswordAccepted { get; set; }
         }
     }
 }

@@ -19,76 +19,34 @@ namespace cpsc481_group5_browser
     /// Interaction logic for PasswordPrompt.xaml
     /// </summary>
     public partial class UnlockScreen : UserControl {
-        public event EventHandler Handler_UnlockScreenClicked;
+        public event EventHandler Handler_CancelClicked;
+        public event EventHandler Handler_UnlockClicked;
 
         public UnlockScreen()
         {
             InitializeComponent();
         }
 
-        // Routing
-        void LoadPage(string Url)
+        private void Cancelbtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Handler_CancelClicked?.Invoke(this, e);
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Forward_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Home_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void SearchBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-
-        }
-
-        private void WebBrowser_LoadCompleted(object sender, NavigationEventArgs e)
-        {
-
-        }
-        // End Routing
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Unlockbtn_Click(object sender, RoutedEventArgs e)
         {
             PasswordArgs args = new PasswordArgs();
             args.PasswordAccepted = false;
-            if(PasswordInput.Password.Length == 6)
+            if (Passwordinput.Password.Length >= 6)
             {
                 args.PasswordAccepted = true;
             }
-            PasswordInput.Clear();
-            Handler_UnlockScreenClicked?.Invoke(this, args);
+            Passwordinput.Clear();
+            Handler_UnlockClicked?.Invoke(this, args);
         }
 
-        private void Lock_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Settings_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Unlock_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        public class PasswordArgs: EventArgs
+        public class PasswordArgs : EventArgs
         {
             public bool PasswordAccepted { get; set; }
         }
-
     }
 }

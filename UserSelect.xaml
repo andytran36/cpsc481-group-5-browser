@@ -49,5 +49,14 @@
                 
             </Grid>
         </Grid>
+
+        <Popup x:Name="Profilepasswordpopup" Placement="Center" AllowsTransparency="True">
+            <local:UserProfilePassword x:Name="Profilepasswordcontent" />
+        </Popup>
+
+        <Popup x:Name="Passwordprompt" Placement="Center" AllowsTransparency="True">
+            <local:PasswordPrompt x:Name="Passwordpromptcontent" />
+        </Popup>
+        
     </Grid>
 </UserControl>
