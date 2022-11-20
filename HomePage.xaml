@@ -68,9 +68,9 @@
                 <ColumnDefinition Width="0.4*"/>
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
-            <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="/assets/home.png" Grid.Column="1"></Image>
+            <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="/assets/balloons.png" Grid.Column="1"></Image>
             <Label Grid.Column="2" HorizontalAlignment="Center" Content="Welcome Back User!" FontSize="28" FontWeight="Bold" VerticalContentAlignment="Center"></Label>
-            <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="/assets/home.png" Grid.Column="3"></Image>
+            <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="/assets/balloons.png" Grid.Column="3"></Image>
         </Grid>
         
         <Grid Grid.Row="4">
