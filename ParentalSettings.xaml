@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800" Loaded="ParentalSettingsLoaded">
 
-    <Grid Background="white">
+    <Grid Background="#FFEFD6">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
@@ -64,11 +64,12 @@
 
         <Grid x:Name="settingscontent" Grid.Row="2">
             <Grid.RowDefinitions>
+                <RowDefinition Height="20"></RowDefinition>
                 <RowDefinition Height="150"></RowDefinition>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Grid x:Name="generalsettings" Grid.Row="0">
+            <Grid x:Name="generalsettings" Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
@@ -77,11 +78,13 @@
 
                 <Grid Grid.Row="1" Loaded="ParentalSettingsLoaded">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="138"></ColumnDefinition>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width=".5*"></ColumnDefinition>
+                        <ColumnDefinition Width=".6*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Content="PASSWORD SETTINGS" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="22" Grid.Column="1"/>
-                    <Image x:Name="passwordarrow" Grid.Column="1" HorizontalAlignment="Left" Height="39" Margin="226,0,0,0" VerticalAlignment="Top" Width="43" Source="/assets/forwardarrow.png"/>
+                    <Label Content="Password settings" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="22" Grid.Column="1" FontWeight="Bold"/>
+                    <Image x:Name="passwordarrow" Grid.Column="2" HorizontalAlignment="Left" Height="39" VerticalAlignment="Center" Width="43" Source="/assets/forwardarrow.png"/>
                     <Popup x:Name="passwordpopup" Placement="Right" PlacementTarget="{Binding ElementName=passwordarrow}" AllowsTransparency="True" IsOpen="True">
                         <Border BorderThickness="2" Width="300" Height="400" Background="#d9cab3">
                             <Grid x:Name="passwordpopupgrid">
@@ -116,11 +119,13 @@
 
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="138"></ColumnDefinition>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width=".5*"></ColumnDefinition>
+                        <ColumnDefinition Width=".6*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Content="CONTACT SETTINGS" HorizontalAlignment="Left" Margin="0,1,0,0" VerticalAlignment="Top" FontSize="22" Grid.Column="1" Width="227"/>
-                    <Image x:Name="contactarrow" Grid.Column="1" HorizontalAlignment="Left" Height="39" Margin="227,1,0,0" VerticalAlignment="Top" Width="43" Source="/assets/forwardarrow.png"/>
+                    <Label Content="Contact settings" HorizontalAlignment="Left" Margin="0,1,0,0" VerticalAlignment="Top" FontSize="22" Grid.Column="1" Width="227" FontWeight="Bold"/>
+                    <Image x:Name="contactarrow" Grid.Column="2" HorizontalAlignment="Left" Height="39" VerticalAlignment="Center" Width="43" Source="/assets/forwardarrow.png"/>
                     <Popup x:Name="contactpopup" Placement="Right" PlacementTarget="{Binding ElementName=contactarrow}" AllowsTransparency="True" IsOpen="True">
                         <Border BorderThickness="2" Width="300" Height="400" Background="#d9cab3">
                             <Grid x:Name="contactpopupgrid">
@@ -173,7 +178,7 @@
                 <Label Content="SETTINGS" HorizontalAlignment="Left" Margin="92,0,0,0" VerticalAlignment="Top" FontSize="25"/>
             </Grid>
 
-            <Grid x:Name="usersettings" Grid.Row="1">
+            <Grid x:Name="usersettings" Grid.Row="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="160"></RowDefinition>
