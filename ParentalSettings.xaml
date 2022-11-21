@@ -128,9 +128,17 @@
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <Border Grid.Row="0" Grid.ColumnSpan="4">
-
+                        <Border Grid.Row="0" Grid.ColumnSpan="4" BorderBrush="Black" BorderThickness="1" CornerRadius="20" Background="Pink">
+         
                         </Border>
+                        <Border Grid.Row="0" Margin="8" CornerRadius="20" BorderThickness="1" BorderBrush="black" Background="white" ></Border>
+                        <Label Grid.Column="1" Content="Bob" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20"></Label>
+
+                        <Border Grid.Row="1" Grid.ColumnSpan="4" BorderBrush="Black" BorderThickness="1" CornerRadius="20" Background="PaleGreen">
+                        </Border>
+                        <Border Grid.Row="1" Margin="8" CornerRadius="20" BorderThickness="1" BorderBrush="black" Background="white" ></Border>
+                        <Label Grid.Row="1" Grid.Column="1" Content="John" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20"></Label>
+
 
                     </Grid>
                 </Grid>
