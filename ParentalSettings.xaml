@@ -16,7 +16,7 @@
 
         <Grid Grid.Row="0" Background="#F2DEBA">
         </Grid>
-        
+
         <Grid Grid.Row="0" VerticalAlignment="Center" Background="#F2DEBA">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50px"></ColumnDefinition>
@@ -129,16 +129,25 @@
                         </Grid.RowDefinitions>
 
                         <Border Grid.Row="0" Grid.ColumnSpan="4" BorderBrush="Black" BorderThickness="1" CornerRadius="20" Background="Pink">
-         
+
                         </Border>
-                        <Border Grid.Row="0" Margin="8" CornerRadius="20" BorderThickness="1" BorderBrush="black" Background="white" ></Border>
+                        <Border Grid.Row="0" Margin="8" CornerRadius="20" BorderThickness="1" BorderBrush="black" Background="white" >
+                            <Image Margin="5" Source="/assets/user.png"></Image>
+                        </Border>
                         <Label Grid.Column="1" Content="Bob" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20"></Label>
+                        <Label Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">
+                            <TextBlock TextWrapping="Wrap" Text="Change" TextDecorations="Underline" FontSize="15"/>
+                        </Label>
 
                         <Border Grid.Row="1" Grid.ColumnSpan="4" BorderBrush="Black" BorderThickness="1" CornerRadius="20" Background="PaleGreen">
                         </Border>
-                        <Border Grid.Row="1" Margin="8" CornerRadius="20" BorderThickness="1" BorderBrush="black" Background="white" ></Border>
+                        <Border Grid.Row="1" Margin="8" CornerRadius="20" BorderThickness="1" BorderBrush="black" Background="white" >
+                            <Image Margin="5" Source="/assets/user.png"></Image>
+                        </Border>
                         <Label Grid.Row="1" Grid.Column="1" Content="John" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20"></Label>
-
+                        <Label Grid.Column="4" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">
+                            <TextBlock TextWrapping="Wrap" Text="Change" TextDecorations="Underline" FontSize="15"/>
+                        </Label>
 
                     </Grid>
                 </Grid>
