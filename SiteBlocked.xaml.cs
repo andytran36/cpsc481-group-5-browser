@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,24 +16,24 @@ using System.Windows.Shapes;
 namespace cpsc481_group5_browser
 {
     /// <summary>
-    /// Interaction logic for UserProfilePassword.xaml
+    /// Interaction logic for SiteBlocked.xaml
     /// </summary>
-    public partial class UserProfilePassword : UserControl
+    public partial class SiteBlocked : UserControl
     {
-        public event EventHandler Handler_CancelClicked;
-        public event EventHandler<PasswordArgs> Handler_ContinueClicked;
+        public event EventHandler Handler_ExitClicked;
+        public event EventHandler Handler_ContinueClicked;
 
-        public UserProfilePassword()
+        public SiteBlocked()
         {
             InitializeComponent();
         }
 
-        private void Cancel_Click(object sender, RoutedEventArgs e)
+        private void Exitbtn_Click(object sender, RoutedEventArgs e)
         {
-            Handler_CancelClicked?.Invoke(this, e);
+            Handler_ExitClicked?.Invoke(this, e);
         }
 
-        private void Continue_Click(object sender, RoutedEventArgs e)
+        private void Continuebtn_Click(object sender, RoutedEventArgs e)
         {
             PasswordArgs args = new PasswordArgs();
             args.PasswordAccepted = false;

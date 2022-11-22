@@ -12,18 +12,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static cpsc481_group5_browser.LockScreen;
 
 namespace cpsc481_group5_browser
 {
     /// <summary>
-    /// Interaction logic for PasswordPrompt.xaml
+    /// Interaction logic for PasswordSettingsPopup.xaml
     /// </summary>
-    public partial class PasswordPrompt : UserControl {
+    public partial class PasswordInSettings : UserControl
+    {
         public EventHandler Handler_CancelClicked;
-        public event EventHandler<PasswordArgs> Handler_ContinueClicked;
+        public event EventHandler<PasswordArgs> Handler_ConfirmClicked;
 
-        public PasswordPrompt()
+        public PasswordInSettings()
         {
             InitializeComponent();
         }
@@ -33,21 +33,23 @@ namespace cpsc481_group5_browser
             Handler_CancelClicked?.Invoke(this, e);
         }
 
-        private void Continuebtn_Click(object sender, RoutedEventArgs e)
+        private void Confirmbtn_Click(object sender, RoutedEventArgs e)
         {
             PasswordArgs args = new PasswordArgs();
-            args.PasswordAccepted = false;
-            if (Passwordinput.Password.Length >= 6)
+            args.PasswordMatch = false;
+            bool ValidLength = Passwordinput.Password.Length >= 6 && Passwordinputconfirm.Password.Length >= 6;
+            bool Matches = Passwordinput.Password.Equals(Passwordinputconfirm.Password);
+            if (ValidLength && Matches) 
             {
-                args.PasswordAccepted = true;
+                args.PasswordMatch = true;
             }
             Passwordinput.Clear();
-            Handler_ContinueClicked?.Invoke(this, args);
+            Handler_ConfirmClicked?.Invoke(this, args);
         }
 
         public class PasswordArgs : EventArgs
         {
-            public bool PasswordAccepted { get; set; }
+            public bool PasswordMatch { get; set; }
         }
     }
 }

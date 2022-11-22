@@ -86,36 +86,6 @@
                     </Grid.ColumnDefinitions>
                     <Label Content="PASSWORD SETTINGS" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="22" Grid.Column="1"/>
                     <Image x:Name="passwordarrow" Grid.Column="1" HorizontalAlignment="Left" Height="39" Margin="226,0,0,0" VerticalAlignment="Top" Width="43" Source="/assets/forwardarrow.png"/>
-                    <Popup x:Name="passwordpopup" Placement="Right" PlacementTarget="{Binding ElementName=passwordarrow}" AllowsTransparency="True" IsOpen="True">
-                        <Border BorderThickness="2" Width="300" Height="400" Background="#d9cab3">
-                            <Grid x:Name="passwordpopupgrid">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <Label Grid.Row="0" FontSize="30" Content="PASSWORD"/>
-                                <Label Grid.Row="1" FontSize="20" Content="new password"/>
-                                <TextBox Grid.Row="2" Margin="2,2,2,2" VerticalContentAlignment="Center"/>
-                                <Label Grid.Row="3" FontSize="20" Content="confirm new password"/>
-                                <TextBox Grid.Row="4" Margin="2,2,2,2" VerticalContentAlignment="Center"/>
-                                
-                                <Grid Grid.Row="6">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    <Button Grid.Column="0" Content="SAVE" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="15" />
-                                    <TextBlock Grid.Column="1" FontSize="15" Text="CANCEL" TextDecorations="Underline" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
-                                </Grid>
-                            </Grid>
-                        </Border>
-                    </Popup>
                 </Grid>
 
                 <Grid Grid.Row="2">
@@ -125,54 +95,6 @@
                     </Grid.ColumnDefinitions>
                     <Label Content="CONTACT SETTINGS" HorizontalAlignment="Left" Margin="0,1,0,0" VerticalAlignment="Top" FontSize="22" Grid.Column="1" Width="227"/>
                     <Image x:Name="contactarrow" Grid.Column="1" HorizontalAlignment="Left" Height="39" Margin="227,1,0,0" VerticalAlignment="Top" Width="43" Source="/assets/forwardarrow.png"/>
-                    <Popup x:Name="contactpopup" Placement="Right" PlacementTarget="{Binding ElementName=contactarrow}" AllowsTransparency="True" IsOpen="True">
-                        <Border BorderThickness="2" Width="300" Height="400" Background="#d9cab3">
-                            <Grid x:Name="contactpopupgrid">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <Label Grid.Row="0" FontSize="30" Content="CONTACT INFO"/>
-                                <Label Grid.Row="1" FontSize="20" Content="email"/>
-                                <TextBox Grid.Row="2" Margin="2,2,2,2" VerticalContentAlignment="Center" Text="email here"/>
-                                <Label Grid.Row="3" FontSize="20" Content="phone"/>
-                                <TextBox Grid.Row="4" Margin="2,2,2,2" VerticalContentAlignment="Center" Text="phone here "/>
-                                <Label Grid.Row="5" FontSize="20" Content="preferred"/>
-                                <Grid Grid.Row="6">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    
-                                    <CheckBox Grid.Column="0" HorizontalAlignment="Right"/>
-                                    <Label Grid.Column="1" Content="email" FontSize="15"/>
-                                    <CheckBox Grid.Column="3" HorizontalAlignment="Right"/>
-                                    <Label Grid.Column="4" Content="phone" FontSize="15"/>
-                                </Grid>
-
-                                <Grid Grid.Row="8">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    <Button Grid.Column="0" Content="SAVE" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="15" />
-                                    <TextBlock Grid.Column="1" FontSize="15" Text="CANCEL" TextDecorations="Underline" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    
-                                </Grid>
-                                
-                            </Grid>
-                        </Border>
-                    </Popup>
                 </Grid>
                 <Label Content="SETTINGS" HorizontalAlignment="Left" Margin="92,0,0,0" VerticalAlignment="Top" FontSize="25"/>
             </Grid>
