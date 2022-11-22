@@ -46,8 +46,16 @@
                     <ColumnDefinition Width="*" MinWidth="10px"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                
             </Grid>
         </Grid>
+
+        <Popup x:Name="Profilepasswordpopup" Placement="Center" AllowsTransparency="True">
+            <local:UserProfilePassword x:Name="Profilepasswordcontent" />
+        </Popup>
+
+        <Popup x:Name="Passwordprompt" Placement="Center" AllowsTransparency="True">
+            <local:PasswordPrompt x:Name="Passwordpromptcontent" />
+        </Popup>
+        
     </Grid>
 </UserControl>

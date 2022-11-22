@@ -39,7 +39,19 @@ namespace cpsc481_group5_browser
         }
         
         private void ParentalSettingsLoaded(object sender, RoutedEventArgs e)
-        {
+        { 
+            Window w = Window.GetWindow(contactarrow);
+
+            if (w != null)
+            {
+                w.LocationChanged += delegate (object sender2, EventArgs args)
+                {
+                    //contact movement
+                    var contactoffset = contactpopup.HorizontalOffset;
+                    contactpopup.HorizontalOffset = contactoffset + 1;
+                    contactpopup.HorizontalOffset = contactoffset;
+                };
+            }
             
         }
             
@@ -79,6 +91,5 @@ namespace cpsc481_group5_browser
         {
            
         }
-
     }
 }
