@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,8 @@ namespace cpsc481_group5_browser
     {
         public event EventHandler Handler_BackClicked;
         public event EventHandler Handler_BobChangeClicked;
+        PasswordInSettings Pwsettingspopup;
+
         public ParentalSettings()
         {
             InitializeComponent();
@@ -77,7 +80,35 @@ namespace cpsc481_group5_browser
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
-           
+            
+        }
+
+        private void PasswordSettings_Clicked(object sender, MouseButtonEventArgs e)
+        {
+            Passwordsettingspopup.IsOpen = true;
+            Pwsettingspopup = Passwordsettingscontent;
+            Pwsettingspopup.Handler_CancelClicked += new EventHandler(PwSettingsCancel_Clicked);
+            Pwsettingspopup.Handler_ConfirmClicked += new EventHandler<PasswordInSettings.PasswordArgs>(PwSettingsConfirm_Clicked);
+        }
+
+        private void PwSettingsCancel_Clicked(object sender, EventArgs e)
+        {
+            Passwordsettingspopup.IsOpen = false;
+            Passwordsettingspopup.Visibility = Visibility.Collapsed;
+        }
+
+        private void PwSettingsConfirm_Clicked(object sender, PasswordInSettings.PasswordArgs e)
+        {
+            if (e.PasswordMatch)
+            {
+                Passwordsettingspopup.Visibility = Visibility.Collapsed;
+                Passwordsettingspopup.IsOpen = false;
+                
+            }
+            else
+            {
+                Debug.WriteLine("Profile password error");
+            }
         }
     }
 }
