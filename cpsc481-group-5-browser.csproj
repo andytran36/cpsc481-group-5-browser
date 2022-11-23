@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="assets\balloons.png" />
     <None Remove="assets\banned.png" />
     <None Remove="assets\bookmark.png" />
     <None Remove="assets\left-arrow.png" />
@@ -33,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="assets\balloons.png" />
     <Resource Include="assets\banned.png" />
     <Resource Include="assets\bookmark.png" />
     <Resource Include="assets\Disney_D.png" />
