@@ -25,9 +25,10 @@ namespace cpsc481_group5_browser
 
         public event EventHandler Handler_UserProfileClicked;
         public event EventHandler Handler_CreateNewUserClicked;
-        public event EventHandler Handler_UserSelectSettingsClicked;
         public event EventHandler Handler_ToSettings;
+        public event EventHandler Handler_ToHome;
         UserProfilePassword ProfilePassword;
+        PasswordPrompt PasswordPopup;
 
         public UserSelect(List<string> UserNames)
         {
@@ -66,7 +67,10 @@ namespace cpsc481_group5_browser
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
-            Handler_UserSelectSettingsClicked?.Invoke(this, new EventArgs());
+            Passwordprompt.IsOpen = true;
+            PasswordPopup = Passwordpromptcontent;
+            PasswordPopup.Handler_ContinueClicked += new EventHandler<PasswordPrompt.PasswordArgs>(PasswordPromptContinue_Clicked);
+            PasswordPopup.Handler_CancelClicked += new EventHandler(PasswordPromptCancel_Clicked);
         }
 
         public void UpdateUserNames(List<string> UpdatedUserNames)
@@ -97,13 +101,33 @@ namespace cpsc481_group5_browser
             {
                 Profilepasswordpopup.Visibility = Visibility.Collapsed;
                 Profilepasswordpopup.IsOpen = false;
-                Handler_ToSettings?.Invoke(this, new EventArgs());
+                Handler_ToHome?.Invoke(this, new EventArgs());
             }
             else
             {
                 Debug.WriteLine("Profile password error");
             }
 
+        }
+
+        private void PasswordPromptCancel_Clicked(object sender, EventArgs e)
+        {
+            Passwordprompt.Visibility= Visibility.Collapsed;
+            Passwordprompt.IsOpen = false;
+        }
+
+        private void PasswordPromptContinue_Clicked(object sender, PasswordPrompt.PasswordArgs e)
+        {
+            if (e.PasswordAccepted)
+            {
+                Passwordprompt.Visibility = Visibility.Collapsed;
+                Passwordprompt.IsOpen = false;
+                Handler_ToSettings?.Invoke(this, new EventArgs());
+            }
+            else
+            {
+                Debug.WriteLine("Profile password error");
+            }
         }
     }
 }

@@ -60,5 +60,8 @@
         <Border BorderThickness="1" BorderBrush="Black"></Border>
 
         <WebBrowser Grid.Row="1" x:Name="WebBrowser" HorizontalAlignment="Center" LoadCompleted="WebBrowser_LoadCompleted"/>
+        <Popup x:Name="Passwordprompt" Placement="Center" AllowsTransparency="True">
+            <local:PasswordPrompt x:Name="Passwordpromptcontent" />
+        </Popup>
     </Grid>
 </UserControl>

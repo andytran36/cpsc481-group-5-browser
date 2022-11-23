@@ -86,7 +86,7 @@
                 </Border.Effect>
             </Border>
         </Grid>
-        
+
         <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.25*"/>
@@ -167,7 +167,7 @@
                                         <ColumnDefinition></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    
+
                                     <Border Margin="2" Grid.Column="0" CornerRadius="50" BorderThickness="1.2" BorderBrush="Black">
                                         <Border.Background>
                                             <ImageBrush Stretch="UniformToFill"  ImageSource="/assets/Scholastic.png"/>
@@ -217,16 +217,18 @@
                                 </Border>
                             </Grid>
                         </Border>
-                        
+
 
                     </Grid>
-                    
+
                 </Grid>
             </Border>
-            
 
-            
+
+
         </Grid>
-
+        <Popup x:Name="Passwordprompt" Placement="Center" AllowsTransparency="True">
+            <local:PasswordPrompt x:Name="Passwordpromptcontent" />
+        </Popup>
     </Grid>
 </UserControl>
