@@ -6,23 +6,10 @@
              xmlns:local="clr-namespace:cpsc481_group5_browser"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
+
     <UserControl.Resources>
-        <LinearGradientBrush x:Key="CheckedBlue" StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Color="#FF285AB3" Offset="0" />
-            <GradientStop Color="#FF4184EC" Offset="0.5" />
-            <GradientStop Color="#FF558BED" Offset="0.5" />
-            <GradientStop Color="#FF7DACF0" Offset="1" />
-        </LinearGradientBrush>
-        <LinearGradientBrush x:Key="CheckedOrange" StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Color="#FFCA6A13" Offset="0" />
-            <GradientStop Color="#FFF67D0C" Offset="0.2" />
-            <GradientStop Color="#FFFE7F0C" Offset="0.2" />
-            <GradientStop Color="#FFFA8E12" Offset="0.5" />
-            <GradientStop Color="#FFFF981D" Offset="0.5" />
-            <GradientStop Color="#FFFCBC5A" Offset="1" />
-        </LinearGradientBrush>
-        <SolidColorBrush x:Key="CheckedOrangeBorder" Color="#FF8E4A1B" />
+        <SolidColorBrush x:Key="CheckedFill" Color="ForestGreen" />
+        <SolidColorBrush x:Key="CheckedBorder" Color="ForestGreen" />
         <SolidColorBrush x:Key="CheckedBlueBorder" Color="#FF143874" />
         <Style x:Key="OrangeSwitchStyle" TargetType="{x:Type CheckBox}">
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
@@ -45,15 +32,11 @@
                         <DockPanel x:Name="dockPanel">
                             <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" ContentTemplate="{TemplateBinding ContentTemplate}" RecognizesAccessKey="True" VerticalAlignment="Center" />
                             <Grid>
-                                <Border x:Name="BackgroundBorder" BorderBrush="#FF939393" BorderThickness="1" CornerRadius="3" Height="27" Width="94">
+                                <Border x:Name="BackgroundBorder" BorderBrush="#FF939393" BorderThickness="1" CornerRadius="10" Height="30" Width="94">
                                     <Border.Background>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                            <GradientStop Color="#FFB5B5B5" Offset="0" />
-                                            <GradientStop Color="#FFDEDEDE" Offset="0.1" />
-                                            <GradientStop Color="#FFEEEEEE" Offset="0.5" />
-                                            <GradientStop Color="#FFFAFAFA" Offset="0.5" />
-                                            <GradientStop Color="#FFFEFEFE" Offset="1" />
-                                        </LinearGradientBrush>
+                                        <SolidColorBrush Color="White">
+
+                                        </SolidColorBrush>
                                     </Border.Background>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -64,7 +47,7 @@
                                         <Line x:Name="On" X1="0" Y1="0" X2="0" Y2="14" Stroke="#FF7A7A7A" StrokeThickness="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                     </Grid>
                                 </Border>
-                                <Border BorderBrush="#FF939393" HorizontalAlignment="Left" x:Name="slider" Width="41" Height="27" BorderThickness="1" CornerRadius="3" RenderTransformOrigin="0.5,0.5" Margin="0">
+                                <Border BorderBrush="#FF939393" HorizontalAlignment="Left" x:Name="slider" Width="41" Height="30" BorderThickness="1" CornerRadius="10" RenderTransformOrigin="0.5,0.5" Margin="0">
                                     <Border.RenderTransform>
                                         <TransformGroup>
                                             <ScaleTransform ScaleX="1" ScaleY="1" />
@@ -74,11 +57,7 @@
                                         </TransformGroup>
                                     </Border.RenderTransform>
                                     <Border.Background>
-                                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                                            <GradientStop Color="#FFF0F0F0" Offset="0" />
-                                            <GradientStop Color="#FFCDCDCD" Offset="0.1" />
-                                            <GradientStop Color="#FFFBFBFB" Offset="1" />
-                                        </LinearGradientBrush>
+                                        <SolidColorBrush Color="LightGray"></SolidColorBrush>
                                     </Border.Background>
                                 </Border>
                             </Grid>
@@ -94,8 +73,8 @@
                                 <Setter TargetName="On" Property="Stroke" Value="White" />
                                 <Setter TargetName="Off" Property="Stroke" Value="White" />
                                 <!-- Change Orange or Blue color here -->
-                                <Setter TargetName="BackgroundBorder" Property="Background" Value="{StaticResource CheckedOrange}" />
-                                <Setter TargetName="BackgroundBorder" Property="BorderBrush" Value="{StaticResource CheckedOrangeBorder}" />
+                                <Setter TargetName="BackgroundBorder" Property="Background" Value="{StaticResource CheckedFill}" />
+                                <Setter TargetName="BackgroundBorder" Property="BorderBrush" Value="{StaticResource CheckedBorder}" />
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="False">
                                 <!-- ToDo: Add Style for Isenabled == False -->
@@ -105,17 +84,14 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
     </UserControl.Resources>
-    
-    
 
     <Grid Background="#FFEFD6">
         <Grid.RowDefinitions>
             <RowDefinition Height="40px"></RowDefinition>
-            <RowDefinition Height="90px"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Background="#F2DEBA"></Grid>
@@ -164,49 +140,187 @@
             </Button>
 
         </Grid>
-
         <Border BorderBrush="Black" BorderThickness="1"/>
+        <ScrollViewer Grid.Row="1">
+            <StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30px"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="1.5*"></RowDefinition>
+                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="1.5*"></RowDefinition>
+                        <RowDefinition Height="30px"></RowDefinition>
+                    </Grid.RowDefinitions>
 
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width=".5*"></ColumnDefinition>
-                <ColumnDefinition Width="80px"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width=".5*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Ellipse Grid.Column="1" Height="69" Width="69">
-                <Ellipse.Fill>
-                    <SolidColorBrush Color="Pink" />
-                </Ellipse.Fill>
-            </Ellipse>
-            <Image Grid.Column="1" Height="70" Width="70" Source="/assets/User.png"/>
-            <Label Grid.Column="2" Content="USER SETTING" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"></Label>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".4*"></ColumnDefinition>
+                            <ColumnDefinition Width="80px"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
 
-        </Grid>
-        
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width=".5*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width=".5*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".4*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Ellipse Grid.Column="1" Height="69" Width="69">
+                            <Ellipse.Fill>
+                                <SolidColorBrush Color="Pink" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Image Grid.Column="1" Height="70" Width="70" Source="/assets/User.png"/>
+                        <Label Grid.Column="2" Content="USER SETTING" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"></Label>
 
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30px"></RowDefinition>
-                    <RowDefinition Height="1*"></RowDefinition>
-                    <RowDefinition Height="1*"></RowDefinition>
-                    <RowDefinition Height="1*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <TextBlock FontSize="20" Text="Notifications"></TextBlock>
+                    </Grid>
 
-                <CheckBox HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="1" Checked="CheckBox_Checked"></CheckBox>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".4*"></ColumnDefinition>
+                            <ColumnDefinition Width="120"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width=".4*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
 
-            </Grid>
-            
-        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30px"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock FontSize="20" Text="Notifications"></TextBlock>
+
+                            <CheckBox HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="1" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
+                            <CheckBox HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="2" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
+                            <CheckBox HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="3" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
+                            <CheckBox HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="4" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
+
+
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30px"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+
+
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="1" Text="Attempt to access blocked site" FontSize="18" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Grid.Row="2" Text="Time limit reached" FontSize="18" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Grid.Row="3" Text="Browser is locked/unlocked" FontSize="18" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Grid.Row="4" Text="User logged in" FontSize="18" VerticalAlignment="Center"></TextBlock>
+
+
+                        </Grid>
+
+
+                    </Grid>
+
+                    <Grid Grid.Row="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".4*"></ColumnDefinition>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width=".4*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="1" Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150px"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock FontSize="20" Text="Time Restrictions" Grid.ColumnSpan="2"></TextBlock>
+                            <TextBlock HorizontalAlignment="Right" FontSize="18" Text="Daily limit" Grid.Row="1"></TextBlock>
+                            <TextBlock HorizontalAlignment="Right" FontSize="18" Text="Time Window" Grid.Row="2"></TextBlock>
+                            <Grid Grid.Column="1" Grid.Row="1">
+                            </Grid>
+                        </Grid>
+
+                    </Grid>
+
+
+                    <Grid Grid.Row="7" Margin="0 10 0 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".4*"></ColumnDefinition>
+                            <ColumnDefinition Width="120"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width=".4*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30px"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock FontSize="20" Text="Blocked Sites"></TextBlock>
+
+                            <CheckBox HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="1" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
+                            <CheckBox HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="2" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
+                            <CheckBox HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="3" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
+
+                        </Grid>
+
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30px"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+
+
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="1" Text="Nudity" FontSize="18" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Grid.Row="2" Text="Gore" FontSize="18" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Grid.Row="3" Text="Violence" FontSize="18" VerticalAlignment="Center"></TextBlock>
+
+
+                        </Grid>
+
+                        <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="250"></ColumnDefinition>
+                                <ColumnDefinition Width="35*"></ColumnDefinition>
+                                <ColumnDefinition Width="66*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border BorderThickness="1" BorderBrush="#FF939393" CornerRadius="20" Background="White">
+                                <TextBox Foreground="Black" FontSize="18" Margin="10,3,10,3" BorderThickness="0" Background="{x:Null}">
+                                </TextBox>
+                            </Border>
+
+                            <Border Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Width="100" Height="30" Background="#FF4681F4" CornerRadius="10" Grid.ColumnSpan="2">
+                                <Button Content="Add URL" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                            </Border>
+
+                            <Border Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="120,0,0,0" Width="150" Height="30" Background="white" CornerRadius="10" Grid.ColumnSpan="2">
+                                <Button Content="View blocked sites" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                            </Border>
+
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+            </StackPanel>
+
+        </ScrollViewer>
 
     </Grid>
 
