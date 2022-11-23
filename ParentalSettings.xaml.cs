@@ -39,7 +39,7 @@ namespace cpsc481_group5_browser
         }
         
         private void ParentalSettingsLoaded(object sender, RoutedEventArgs e)
-        {   /*
+        { 
             Window w = Window.GetWindow(contactarrow);
 
             if (w != null)
@@ -52,7 +52,7 @@ namespace cpsc481_group5_browser
                     contactpopup.HorizontalOffset = contactoffset;
                 };
             }
-            */
+            
         }
             
         private void Back_Click(object sender, RoutedEventArgs e)
