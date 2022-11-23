@@ -5,65 +5,88 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:cpsc481_group5_browser"
       mc:Ignorable="d" 
-      d:DesignHeight="647.04" d:DesignWidth="1253">
+      d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40px"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+        <Style TargetType="{x:Type PasswordBox}">
+            <Setter Property="PasswordChar" Value="●"/>
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type PasswordBox}">
+                        <Border x:Name="border" CornerRadius="10" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
 
-        <Grid Grid.Row="0" VerticalAlignment="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="45px"></ColumnDefinition>
-                <ColumnDefinition Width="45px"></ColumnDefinition>
-                <ColumnDefinition Width="45px"></ColumnDefinition>
-                <ColumnDefinition Width="12*"></ColumnDefinition>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="45"></ColumnDefinition>
-                <ColumnDefinition Width="45px"></ColumnDefinition>
-                <ColumnDefinition Width="45px"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+    <Border Height="375" Width="319" BorderBrush="#FF3A8891" BorderThickness="1,1,1,1" CornerRadius="15,15,15,15" Background="#FFF2DEBA">
+        <Grid Width="315">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="80"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Width="24" Source="/assets/unlock.png"/>
+            <Label Content="Unlock Page?" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Margin="0,62,0,0" Grid.RowSpan="2" Foreground="#FF0E5E6F"/>
 
-            <Button x:Name="Back" Grid.Row="0" Grid.Column="0" Click="Back_Click">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/back.png"/>
-            </Button>
+            <Grid Grid.Row="2">
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Unlocking the page will allow navigation away from the current page and allow changing profile" VerticalAlignment="Center" FontSize="20"/>
+            </Grid>
 
-            <Button x:Name="Forward" Grid.Row="0" Grid.Column="1" Click="Forward_Click">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/forward.png"/>
-            </Button>
+            <Label Content="Enter admin password" HorizontalAlignment="Left" Margin="22,31,0,0" Grid.Row="3" VerticalAlignment="Top"/>
+            <PasswordBox x:Name="Passwordinput" HorizontalAlignment="Left" Margin="10,1,0,0" Grid.Row="4" VerticalAlignment="Top" Width="256" Height="30" VerticalContentAlignment="Center"/>
 
-            <Button x:Name="Home" Grid.Row="0" Grid.Column="2" Click="Home_Click">
-                <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="/assets/home.png"/>
-            </Button>
-
-            <TextBox Grid.Row="0" Grid.Column="3" KeyDown="SearchBox_KeyDown" x:Name="SearchBox" Foreground="Black" FontSize="20" FontWeight="SemiBold" Margin="14,0,5,0" Grid.ColumnSpan="2"></TextBox>
-
-            <Image Source="/assets/bookmark.png" Grid.Column="4" Margin="1,5,5,5" />
-
-            <Button Grid.Column="5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-                <Image Source="/assets/user.png" />
-            </Button>
-
-            <Button x:Name="Lock" Grid.Row="0" Grid.Column="6" Click="Lock_Click">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/lock.png"/>
-            </Button>
-
-            <Button x:Name="Settings" Grid.Row="0" Grid.Column="7" Click="Settings_Click">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/settings.png"/>
-            </Button>
-
+            <Grid Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" Width="132" Height="30" Background="#FF4681F4" CornerRadius="10,10,10,10">
+                    <Button x:Name="Unlockbtn" Content="Unlock" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" Click="Unlockbtn_Click"/>
+                </Border>
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Width="132" Height="30" CornerRadius="10,10,10,10" Background="White">
+                    <Button x:Name="Cancelbtn" Content="Cancel" Background="{x:Null}" BorderBrush="{x:Null}" Click="Cancelbtn_Click"/>
+                </Border>
+            </Grid>
         </Grid>
-
-        <Border BorderThickness="1" BorderBrush="Black"></Border>
-
-        <Grid Grid.Row="1">
-            <Rectangle HorizontalAlignment="Center" Height="484" Stroke="Black" VerticalAlignment="Center" Width="906" Fill="White"/>
-            <Label Content="UNLOCK PAGE?" HorizontalAlignment="Center" Margin="0,85,0,0" VerticalAlignment="Top" FontSize="70" FontWeight="Bold"/>
-            <Button Content="Unlock" HorizontalAlignment="Left" Margin="433,463,0,0" VerticalAlignment="Top" Background="White" Height="54" Width="162" Click="Button_Click" FontSize="20"/>
-            <Label Content="Cancel" HorizontalAlignment="Left" Margin="687,472,0,0" VerticalAlignment="Top" IsEnabled="False" FontSize="20" Foreground="#FF282828"/>
-            <PasswordBox x:Name="PasswordInput" HorizontalAlignment="Center" VerticalAlignment="Top" Width="528" Height="181" BorderBrush="Black" Margin="0,246,0,0" MaxLength="6" FontSize="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <TextBlock Margin="375,180,375,0" VerticalAlignment="Top" Height="53" Width="503" FontSize="20" TextWrapping="Wrap" ><Run Text="Unlocking the page will allow navigation away from "/><Run Language="en-ca" Text="&#x9;"/><Run Text="the current page and changing users"/></TextBlock>
-        </Grid>
-    </Grid>
+    </Border>
 </UserControl>
