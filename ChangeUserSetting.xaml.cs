@@ -61,5 +61,10 @@ namespace cpsc481_group5_browser
         {
             
         }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

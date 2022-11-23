@@ -6,10 +6,114 @@
              xmlns:local="clr-namespace:cpsc481_group5_browser"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
+    <UserControl.Resources>
+        <LinearGradientBrush x:Key="CheckedBlue" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FF285AB3" Offset="0" />
+            <GradientStop Color="#FF4184EC" Offset="0.5" />
+            <GradientStop Color="#FF558BED" Offset="0.5" />
+            <GradientStop Color="#FF7DACF0" Offset="1" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="CheckedOrange" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FFCA6A13" Offset="0" />
+            <GradientStop Color="#FFF67D0C" Offset="0.2" />
+            <GradientStop Color="#FFFE7F0C" Offset="0.2" />
+            <GradientStop Color="#FFFA8E12" Offset="0.5" />
+            <GradientStop Color="#FFFF981D" Offset="0.5" />
+            <GradientStop Color="#FFFCBC5A" Offset="1" />
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="CheckedOrangeBorder" Color="#FF8E4A1B" />
+        <SolidColorBrush x:Key="CheckedBlueBorder" Color="#FF143874" />
+        <Style x:Key="OrangeSwitchStyle" TargetType="{x:Type CheckBox}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="OnChecking">
+                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="slider" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="53" />
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="OnUnchecking">
+                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="slider" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0" />
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <DockPanel x:Name="dockPanel">
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" ContentTemplate="{TemplateBinding ContentTemplate}" RecognizesAccessKey="True" VerticalAlignment="Center" />
+                            <Grid>
+                                <Border x:Name="BackgroundBorder" BorderBrush="#FF939393" BorderThickness="1" CornerRadius="3" Height="27" Width="94">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Color="#FFB5B5B5" Offset="0" />
+                                            <GradientStop Color="#FFDEDEDE" Offset="0.1" />
+                                            <GradientStop Color="#FFEEEEEE" Offset="0.5" />
+                                            <GradientStop Color="#FFFAFAFA" Offset="0.5" />
+                                            <GradientStop Color="#FFFEFEFE" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Ellipse x:Name="Off" Width="14" Height="14" Stroke="#FF7A7A7A" StrokeThickness="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        <Line x:Name="On" X1="0" Y1="0" X2="0" Y2="14" Stroke="#FF7A7A7A" StrokeThickness="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Grid>
+                                </Border>
+                                <Border BorderBrush="#FF939393" HorizontalAlignment="Left" x:Name="slider" Width="41" Height="27" BorderThickness="1" CornerRadius="3" RenderTransformOrigin="0.5,0.5" Margin="0">
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                                            <SkewTransform AngleX="0" AngleY="0" />
+                                            <RotateTransform Angle="0" />
+                                            <TranslateTransform X="0" Y="0" />
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                            <GradientStop Color="#FFF0F0F0" Offset="0" />
+                                            <GradientStop Color="#FFCDCDCD" Offset="0.1" />
+                                            <GradientStop Color="#FFFBFBFB" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                            </Grid>
+                        </DockPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard Storyboard="{StaticResource OnUnchecking}" x:Name="OnUnchecking_BeginStoryboard" />
+                                </Trigger.ExitActions>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource OnChecking}" x:Name="OnChecking_BeginStoryboard" />
+                                </Trigger.EnterActions>
+                                <Setter TargetName="On" Property="Stroke" Value="White" />
+                                <Setter TargetName="Off" Property="Stroke" Value="White" />
+                                <!-- Change Orange or Blue color here -->
+                                <Setter TargetName="BackgroundBorder" Property="Background" Value="{StaticResource CheckedOrange}" />
+                                <Setter TargetName="BackgroundBorder" Property="BorderBrush" Value="{StaticResource CheckedOrangeBorder}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <!-- ToDo: Add Style for Isenabled == False -->
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    
+    
+
     <Grid Background="#FFEFD6">
         <Grid.RowDefinitions>
             <RowDefinition Height="40px"></RowDefinition>
             <RowDefinition Height="90px"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
@@ -78,177 +182,32 @@
             </Ellipse>
             <Image Grid.Column="1" Height="70" Width="70" Source="/assets/User.png"/>
             <Label Grid.Column="2" Content="USER SETTING" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"></Label>
+
         </Grid>
-        <Border BorderBrush="Black" BorderThickness="1"/>
+        
         <Grid Grid.Row="2">
-            <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".5*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width=".5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
+            <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="30px"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
                 </Grid.RowDefinitions>
+                <TextBlock FontSize="20" Text="Notifications"></TextBlock>
 
-                <Grid.ColumnDefinitions>
-
-                    <ColumnDefinition Width="120"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="Notifications" Grid.Row="0" FontWeight="Bold"/>
-
-                <Grid Grid.Column="1">
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="30"></RowDefinition>
-
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="Notify me when" Grid.Column="1"></TextBlock>
-
-                </Grid>
-                <Label Content="Time Restrictions" Grid.Row="1" FontWeight="Bold"/>
-                <Grid Grid.Row="1" Grid.Column="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-
-                    <Label Content="Daily Limit" Grid.Row="0" Grid.Column="0"></Label>
-                    <Grid Grid.Column="1" Margin="0 10 0 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="50"></ColumnDefinition>
-                            <ColumnDefinition Width="45"></ColumnDefinition>
-                            <ColumnDefinition Width="50"></ColumnDefinition>
-                            <ColumnDefinition Width="55"></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <ComboBox x:Name="hourlimit" Width="40" Height="25" >
-                            <ComboBoxItem Content="1"/>
-                            <ComboBoxItem Content="2"/>
-                            <ComboBoxItem Content="3"/>
-                            <ComboBoxItem Content="4"/>
-                            <ComboBoxItem Content="5"/>
-                            <ComboBoxItem Content="6"/>
-                            <ComboBoxItem Content="7"/>
-                            <ComboBoxItem Content="8"/>
-                            <ComboBoxItem Content="9"/>
-                            <ComboBoxItem Content="10"/>
-                            <ComboBoxItem Content="11"/>
-                            <ComboBoxItem Content="12"/>
-                        </ComboBox>
-
-                        <Label Grid.Column="1" Content="Hour :" Margin="0 7 0 0" HorizontalAlignment="Left"></Label>
-                        <Label Grid.Column="3" Content="Minutes" Margin="0 7 0 0" HorizontalAlignment="Left"></Label>
-                        <ComboBox Grid.Column="2" Width="40" Height="25">
-                            <ComboBoxItem Content="00"/>
-                            <ComboBoxItem Content="01"/>
-                            <ComboBoxItem Content="02"/>
-                            <ComboBoxItem/>
-                        </ComboBox>
-                    </Grid>
-                    <Label Content="Access Time" Grid.Row="1" Grid.Column="0"></Label>
-
-                    <Grid Grid.Column="1" Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40"></ColumnDefinition>
-                            <ColumnDefinition Width="90"></ColumnDefinition>
-                            <ColumnDefinition Width="80"></ColumnDefinition>
-                            <ColumnDefinition Width="30"></ColumnDefinition>
-                            <ColumnDefinition Width="90"></ColumnDefinition>
-                            <ColumnDefinition Width="80"></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Label Content="From:" VerticalAlignment="Center"></Label>
-                        <Label Content="To:" Grid.Column="3" VerticalAlignment="Center"></Label>
-
-                        <Grid Grid.Column="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="26">
-                                <ComboBoxItem Content="12"/>
-                                <ComboBoxItem Content="9"/>
-                            </ComboBox>
-                            <ComboBox Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="26">
-                                <ComboBoxItem/>
-                                <ComboBoxItem Content="00"/>
-                            </ComboBox>
-                        </Grid>
-
-                        <ComboBox Grid.Column="2" Margin="10" Height="25" >
-                            <ComboBoxItem Content="AM"></ComboBoxItem>
-                            <ComboBoxItem Content="PM"></ComboBoxItem>
-                        </ComboBox>
-
-                        <Grid Grid.Column="4">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="26">
-                                <ComboBoxItem Content="12"/>
-                                <ComboBoxItem Content="5"/>
-                            </ComboBox>
-                            <ComboBox Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="25">
-                                <ComboBoxItem Content="00"/>
-                                <ComboBoxItem/>
-                            </ComboBox>
-                        </Grid>
-
-                        <ComboBox Grid.Column="5" Margin="10" Height="25" >
-                            <ComboBoxItem Content="AM"></ComboBoxItem>
-                            <ComboBoxItem Content="PM"></ComboBoxItem>
-                        </ComboBox>
-
-                    </Grid>
-                </Grid>
-
-
-                <Label Content="Blocked Sites" Grid.Row="2" FontWeight="Bold"/>
-                <Grid Grid.Column="1" Grid.Row="2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="20"></RowDefinition>
-                        <RowDefinition Height="25"></RowDefinition>
-                        <RowDefinition Height="25"></RowDefinition>
-                        <RowDefinition Height="25"></RowDefinition>
-                        <RowDefinition></RowDefinition>
-
-                    </Grid.RowDefinitions>
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition Width="10*"></ColumnDefinition>
-                        <ColumnDefinition Width="8*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <CheckBox Content="Nudity" Grid.Row="1" VerticalAlignment="Center"/>
-                    <CheckBox Content="Violence" Grid.Row="2" VerticalAlignment="Center"/>
-                    <CheckBox Content="Gore" Grid.Row="3" VerticalAlignment="Center"/>
-
-                    <Label Grid.Row="1" Grid.Column="1" Content="Add URL" VerticalAlignment="Center"/>
-                    <Grid Grid.Row="2" Grid.Column="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200"></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <TextBox Margin="5 0 0 2" HorizontalAlignment="Left" Text="URL here" Width="190" Grid.Column="0"/>
-                        <Button Margin="5 0 10 2" Content="BLOCK" Grid.Column="1"></Button>
-                    </Grid>
-
-                    <TextBlock Margin="5 5 5 5" Grid.Column="2" Grid.Row="1" Text="https://www.youtube.com/" Grid.RowSpan="4">
-                    </TextBlock>
-                    <Border BorderBrush="Black" BorderThickness="1" Grid.Column="2" Grid.Row="1" Grid.RowSpan="4">
-                        <ScrollViewer/>
-                    </Border>
-                </Grid>
-
+                <CheckBox HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="1" Checked="CheckBox_Checked"></CheckBox>
 
             </Grid>
+            
         </Grid>
+
     </Grid>
 
 </UserControl>

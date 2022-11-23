@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:cpsc481_group_5_browser"
         mc:Ignorable="d"
         Title="Secure Browse" Height="705" Width="1253">
+
     <Grid>
         <ContentControl x:Name="contentControl" Grid.Row="1"/>
     </Grid>
