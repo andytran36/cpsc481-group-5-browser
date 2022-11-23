@@ -6,85 +6,81 @@
              xmlns:local="clr-namespace:cpsc481_group5_browser"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="White">
+    <Grid Background="#FFEFD6">
         <Grid.RowDefinitions>
             <RowDefinition Height="40px"></RowDefinition>
-            <RowDefinition Height="30px"></RowDefinition>
-            <RowDefinition Height="80px"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="90px"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" VerticalAlignment="Center">
+        <Grid Grid.Row="0" Background="#F2DEBA"></Grid>
+
+        <Grid Grid.Row="0" VerticalAlignment="Center" Background="#F2DEBA">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="45px"></ColumnDefinition>
-                <ColumnDefinition Width="45px"></ColumnDefinition>
-                <ColumnDefinition Width="45px"></ColumnDefinition>
+                <ColumnDefinition Width="50px"></ColumnDefinition>
+                <ColumnDefinition Width="50px"></ColumnDefinition>
+                <ColumnDefinition Width="50px"></ColumnDefinition>
                 <ColumnDefinition Width="12*"></ColumnDefinition>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="45px"></ColumnDefinition>
                 <ColumnDefinition Width="45"></ColumnDefinition>
                 <ColumnDefinition Width="45px"></ColumnDefinition>
                 <ColumnDefinition Width="45px"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-
-            <Button x:Name="Back" Grid.Row="0" Grid.Column="0" Click="Back_Click">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/back.png"/>
+            <Button x:Name="Back" Grid.Column="0" Click="Back_Click" Background="{x:Null}" BorderThickness="0"  >
+                <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="/assets/left-arrow.png"/>
             </Button>
 
-            <Button x:Name="Forward" Grid.Row="0" Grid.Column="1" Click="Forward_Click">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/forward.png"/>
+            <Button x:Name="Forward" Grid.Column="1" Click="Forward_Click" Background="{x:Null}" BorderThickness="0"  >
+                <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28"  Source="/assets/right-arrow.png"/>
             </Button>
 
-            <Button x:Name="Home" Grid.Row="0" Grid.Column="2" Click="Home_Click">
+            <Button x:Name="Home" Grid.Column="2" Click="Home_Click" Background="{x:Null}" BorderThickness="0"  >
                 <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="/assets/home.png"/>
             </Button>
 
-            <TextBox Grid.Row="0" Grid.Column="3" KeyDown="SearchBox_KeyDown" x:Name="SearchBox" Foreground="Black" FontSize="20" FontWeight="SemiBold" Margin="14,0,5,0" Grid.ColumnSpan="2"></TextBox>
+            <Border Grid.Column="3" BorderThickness="1" IsEnabled="False" Visibility="Collapsed" BorderBrush="Black" CornerRadius="20" Margin="0,3,0,3" Background="White">
+                <TextBox KeyDown="SearchBox_KeyDown"  x:Name="SearchBox" Foreground="Black" FontSize="20" FontWeight="SemiBold" Margin="10,3,10,3" BorderThickness="0" Background="{x:Null}">
+                </TextBox>
+            </Border>
 
-            <Image Source="/assets/bookmark.png" Grid.Column="4" Margin="1,5,5,5" />
 
-            <Button Grid.Column="5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-                <Image Source="/assets/user.png" />
+            <Image Grid.Column="4" IsEnabled="False" Visibility="Collapsed" Margin="1,5,5,5" Width="25" Source="/assets/bookmark.png" />
+
+            <Button Grid.Column="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" BorderThickness="0">
+                <Image Source="/assets/user.png" Width="30"/>
             </Button>
 
-            <Button x:Name="Lock" Grid.Row="0" Grid.Column="6" Click="Lock_Click">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/lock.png"/>
+            <Button x:Name="Lock" Grid.Column="6" IsEnabled="False" Visibility="Collapsed" Click="Lock_Click" Background="{x:Null}" BorderThickness="0">
+                <Image Height="25" Width="35" Source="/assets/lock.png"/>
             </Button>
 
-            <Button x:Name="Settings" Grid.Row="0" Grid.Column="7" Click="Settings_Click">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/settings.png"/>
+            <Button x:Name="Settings" Grid.Column="7" Click="Settings_Click" Background="{x:Null}" BorderThickness="0">
+                <Image Height="25"  Width="35" Source="/assets/setting.png"/>
             </Button>
 
         </Grid>
 
-        <Border BorderThickness="1" BorderBrush="Black"></Border>
-        <Grid Grid.Row="1">
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="180"></ColumnDefinition>
-                <ColumnDefinition Width="12*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-
-            <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">
-                <TextBlock TextWrapping="Wrap" Text="Back" TextDecorations="Underline"/>
-            </Label>
-
-        </Grid>
         <Border BorderBrush="Black" BorderThickness="1"/>
 
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-
-                <ColumnDefinition Width="80"></ColumnDefinition>
-                <ColumnDefinition Width="200"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width=".5*"></ColumnDefinition>
+                <ColumnDefinition Width="80px"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width=".5*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Image Grid.Column="0" Height="70" Width="70" Source="/assets/User.png"/>
-            <Label Grid.Column="1" Content="USER SETTING" VerticalAlignment="Center" Margin="10px, 0, 0px, 0" FontWeight="Bold"></Label>
-            <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="3"/>
+            <Ellipse Grid.Column="1" Height="69" Width="69">
+                <Ellipse.Fill>
+                    <SolidColorBrush Color="Pink" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <Image Grid.Column="1" Height="70" Width="70" Source="/assets/User.png"/>
+            <Label Grid.Column="2" Content="USER SETTING" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"></Label>
         </Grid>
-
-
-        <Grid Grid.Row="3">
+        <Border BorderBrush="Black" BorderThickness="1"/>
+        <Grid Grid.Row="2">
             <Grid>
 
                 <Grid.RowDefinitions>
@@ -98,21 +94,15 @@
                     <ColumnDefinition Width="120"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Label Content="Notifications" Grid.Row="0" FontWeight="Bold"/>
+                <TextBlock Text="Notifications" Grid.Row="0" FontWeight="Bold"/>
 
-                <Grid Grid.Column="1"  Margin="5px">
+                <Grid Grid.Column="1">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
 
                     </Grid.RowDefinitions>
                     <TextBlock Text="Notify me when" Grid.Column="1"></TextBlock>
-                    <CheckBox Content="Blocked site accessed" Grid.Row="1"/>
-                    <CheckBox Content="Time limit reached" Grid.Row="2"/>
-                    <CheckBox Content="Window locked" Grid.Row="3"/>
 
                 </Grid>
                 <Label Content="Time Restrictions" Grid.Row="1" FontWeight="Bold"/>
