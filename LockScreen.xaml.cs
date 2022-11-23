@@ -20,7 +20,8 @@ namespace cpsc481_group5_browser
     /// </summary>
     public partial class LockScreen : UserControl {
         public event EventHandler Handler_CancelClicked;
-        public event EventHandler Handler_LockClicked;
+        public event EventHandler<PasswordArgs> Handler_LockClicked;
+        
 
         public LockScreen()
         {

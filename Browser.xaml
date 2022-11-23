@@ -60,5 +60,9 @@
         <Border BorderThickness="1" BorderBrush="Black"></Border>
 
         <WebBrowser Grid.Row="1" x:Name="WebBrowser" HorizontalAlignment="Center" LoadCompleted="WebBrowser_LoadCompleted"/>
+
+        <Popup x:Name="Lockpopup" Placement="Center" AllowsTransparency="True">
+            <local:LockScreen x:Name="Lockpopupcontent" />
+        </Popup>
     </Grid>
 </UserControl>

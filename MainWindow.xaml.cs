@@ -59,11 +59,10 @@ namespace cpsc481_group_5_browser
 
             // Browser Handlers
             BrowserScreen.Handler_BrowserSettingsClicked += new EventHandler(Handle_SettingsClicked);
-            BrowserScreen.Handler_LockedScreenClicked += new EventHandler(Handle_LockScreenClicked);
 
 
             // LockScreen Handlers
-            LockScreenPopup.Handler_LockClicked += new EventHandler(Handle_LockScreenClicked);
+            
 
             // User Select Handlers
             UserSelectScreen.Handler_UserProfileClicked += new EventHandler(Handle_UserProfileClicked);
@@ -119,13 +118,6 @@ namespace cpsc481_group_5_browser
             UserNames.Add(e.Name);
             UserSelectScreen.UpdateUserNames(UserNames);
             this.contentControl.Content = UserSelectScreen;
-        }
-
-        private void Handle_LockScreenClicked(object sender, EventArgs e)
-        {
-            Debug.WriteLine("Lock Screen clicked");
-            //TODO: deal with popup
-            this.contentControl.Content = LockScreenPopup;
         }
         
         private void Handle_BobChangeSettingsClicked(object sender, EventArgs e)

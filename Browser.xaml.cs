@@ -28,6 +28,8 @@ namespace cpsc481_group5_browser
         // Event Listeners
         public event EventHandler Handler_BrowserSettingsClicked;
         public event EventHandler Handler_LockedScreenClicked;
+        public event EventHandler Handler_Lock;
+        LockScreen LockPopup;
 
         public Browser()
         {
@@ -85,12 +87,37 @@ namespace cpsc481_group5_browser
 
         private void Lock_Click(object sender, RoutedEventArgs e)
         {
-            Handler_LockedScreenClicked?.Invoke(this, new EventArgs());
+            Lockpopup.IsOpen = true;
+            LockPopup = Lockpopupcontent;
+            LockPopup.Handler_CancelClicked += new EventHandler(LockCancel_Clicked);
+            LockPopup.Handler_LockClicked += new EventHandler<LockScreen.PasswordArgs>(LockContinue_Clicked);
         }
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
             Handler_BrowserSettingsClicked?.Invoke(this, new EventArgs());
+        }
+
+        private void LockCancel_Clicked(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Lock cancel clicked");
+            Lockpopup.Visibility = Visibility.Collapsed;
+            Lockpopup.IsOpen = false;
+        }
+
+        private void LockContinue_Clicked(object sender, LockScreen.PasswordArgs e)
+        {
+            Debug.WriteLine("Lock continue clicked");
+            if (e.PasswordAccepted)
+            {
+                Lockpopup.Visibility = Visibility.Collapsed;
+                Lockpopup.IsOpen = false;
+            }
+            else
+            {
+                Debug.WriteLine("Lock error");
+            }
+
         }
     }
 }
