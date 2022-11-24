@@ -83,7 +83,7 @@ namespace cpsc481_group_5_browser
             ParentalSettingsScreen.Handler_BobChangeClicked += new EventHandler(Handle_BobChangeSettingsClicked);
 
             // Set Screen to User Select on System Startup
-            this.contentControl.Content = ParentalSettingsScreen;
+            this.contentControl.Content = UserSelectScreen;
 
         }
 
