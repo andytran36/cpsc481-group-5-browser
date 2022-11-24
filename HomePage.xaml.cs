@@ -85,6 +85,7 @@ namespace cpsc481_group5_browser
             }
             else
             {
+                PasswordPopup.SetErrorMessage();
                 Debug.WriteLine("Profile password error");
             }
         }
