@@ -20,8 +20,8 @@ namespace cpsc481_group5_browser
     /// </summary>
     public partial class ContactSettings : UserControl
     {
-        //public EventHandler Handler_CancelClicked;
-        //public event EventHandler Handler_ContinueClicked;
+        public event EventHandler Handler_CancelClicked;
+        public event EventHandler<ContactInformation> Handler_SaveClicked;
 
         public ContactSettings()
         {
@@ -32,12 +32,30 @@ namespace cpsc481_group5_browser
 
         private void Cancelbtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Emailinput.Clear();
+            Phoneinput.Clear();
+            Handler_CancelClicked?.Invoke(this, e);
         }
 
-        private void Continuebtn_Click(object sender, RoutedEventArgs e)
+        private void Savebtn_Click(object sender, RoutedEventArgs e)
         {
+            ContactInformation contactinfo = new ContactInformation();
+            contactinfo.Email = Emailinput.Text.Trim();
+            contactinfo.Phonenumber = Phoneinput.Text.Trim();
+            Emailinput.Clear();
+            Phoneinput.Clear();
+            Handler_SaveClicked?.Invoke(this, contactinfo);
+        }
 
+        public class ContactInformation: EventArgs
+        {
+            public string Email { get; set; }
+            public string Phonenumber { get; set; }
+        }
+
+        private void PhoneNum_Pressed(object sender, KeyEventArgs e)
+        {
+            
         }
     }
 }

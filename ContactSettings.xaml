@@ -72,7 +72,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Border HorizontalAlignment="Center" VerticalAlignment="Center" Width="132" Height="30" Background="#FF4681F4" CornerRadius="10,10,10,10">
-                    <Button x:Name="Continuebtn" Content="Continue" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" Click="Continuebtn_Click"/>
+                    <Button x:Name="Savebtn" Content="Save" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" Click="Savebtn_Click"/>
                 </Border>
                 <Border HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Width="132" Height="30" CornerRadius="10,10,10,10" Background="White">
                     <Button x:Name="Cancelbtn" Content="Cancel" Background="{x:Null}" BorderBrush="{x:Null}" Click="Cancelbtn_Click"/>
@@ -83,7 +83,7 @@
             <TextBox x:Name="Emailinput" HorizontalAlignment="Left" Margin="10,1,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="250" VerticalContentAlignment="Center" Height="30"/>
             <Label Content="Phone Number" HorizontalAlignment="Left" Margin="10,32,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.RowSpan="2"/>
             <CheckBox x:Name="Phonepreferredbox" Content="Preferred" HorizontalAlignment="Left" Margin="238,38,0,0" Grid.Row="3" VerticalAlignment="Top"/>
-            <TextBox x:Name="Phoneinput" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="256" Height="30" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="Phoneinput" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="256" Height="30" VerticalContentAlignment="Center" KeyDown="PhoneNum_Pressed"/>
         </Grid>
     </Border>
 </UserControl>

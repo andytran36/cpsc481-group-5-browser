@@ -96,7 +96,10 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Label Content="Contact settings" HorizontalAlignment="Left" Margin="0,1,0,0" VerticalAlignment="Top" FontSize="22" Grid.Column="1" Width="227" FontWeight="Bold"/>
-                    <Image x:Name="contactarrow" Grid.Column="2" HorizontalAlignment="Left" Height="39" VerticalAlignment="Center" Width="43" Source="/assets/forwardarrow.png"/>
+                    <Image x:Name="contactarrow" Grid.Column="2" HorizontalAlignment="Left" Height="39" VerticalAlignment="Center" Width="43" Source="/assets/forwardarrow.png" MouseRightButtonUp="ContactSettings_Clicked"/>
+                    <Popup x:Name="Contactsettingspopup" Placement="Center" AllowsTransparency="True" PlacementTarget="{Binding ElementName=contactarrow, Mode=OneWay}">
+                        <local:ContactSettings x:Name="Contactsettingspoupcontent" />
+                    </Popup>
                 </Grid>
                 <Label Content="Settings" HorizontalAlignment="Left" Margin="92,0,0,0" VerticalAlignment="Center" FontSize="30"/>
             </Grid>
