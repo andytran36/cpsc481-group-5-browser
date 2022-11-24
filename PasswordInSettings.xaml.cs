@@ -30,6 +30,10 @@ namespace cpsc481_group5_browser
 
         private void Cancelbtn_Click(object sender, RoutedEventArgs e)
         {
+            Passwordinput.Clear();
+            Passwordinputconfirm.Clear();
+            HideBadPswdMsg();
+            HideNoMatchMsg();
             Handler_CancelClicked?.Invoke(this, e);
         }
 
@@ -42,14 +46,58 @@ namespace cpsc481_group5_browser
             if (ValidLength && Matches) 
             {
                 args.PasswordMatch = true;
+                args.GoodPassword = true;
+            }else if (!ValidLength && Matches)
+            {
+                args.PasswordMatch = true;
+                args.GoodPassword = false;
+            }else if (ValidLength && !Matches)
+            {
+                args.PasswordMatch = false;
+                args.GoodPassword = true;
+            }
+            else
+            {
+                args.PasswordMatch = false;
+                args.GoodPassword = false;
             }
             Passwordinput.Clear();
+            Passwordinputconfirm.Clear();
+            HideNoMatchMsg();
+            HideBadPswdMsg();
             Handler_ConfirmClicked?.Invoke(this, args);
+        }
+
+        public void HideNoMatchMsg()
+        {
+            Nomatchmsg.Visibility = Visibility.Hidden;
+        }
+
+        public void HideBadPswdMsg()
+        {
+            Badpswdmsg.Visibility = Visibility.Hidden;
+        }
+
+        public void SetNoMatchMsg()
+        {
+            Nomatchmsg.Visibility = Visibility.Visible;
+        }
+
+        public void SetBadPswdMsg()
+        {
+            if (Nomatchmsg.Visibility == Visibility.Visible)
+            {
+                Thickness mymargin = Badpswdmsg.Margin;
+                mymargin.Top = 21;
+                Badpswdmsg.Margin = mymargin;
+                Badpswdmsg.Visibility = Visibility.Visible;
+            }
         }
 
         public class PasswordArgs : EventArgs
         {
             public bool PasswordMatch { get; set; }
+            public bool GoodPassword { get; set; }
         }
     }
 }

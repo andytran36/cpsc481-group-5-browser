@@ -23,7 +23,7 @@ namespace cpsc481_group5_browser
     {
         public event EventHandler Handler_BackClicked;
         public event EventHandler Handler_BobChangeClicked;
-        PasswordInSettings Pwsettingspopup;
+        PasswordInSettings Pwsettingscontent;
 
         public ParentalSettings()
         {
@@ -86,9 +86,9 @@ namespace cpsc481_group5_browser
         private void PasswordSettings_Clicked(object sender, MouseButtonEventArgs e)
         {
             Passwordsettingspopup.IsOpen = true;
-            Pwsettingspopup = Passwordsettingscontent;
-            Pwsettingspopup.Handler_CancelClicked += new EventHandler(PwSettingsCancel_Clicked);
-            Pwsettingspopup.Handler_ConfirmClicked += new EventHandler<PasswordInSettings.PasswordArgs>(PwSettingsConfirm_Clicked);
+            Pwsettingscontent = Passwordsettingscontent;
+            Pwsettingscontent.Handler_CancelClicked += new EventHandler(PwSettingsCancel_Clicked);
+            Pwsettingscontent.Handler_ConfirmClicked += new EventHandler<PasswordInSettings.PasswordArgs>(PwSettingsConfirm_Clicked);
         }
 
         private void PwSettingsCancel_Clicked(object sender, EventArgs e)
@@ -99,15 +99,24 @@ namespace cpsc481_group5_browser
 
         private void PwSettingsConfirm_Clicked(object sender, PasswordInSettings.PasswordArgs e)
         {
-            if (e.PasswordMatch)
+            if (e.PasswordMatch && e.GoodPassword)
             {
                 Passwordsettingspopup.Visibility = Visibility.Collapsed;
                 Passwordsettingspopup.IsOpen = false;
-                
             }
             else
             {
-                Debug.WriteLine("Profile password error");
+                if (!e.PasswordMatch)
+                {
+                    Pwsettingscontent.SetNoMatchMsg();
+                }
+
+                if (!e.GoodPassword)
+                {
+                    Pwsettingscontent.SetBadPswdMsg();
+                }
+                
+                Debug.WriteLine("Settings password error");
             }
         }
     }
