@@ -28,32 +28,32 @@ namespace cpsc481_group5_browser
             InitializeComponent();
         }
 
-        private void Cancelbtn_Click(object sender, RoutedEventArgs e)
+        private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
             HideErrorMessage();
             Handler_CancelClicked?.Invoke(this, e);
         }
 
-        private void Continuebtn_Click(object sender, RoutedEventArgs e)
+        private void ContinueBtn_Click(object sender, RoutedEventArgs e)
         {
             PasswordArgs args = new PasswordArgs();
             args.PasswordAccepted = false;
-            if (Passwordinput.Password.Length >= 6)
+            if (PasswordInput.Password.Length >= 6)
             {
                 args.PasswordAccepted = true;
             }
-            Passwordinput.Clear();
+            PasswordInput.Clear();
             Handler_ContinueClicked?.Invoke(this, args);
         }
 
         public void HideErrorMessage()
         {
-            Errormsg.Visibility = Visibility.Hidden;
+            ErrorMsg.Visibility = Visibility.Hidden;
         }
 
         public void SetErrorMessage()
         {
-            Errormsg.Visibility = Visibility.Visible;
+            ErrorMsg.Visibility = Visibility.Visible;
         }
 
         public class PasswordArgs : EventArgs

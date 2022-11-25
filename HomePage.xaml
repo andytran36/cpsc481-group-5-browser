@@ -227,8 +227,8 @@
 
 
         </Grid>
-        <Popup x:Name="Passwordprompt" Placement="Center" AllowsTransparency="True">
-            <local:PasswordPrompt x:Name="Passwordpromptcontent" />
+        <Popup x:Name="PasswordPrompt" Placement="Center" AllowsTransparency="True">
+            <local:PasswordPrompt x:Name="PasswordPromptContent" />
         </Popup>
     </Grid>
 </UserControl>
