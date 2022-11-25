@@ -84,8 +84,10 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Label Content="Password settings" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="22" Grid.Column="1" FontWeight="Bold"/>
-                    <Image x:Name="passwordarrow" Grid.Column="2" HorizontalAlignment="Left" Height="39" VerticalAlignment="Center" Width="43" Source="/assets/forwardarrow.png"/>
-
+                    <Image x:Name="PasswordArrow" Grid.Column="2" HorizontalAlignment="Left" Height="39" VerticalAlignment="Center" Width="43" Source="/assets/forwardarrow.png" MouseLeftButtonUp="PasswordSettings_Clicked"/>
+                    <Popup x:Name="PwSettingsPopup" Placement="Right" AllowsTransparency="True" PlacementTarget="{Binding ElementName=PasswordArrow, Mode=OneWay}">
+                        <local:PasswordInSettings x:Name="PwSettingsPopupContent" />
+                    </Popup>
                 </Grid>
 
                 <Grid Grid.Row="2">
