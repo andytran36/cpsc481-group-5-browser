@@ -23,34 +23,25 @@
             </Button>
         </Grid>
 
-
-
         <Grid Grid.Row="1" Background="#FFEFD6">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="80px"></RowDefinition>
                 <RowDefinition Height="1*"></RowDefinition>
-                <RowDefinition Height=".5*"></RowDefinition>
-                <RowDefinition Height="2*"></RowDefinition>
-                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="140px"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
             </Grid.RowDefinitions>
 
             <Label Grid.Row="1" FontSize="40px" HorizontalAlignment="Center" FontWeight="Bold">Who's Browsing? :)</Label>
 
             <Grid Grid.Row="3" HorizontalAlignment="Center" x:Name="UsersGrid">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*" MinWidth="10px"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*" MinWidth="10px"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*" MinWidth="10px"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
             </Grid>
         </Grid>
 
-        <Popup x:Name="Profilepasswordpopup" Placement="Center" AllowsTransparency="True">
-            <local:UserProfilePassword x:Name="Profilepasswordcontent" />
+        <Popup x:Name="ProfilePasswordPopup" Placement="Center" AllowsTransparency="True">
+            <local:UserProfilePassword x:Name="ProfilePasswordContent" />
         </Popup>
 
         <Popup x:Name="PasswordPrompt" Placement="Center" AllowsTransparency="True">
