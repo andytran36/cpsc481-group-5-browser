@@ -24,6 +24,7 @@ namespace cpsc481_group5_browser
         public event EventHandler Handler_BackClicked;
         public event EventHandler Handler_BobChangeClicked;
         ContactSettings ContactPopup;
+        PasswordInSettings PwSettingsContent;
 
         public ParentalSettings()
         {
@@ -80,7 +81,44 @@ namespace cpsc481_group5_browser
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
-           
+            
+        }
+
+        private void PasswordSettings_Clicked(object sender, MouseButtonEventArgs e)
+        {
+            PwSettingsPopup.IsOpen = true;
+            PwSettingsContent = PwSettingsPopupContent;
+            PwSettingsContent.Handler_CancelClicked += new EventHandler(PwSettingsCancel_Clicked);
+            PwSettingsContent.Handler_ConfirmClicked += new EventHandler<PasswordInSettings.PasswordArgs>(PwSettingsConfirm_Clicked);
+        }
+
+        private void PwSettingsCancel_Clicked(object sender, EventArgs e)
+        {
+            PwSettingsPopup.IsOpen = false;
+            PwSettingsPopup.Visibility = Visibility.Collapsed;
+        }
+
+        private void PwSettingsConfirm_Clicked(object sender, PasswordInSettings.PasswordArgs e)
+        {
+            if (e.PasswordMatch && e.GoodPassword)
+            {
+                PwSettingsPopup.Visibility = Visibility.Collapsed;
+                PwSettingsPopup.IsOpen = false;
+            }
+            else
+            {
+                if (!e.PasswordMatch)
+                {
+                    PwSettingsContent.SetNoMatchMsg();
+                }
+
+                if (!e.GoodPassword)
+                {
+                    PwSettingsContent.SetBadPswdMsg();
+                }
+                
+                Debug.WriteLine("Settings password error");
+            }
         }
 
         private void ContactSettings_Clicked(object sender, MouseButtonEventArgs e)

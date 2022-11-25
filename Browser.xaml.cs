@@ -26,8 +26,9 @@ namespace cpsc481_group5_browser
 
 
         // Event Listeners
-        public event EventHandler Handler_BrowserSettingsClicked;
         public event EventHandler Handler_LockedScreenClicked;
+        public event EventHandler Handler_ToSettings;
+        PasswordPrompt PasswordPopup;
 
         public Browser()
         {
@@ -90,7 +91,31 @@ namespace cpsc481_group5_browser
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
-            Handler_BrowserSettingsClicked?.Invoke(this, new EventArgs());
+            PasswordPrompt.IsOpen = true;
+            PasswordPopup = PasswordPromptContent;
+            PasswordPopup.Handler_ContinueClicked += new EventHandler<PasswordPrompt.PasswordArgs>(PasswordPromptContinue_Clicked);
+            PasswordPopup.Handler_CancelClicked += new EventHandler(PasswordPromptCancel_Clicked);
+        }
+
+        private void PasswordPromptCancel_Clicked(object sender, EventArgs e)
+        {
+            PasswordPrompt.Visibility = Visibility.Collapsed;
+            PasswordPrompt.IsOpen = false;
+        }
+
+        private void PasswordPromptContinue_Clicked(object sender, PasswordPrompt.PasswordArgs e)
+        {
+            if (e.PasswordAccepted)
+            {
+                PasswordPrompt.Visibility = Visibility.Collapsed;
+                PasswordPrompt.IsOpen = false;
+                Handler_ToSettings?.Invoke(this, new EventArgs());
+            }
+            else
+            {
+                PasswordPopup.SetErrorMessage();
+                Debug.WriteLine("Profile password error");
+            }
         }
     }
 }
