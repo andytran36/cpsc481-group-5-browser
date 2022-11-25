@@ -23,7 +23,7 @@ namespace cpsc481_group5_browser
     {
         public event EventHandler Handler_BackClicked;
         public event EventHandler Handler_BobChangeClicked;
-        PasswordInSettings Pwsettingscontent;
+        PasswordInSettings PwSettingsContent;
 
         public ParentalSettings()
         {
@@ -85,35 +85,35 @@ namespace cpsc481_group5_browser
 
         private void PasswordSettings_Clicked(object sender, MouseButtonEventArgs e)
         {
-            Passwordsettingspopup.IsOpen = true;
-            Pwsettingscontent = Passwordsettingscontent;
-            Pwsettingscontent.Handler_CancelClicked += new EventHandler(PwSettingsCancel_Clicked);
-            Pwsettingscontent.Handler_ConfirmClicked += new EventHandler<PasswordInSettings.PasswordArgs>(PwSettingsConfirm_Clicked);
+            PwSettingsPopup.IsOpen = true;
+            PwSettingsContent = PwSettingsPopupContent;
+            PwSettingsContent.Handler_CancelClicked += new EventHandler(PwSettingsCancel_Clicked);
+            PwSettingsContent.Handler_ConfirmClicked += new EventHandler<PasswordInSettings.PasswordArgs>(PwSettingsConfirm_Clicked);
         }
 
         private void PwSettingsCancel_Clicked(object sender, EventArgs e)
         {
-            Passwordsettingspopup.IsOpen = false;
-            Passwordsettingspopup.Visibility = Visibility.Collapsed;
+            PwSettingsPopup.IsOpen = false;
+            PwSettingsPopup.Visibility = Visibility.Collapsed;
         }
 
         private void PwSettingsConfirm_Clicked(object sender, PasswordInSettings.PasswordArgs e)
         {
             if (e.PasswordMatch && e.GoodPassword)
             {
-                Passwordsettingspopup.Visibility = Visibility.Collapsed;
-                Passwordsettingspopup.IsOpen = false;
+                PwSettingsPopup.Visibility = Visibility.Collapsed;
+                PwSettingsPopup.IsOpen = false;
             }
             else
             {
                 if (!e.PasswordMatch)
                 {
-                    Pwsettingscontent.SetNoMatchMsg();
+                    PwSettingsContent.SetNoMatchMsg();
                 }
 
                 if (!e.GoodPassword)
                 {
-                    Pwsettingscontent.SetBadPswdMsg();
+                    PwSettingsContent.SetBadPswdMsg();
                 }
                 
                 Debug.WriteLine("Settings password error");
