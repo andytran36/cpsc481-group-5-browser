@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,24 +22,97 @@ namespace cpsc481_group5_browser
     /// </summary>
     public partial class ContactSettings : UserControl
     {
-        //public EventHandler Handler_CancelClicked;
-        //public event EventHandler Handler_ContinueClicked;
+        public event EventHandler Handler_CancelClicked;
+        public event EventHandler<ContactInformation> Handler_SaveClicked;
 
         public ContactSettings()
         {
             InitializeComponent();
-            Emailinput.Text = "user@email.com";
-            Phoneinput.Text = "(123)-456-7890";
+            EmailInput.Text = "user@email.com";
+            PhoneInput.Text = "(123)-456-7890";
         }
 
-        private void Cancelbtn_Click(object sender, RoutedEventArgs e)
+        public void SetOpen()
         {
-
+            EmailInput.Text = "user@email.com";
+            PhoneInput.Text = "(123)-456-7890";
         }
 
-        private void Continuebtn_Click(object sender, RoutedEventArgs e)
+        private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
+            EmailInput.Clear();
+            PhoneInput.Clear();
+            FixEmail();
+            FixPhone();
+            Handler_CancelClicked?.Invoke(this, e);
+        }
 
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ContactInformation contactinfo = new ContactInformation();
+            contactinfo.Email = EmailInput.Text.Trim();
+            contactinfo.PhoneNumber = PhoneInput.Text.Trim();
+            contactinfo.EmailPreferred = (bool)EmailPreferredBox.IsChecked ? true : false;
+            contactinfo.PhonePreferred = (bool)PhonePreferredBox.IsChecked ? true : false;
+            EmailInput.Clear();
+            PhoneInput.Clear();
+            FixEmail();
+            FixPhone();
+            Handler_SaveClicked?.Invoke(this, contactinfo);
+        }
+
+        private void EmailInput_Clicked(object sender, RoutedEventArgs e)
+        {
+            EmailInput.Clear();
+            EmailInput.GotFocus -= EmailInput_Clicked;
+        }
+
+        private void FixEmail()
+        {
+            EmailInput.GotFocus += EmailInput_Clicked;
+        }
+
+        private void PhoneInput_Clicked(object sender, RoutedEventArgs e)
+        {
+            PhoneInput.Clear();
+            PhoneInput.GotFocus -= PhoneInput_Clicked;
+        }
+
+        private void FixPhone()
+        {
+            PhoneInput.GotFocus += PhoneInput_Clicked;
+        }
+
+        private void ValidatePhoneInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9\\-\\(\\)]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void EmailChecked(object sender, RoutedEventArgs e)
+        {
+            if ((bool)PhonePreferredBox.IsChecked)
+            {
+                PhonePreferredBox.IsChecked = false;
+            }
+        }
+
+        private void PhoneChecked(object sender, RoutedEventArgs e)
+        {
+            if ((bool)EmailPreferredBox.IsChecked)
+            {
+                EmailPreferredBox.IsChecked = false;
+            }
+        }
+
+        public class ContactInformation: EventArgs
+        {
+            public string Email { get; set; }
+            public string PhoneNumber { get; set; }
+
+            public bool EmailPreferred { get; set; }
+
+            public bool PhonePreferred { get; set; }
         }
     }
 }

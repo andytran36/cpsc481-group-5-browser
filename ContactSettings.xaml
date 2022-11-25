@@ -72,18 +72,18 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Border HorizontalAlignment="Center" VerticalAlignment="Center" Width="132" Height="30" Background="#FF4681F4" CornerRadius="10,10,10,10">
-                    <Button x:Name="Continuebtn" Content="Continue" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" Click="Continuebtn_Click"/>
+                    <Button x:Name="SaveBtn" Content="Save" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" Click="SaveBtn_Click"/>
                 </Border>
                 <Border HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Width="132" Height="30" CornerRadius="10,10,10,10" Background="White">
-                    <Button x:Name="Cancelbtn" Content="Cancel" Background="{x:Null}" BorderBrush="{x:Null}" Click="Cancelbtn_Click"/>
+                    <Button x:Name="CancelBtn" Content="Cancel" Background="{x:Null}" BorderBrush="{x:Null}" Click="CancelBtn_Click"/>
                 </Border>
             </Grid>
             <Label Content="Email" HorizontalAlignment="Left" Margin="10,32,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-            <CheckBox x:Name="Emailpreferredbox" Content="Preferred" HorizontalAlignment="Left" Margin="238,38,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-            <TextBox x:Name="Emailinput" HorizontalAlignment="Left" Margin="10,1,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="250" VerticalContentAlignment="Center" Height="30"/>
+            <CheckBox x:Name="EmailPreferredBox" Content="Preferred" HorizontalAlignment="Left" Margin="238,38,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="EmailChecked"/>
+            <TextBox x:Name="EmailInput" HorizontalAlignment="Left" Margin="10,1,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="250" VerticalContentAlignment="Center" Height="30" GotFocus="EmailInput_Clicked"/>
             <Label Content="Phone Number" HorizontalAlignment="Left" Margin="10,32,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.RowSpan="2"/>
-            <CheckBox x:Name="Phonepreferredbox" Content="Preferred" HorizontalAlignment="Left" Margin="238,38,0,0" Grid.Row="3" VerticalAlignment="Top"/>
-            <TextBox x:Name="Phoneinput" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="256" Height="30" VerticalContentAlignment="Center"/>
+            <CheckBox x:Name="PhonePreferredBox" Content="Preferred" HorizontalAlignment="Left" Margin="238,38,0,0" Grid.Row="3" VerticalAlignment="Top" Checked="PhoneChecked"/>
+            <TextBox x:Name="PhoneInput" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="256" Height="30" VerticalContentAlignment="Center" GotFocus="PhoneInput_Clicked" PreviewTextInput="ValidatePhoneInput"/>
         </Grid>
     </Border>
 </UserControl>

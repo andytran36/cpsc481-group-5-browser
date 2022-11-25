@@ -23,6 +23,7 @@ namespace cpsc481_group5_browser
     {
         public event EventHandler Handler_BackClicked;
         public event EventHandler Handler_BobChangeClicked;
+        ContactSettings ContactPopup;
         PasswordInSettings PwSettingsContent;
 
         public ParentalSettings()
@@ -118,6 +119,29 @@ namespace cpsc481_group5_browser
                 
                 Debug.WriteLine("Settings password error");
             }
+        }
+
+        private void ContactSettings_Clicked(object sender, MouseButtonEventArgs e)
+        {
+            ContactSettingsPopup.IsOpen = true;
+            ContactPopup = ContactSettingsPoupContent;
+            ContactPopup.SetOpen();
+            ContactPopup.Handler_CancelClicked += new EventHandler(ContactCancel_Clicked);
+            ContactPopup.Handler_SaveClicked += new EventHandler<ContactSettings.ContactInformation>(ContactSave_Clicked);
+        }
+
+        private void ContactCancel_Clicked(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Contact cancel clicked");
+            ContactSettingsPopup.Visibility = Visibility.Collapsed;
+            ContactSettingsPopup.IsOpen = false;
+        }
+
+        private void ContactSave_Clicked(object sender, ContactSettings.ContactInformation e)
+        {
+            ContactSettingsPopup.Visibility = Visibility.Collapsed;
+            ContactSettingsPopup.IsOpen = false;
+            //do something with contact info
         }
     }
 }
