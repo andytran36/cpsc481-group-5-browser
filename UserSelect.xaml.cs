@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,36 +26,45 @@ namespace cpsc481_group5_browser
 
         public event EventHandler Handler_UserProfileClicked;
         public event EventHandler Handler_CreateNewUserClicked;
-        public event EventHandler Handler_UserSelectSettingsClicked;
         public event EventHandler Handler_ToSettings;
+        public event EventHandler Handler_ToHome;
         UserProfilePassword ProfilePassword;
+        PasswordPrompt PasswordPopup;
+        List<UserProfile> StoredUsers = new List<UserProfile>();
+        UserProfile CreateNewUserProfile;
 
-        public UserSelect(List<string> UserNames)
+        public UserSelect(List<string> userNames)
         {
             InitializeComponent();
 
-            int index = 0;
-            foreach (string User in UserNames)
+            int Index = 0;
+            foreach (string User in userNames)
             {
-                Button btn = new Button();
-                btn.Content = User;
-                btn.SetValue(Grid.ColumnProperty, index);
-                btn.Click += new RoutedEventHandler(Profile_Click);
-                UsersGrid.Children.Add(btn);
-                index += 2;
+                ColumnDefinition ColDef = new ColumnDefinition();
+                UsersGrid.ColumnDefinitions.Add(ColDef);
+
+                UserProfile TempUser = new UserProfile(User);
+                TempUser.SetValue(Grid.ColumnProperty, Index);
+                TempUser.ProfileButton.Click += new RoutedEventHandler(Profile_Click);
+                UsersGrid.Children.Add(TempUser);
+                StoredUsers.Add(TempUser);
+
+                Index += 1;
             }
 
-            Button createNew = new Button();
-            createNew.Content = "Create New User";
-            createNew.SetValue(Grid.ColumnProperty, 8);
-            createNew.Click += new RoutedEventHandler(CreateNewUser_Click);
-            UsersGrid.Children.Add(createNew);
+            ColumnDefinition CreateNewCol = new ColumnDefinition();
+            UsersGrid.ColumnDefinitions.Add(CreateNewCol);
+
+            CreateNewUserProfile = new UserProfile("New User");
+            CreateNewUserProfile.SetValue(Grid.ColumnProperty, Index);
+            CreateNewUserProfile.ProfileButton.Click += new RoutedEventHandler(CreateNewUser_Click);
+            UsersGrid.Children.Add(CreateNewUserProfile);
         }
 
         private void Profile_Click(object sender, RoutedEventArgs e)
         {
-            Profilepasswordpopup.IsOpen = true;
-            ProfilePassword = Profilepasswordcontent;
+            ProfilePasswordPopup.IsOpen = true;
+            ProfilePassword = ProfilePasswordContent;
             ProfilePassword.Handler_ContinueClicked += new EventHandler<UserProfilePassword.PasswordArgs>(ProfileContinue_Clicked);
             ProfilePassword.Handler_CancelClicked += new EventHandler(ProfileCancel_Clicked);
         }
@@ -66,28 +76,42 @@ namespace cpsc481_group5_browser
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
-            Handler_UserSelectSettingsClicked?.Invoke(this, new EventArgs());
+            PasswordPrompt.IsOpen = true;
+            PasswordPopup = PasswordPromptContent;
+            PasswordPopup.Handler_ContinueClicked += new EventHandler<PasswordPrompt.PasswordArgs>(PasswordPromptContinue_Clicked);
+            PasswordPopup.Handler_CancelClicked += new EventHandler(PasswordPromptCancel_Clicked);
         }
 
-        public void UpdateUserNames(List<string> UpdatedUserNames)
+        public void UpdateUserNames(List<string> updatedUserNames)
         {
-            int index = 0;
-            foreach (string User in UpdatedUserNames)
+            int Index = 0;
+            foreach (string User in updatedUserNames)
             {
-                Button btn = new Button();
-                btn.Content = User;
-                btn.SetValue(Grid.ColumnProperty, index);
-                btn.Click += new RoutedEventHandler(Profile_Click);
-                UsersGrid.Children.Add(btn);
-                index += 2;
+                UserProfile TempUser = new UserProfile(User);
+                TempUser.SetValue(Grid.ColumnProperty, Index);
+                TempUser.ProfileButton.Click += new RoutedEventHandler(Profile_Click);
+
+                if (Index >= StoredUsers.Count)
+                {
+                    UsersGrid.Children.Add(TempUser);
+                    StoredUsers.Add(TempUser);
+                }
+                else StoredUsers[Index] = TempUser;
+
+                Index += 1;
             }
+
+            ColumnDefinition CreateNewCol = new ColumnDefinition();
+            UsersGrid.ColumnDefinitions.Add(CreateNewCol);
+
+            CreateNewUserProfile.SetValue(Grid.ColumnProperty, Index);
         }
 
         private void ProfileCancel_Clicked(object sender, EventArgs e)
         {
             Debug.WriteLine("User select cancel clicked");
-            Profilepasswordpopup.Visibility = Visibility.Collapsed;
-            Profilepasswordpopup.IsOpen = false;
+            ProfilePasswordPopup.Visibility = Visibility.Collapsed;
+            ProfilePasswordPopup.IsOpen = false;
         }
 
         private void ProfileContinue_Clicked(object sender, UserProfilePassword.PasswordArgs e)
@@ -95,15 +119,38 @@ namespace cpsc481_group5_browser
             Debug.WriteLine("User select continue clicked");
             if (e.PasswordAccepted)
             {
-                Profilepasswordpopup.Visibility = Visibility.Collapsed;
-                Profilepasswordpopup.IsOpen = false;
-                Handler_ToSettings?.Invoke(this, new EventArgs());
+                ProfilePasswordPopup.Visibility = Visibility.Collapsed;
+                ProfilePasswordPopup.IsOpen = false;
+                Handler_ToHome?.Invoke(this, new EventArgs());
             }
             else
             {
                 Debug.WriteLine("Profile password error");
             }
 
+        }
+
+        private void PasswordPromptCancel_Clicked(object sender, EventArgs e)
+        {
+            PasswordPrompt.Visibility= Visibility.Collapsed;
+            PasswordPrompt.IsOpen = false;
+        }
+
+        private void PasswordPromptContinue_Clicked(object sender, PasswordPrompt.PasswordArgs e)
+        {
+            if (e.PasswordAccepted)
+            {
+                PasswordPrompt.Visibility = Visibility.Collapsed;
+                PasswordPrompt.IsOpen = false;
+                ProfilePasswordPopup.Visibility = Visibility.Collapsed;
+                ProfilePasswordPopup.IsOpen = false;
+                Handler_ToSettings?.Invoke(this, new EventArgs());
+            }
+            else
+            {
+                PasswordPopup.SetErrorMessage();
+                Debug.WriteLine("Profile password error");
+            }
         }
     }
 }

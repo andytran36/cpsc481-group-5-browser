@@ -38,7 +38,7 @@ namespace cpsc481_group5_browser
             PasswordArgs args = new PasswordArgs();
             args.PasswordAccepted = false;
 
-            if(Passwordinput.Password.Length == 6)
+            if(Passwordinput.Password.Length >= 6)
             {
                 args.PasswordAccepted = true;
             }

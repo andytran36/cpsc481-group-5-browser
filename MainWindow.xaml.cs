@@ -58,17 +58,17 @@ namespace cpsc481_group_5_browser
             UserProfilePasswordPopup = new UserProfilePassword();
 
             // Browser Handlers
-            BrowserScreen.Handler_BrowserSettingsClicked += new EventHandler(Handle_SettingsClicked);
-
+            //BrowserScreen.Handler_LockedScreenClicked += new EventHandler(Handle_LockScreenClicked);
+            BrowserScreen.Handler_ToSettings += new EventHandler(Handle_ToSettings);
 
             // LockScreen Handlers
             
 
             // User Select Handlers
             UserSelectScreen.Handler_UserProfileClicked += new EventHandler(Handle_UserProfileClicked);
-            UserSelectScreen.Handler_UserSelectSettingsClicked += new EventHandler(Handle_SettingsClicked);
             UserSelectScreen.Handler_CreateNewUserClicked += new EventHandler(Handle_CreateNewUserClicked);
             UserSelectScreen.Handler_ToSettings += new EventHandler(Handle_ToSettings);
+            UserSelectScreen.Handler_ToHome += new EventHandler(Handle_ToHome);
 
             // Create New User Handlers
             CreateNewUserScreen.Handler_CreateNewUserHomeClicked += new EventHandler(Handle_HomeClicked);
@@ -80,6 +80,10 @@ namespace cpsc481_group_5_browser
 
             // Parental Settings Screen Handlers
             ParentalSettingsScreen.Handler_BobChangeClicked += new EventHandler(Handle_BobChangeSettingsClicked);
+
+            //Home Screen Handlers
+            HomeScreen.Handler_ToSettings += new EventHandler(Handle_ToSettings);
+            HomeScreen.Handler_ToBrowser += new EventHandler(Handle_ToBrowser);
 
             // Set Screen to User Select on System Startup
             this.contentControl.Content = UserSelectScreen;
@@ -119,7 +123,7 @@ namespace cpsc481_group_5_browser
             UserSelectScreen.UpdateUserNames(UserNames);
             this.contentControl.Content = UserSelectScreen;
         }
-        
+
         private void Handle_BobChangeSettingsClicked(object sender, EventArgs e)
         {
             this.contentControl.Content = ChangeUserSettingsScreen;
@@ -129,6 +133,16 @@ namespace cpsc481_group_5_browser
         {
             //Goes to settings after password confirmed
             this.contentControl.Content = ParentalSettingsScreen;
+        }
+
+        private void Handle_ToHome(object sender, EventArgs e)
+        {
+            this.contentControl.Content = HomeScreen;
+        }
+
+        private void Handle_ToBrowser(object sender, EventArgs e)
+        {
+            this.contentControl.Content = BrowserScreen;
         }
     }
 }

@@ -84,8 +84,10 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Label Content="Password settings" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="22" Grid.Column="1" FontWeight="Bold"/>
-                    <Image x:Name="passwordarrow" Grid.Column="2" HorizontalAlignment="Left" Height="39" VerticalAlignment="Center" Width="43" Source="/assets/forwardarrow.png"/>
-
+                    <Image x:Name="PasswordArrow" Grid.Column="2" HorizontalAlignment="Left" Height="39" VerticalAlignment="Center" Width="43" Source="/assets/forwardarrow.png" MouseLeftButtonUp="PasswordSettings_Clicked"/>
+                    <Popup x:Name="PwSettingsPopup" Placement="Right" AllowsTransparency="True" PlacementTarget="{Binding ElementName=PasswordArrow, Mode=OneWay}">
+                        <local:PasswordInSettings x:Name="PwSettingsPopupContent" />
+                    </Popup>
                 </Grid>
 
                 <Grid Grid.Row="2">
@@ -96,7 +98,10 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Label Content="Contact settings" HorizontalAlignment="Left" Margin="0,1,0,0" VerticalAlignment="Top" FontSize="22" Grid.Column="1" Width="227" FontWeight="Bold"/>
-                    <Image x:Name="contactarrow" Grid.Column="2" HorizontalAlignment="Left" Height="39" VerticalAlignment="Center" Width="43" Source="/assets/forwardarrow.png"/>
+                    <Image x:Name="ContactArrow" Grid.Column="2" HorizontalAlignment="Left" Height="39" VerticalAlignment="Center" Width="43" Source="/assets/forwardarrow.png" MouseLeftButtonUp="ContactSettings_Clicked"/>
+                    <Popup x:Name="ContactSettingsPopup" Placement="Right" AllowsTransparency="True" PlacementTarget="{Binding ElementName=ContactArrow, Mode=OneWay}">
+                        <local:ContactSettings x:Name="ContactSettingsPoupContent" />
+                    </Popup>
                 </Grid>
                 <Label Content="Settings" HorizontalAlignment="Left" Margin="92,0,0,0" VerticalAlignment="Center" FontSize="30"/>
             </Grid>

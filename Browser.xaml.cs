@@ -26,10 +26,13 @@ namespace cpsc481_group5_browser
 
 
         // Event Listeners
-        public event EventHandler Handler_BrowserSettingsClicked;
         public event EventHandler Handler_LockedScreenClicked;
+        public event EventHandler Handler_ToSettings;
+        PasswordPrompt PasswordPopup;
         public event EventHandler Handler_Lock;
         LockScreen LockPopup;
+        public event EventHandler Handler_Unlock;
+        UnlockScreen UnlockPopup;
 
         public Browser()
         {
@@ -95,7 +98,39 @@ namespace cpsc481_group5_browser
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
-            Handler_BrowserSettingsClicked?.Invoke(this, new EventArgs());
+            PasswordPrompt.IsOpen = true;
+            PasswordPopup = PasswordPromptContent;
+            PasswordPopup.Handler_ContinueClicked += new EventHandler<PasswordPrompt.PasswordArgs>(PasswordPromptContinue_Clicked);
+            PasswordPopup.Handler_CancelClicked += new EventHandler(PasswordPromptCancel_Clicked);
+        }
+
+        private void Unlock_Click(object sender, RoutedEventArgs e)
+        {
+            Unlockpopup.IsOpen = true;
+            UnlockPopup = Unlockpopupcontent;
+            UnlockPopup.Handler_CancelClicked += new EventHandler(UnlockCancel_Clicked);
+            UnlockPopup.Handler_UnlockClicked += new EventHandler<UnlockScreen.PasswordArgs>(UnlockContinue_Clicked);
+        }
+
+        private void PasswordPromptCancel_Clicked(object sender, EventArgs e)
+        {
+            PasswordPrompt.Visibility = Visibility.Collapsed;
+            PasswordPrompt.IsOpen = false;
+        }
+
+        private void PasswordPromptContinue_Clicked(object sender, PasswordPrompt.PasswordArgs e)
+        {
+            if (e.PasswordAccepted)
+            {
+                PasswordPrompt.Visibility = Visibility.Collapsed;
+                PasswordPrompt.IsOpen = false;
+                Handler_ToSettings?.Invoke(this, new EventArgs());
+            }
+            else
+            {
+                PasswordPopup.SetErrorMessage();
+                Debug.WriteLine("Profile password error");
+            }
         }
 
         private void LockCancel_Clicked(object sender, EventArgs e)
@@ -112,10 +147,36 @@ namespace cpsc481_group5_browser
             {
                 Lockpopup.Visibility = Visibility.Collapsed;
                 Lockpopup.IsOpen = false;
+                NormalBar.Visibility = Visibility.Collapsed;
+                LockedBar.Visibility = Visibility.Visible;
             }
             else
             {
                 Debug.WriteLine("Lock error");
+            }
+
+        }
+
+        private void UnlockCancel_Clicked(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Unlock cancel clicked");
+            Unlockpopup.Visibility = Visibility.Collapsed;
+            Unlockpopup.IsOpen = false;
+        }
+
+        private void UnlockContinue_Clicked(object sender, UnlockScreen.PasswordArgs e)
+        {
+            Debug.WriteLine("Unlock continue clicked");
+            if (e.PasswordAccepted)
+            {
+                Unlockpopup.Visibility = Visibility.Collapsed;
+                Unlockpopup.IsOpen = false;
+                NormalBar.Visibility = Visibility.Visible;
+                LockedBar.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                Debug.WriteLine("Unlock error");
             }
 
         }
