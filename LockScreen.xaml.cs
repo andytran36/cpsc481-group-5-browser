@@ -30,6 +30,7 @@ namespace cpsc481_group5_browser
 
         private void Cancelbtn_Click(object sender, RoutedEventArgs e)
         {
+            HideErrorMsg();
             Handler_CancelClicked?.Invoke(this, e);
         }
 
@@ -42,8 +43,19 @@ namespace cpsc481_group5_browser
             {
                 args.PasswordAccepted = true;
             }
+            HideErrorMsg();
             Passwordinput.Clear();
             Handler_LockClicked?.Invoke(this, args);
+        }
+
+        public void SetErrorMsg()
+        {
+            ErrorMsg.Visibility = Visibility.Visible;
+        }
+
+        public void HideErrorMsg()
+        {
+            ErrorMsg.Visibility = Visibility.Hidden;
         }
 
         public class PasswordArgs: EventArgs

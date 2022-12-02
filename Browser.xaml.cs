@@ -152,6 +152,7 @@ namespace cpsc481_group5_browser
             }
             else
             {
+                LockPopup.SetErrorMsg();
                 Debug.WriteLine("Lock error");
             }
 
@@ -176,6 +177,7 @@ namespace cpsc481_group5_browser
             }
             else
             {
+                UnlockPopup.SetErrorMsg();
                 Debug.WriteLine("Unlock error");
             }
 
