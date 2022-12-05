@@ -114,5 +114,42 @@ namespace cpsc481_group5_browser
 
             public bool PhonePreferred { get; set; }
         }
+
+        private void Typing(object sender, KeyEventArgs e)
+        {
+            /*
+            if (PhoneInput.Text.Length == 1)
+            {
+                // put space after
+                string newstr = PhoneInput.Text + " ";
+                PhoneInput.Text = newstr;
+                PhoneInput.CaretIndex = 2;
+                //phone length 2 now
+            }
+            */
+            if (PhoneInput.Text.Length == 1)
+            {
+                string newstr = "(" + PhoneInput.Text;
+                PhoneInput.Text = newstr;
+                //length is 2 now
+                PhoneInput.CaretIndex = 2;
+            }
+           
+            if (PhoneInput.Text.Length == 4)
+            {
+                string newstr = PhoneInput.Text + ") ";
+                PhoneInput.Text = newstr;
+                //length is 6 now
+                PhoneInput.CaretIndex = 6;
+            }
+
+            if (PhoneInput.Text.Length == 9)
+            {
+                string newstr = PhoneInput.Text + "-";
+                PhoneInput.Text = newstr;
+                //length is 10 now
+                PhoneInput.CaretIndex = 11;
+            }
+        }
     }
 }
