@@ -22,6 +22,7 @@ namespace cpsc481_group5_browser
     public partial class HomePage : UserControl
     {
         public event EventHandler Handler_ToSettings;
+        public event EventHandler Handler_ToUserSelect;
         PasswordPrompt PasswordPopup;
 
         public HomePage()
@@ -88,6 +89,11 @@ namespace cpsc481_group5_browser
                 PasswordPopup.SetErrorMessage();
                 Debug.WriteLine("Profile password error");
             }
+        }
+
+        private void ChangeUser_Click(object sender, RoutedEventArgs e)
+        {
+            Handler_ToUserSelect?.Invoke(this, new EventArgs());
         }
     }
 }

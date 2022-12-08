@@ -28,6 +28,7 @@ namespace cpsc481_group5_browser
         // Event Listeners
         public event EventHandler Handler_LockedScreenClicked;
         public event EventHandler Handler_ToSettings;
+        public event EventHandler Handler_ToUserSelect;
         PasswordPrompt PasswordPopup;
 
         public Browser()
@@ -116,6 +117,11 @@ namespace cpsc481_group5_browser
                 PasswordPopup.SetErrorMessage();
                 Debug.WriteLine("Profile password error");
             }
+        }
+
+        private void ChangeUser_Click(object sender, RoutedEventArgs e)
+        {
+            Handler_ToUserSelect?.Invoke(this, new EventArgs());
         }
     }
 }
