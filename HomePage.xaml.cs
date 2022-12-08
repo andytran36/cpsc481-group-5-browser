@@ -56,11 +56,6 @@ namespace cpsc481_group5_browser
         }
         // End Routing
 
-        private void Lock_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
             PasswordPrompt.IsOpen = true;
