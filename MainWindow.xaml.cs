@@ -60,7 +60,8 @@ namespace cpsc481_group_5_browser
             // Browser Handlers
             BrowserScreen.Handler_LockedScreenClicked += new EventHandler(Handle_LockScreenClicked);
             BrowserScreen.Handler_ToSettings += new EventHandler(Handle_ToSettings);
-            BrowserScreen.Handler_ToHome += new EventHandler(Handle_ToHome); 
+            BrowserScreen.Handler_ToHome += new EventHandler(Handle_ToHome);
+            BrowserScreen.Handler_ToUserSelect += new EventHandler(Handle_ToUserSelect);
 
             // LockScreen Handlers
             LockScreenPopup.Handler_LockClicked += new EventHandler(Handle_LockScreenClicked);
@@ -86,6 +87,7 @@ namespace cpsc481_group_5_browser
             //Home Screen Handlers
             HomeScreen.Handler_ToSettings += new EventHandler(Handle_ToSettings);
             HomeScreen.Handler_ToHome += new EventHandler(Handle_ToHome);
+            HomeScreen.Handler_ToUserSelect += new EventHandler(Handle_ToUserSelect);
 
             // Set Screen to User Select on System Startup
             this.contentControl.Content = UserSelectScreen;
@@ -147,6 +149,11 @@ namespace cpsc481_group_5_browser
         private void Handle_ToHome(object sender, EventArgs e)
         {
             this.contentControl.Content = HomeScreen;
+        }
+
+        private void Handle_ToUserSelect(object sender, EventArgs e)
+        {
+            this.contentControl.Content = UserSelectScreen;
         }
     }
 }
