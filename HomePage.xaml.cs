@@ -90,16 +90,12 @@ namespace cpsc481_group5_browser
 
         private void ChangeUser_Click(object sender, RoutedEventArgs e)
         {
-            PasswordPrompt.IsOpen = true;
-            PasswordPopup = PasswordPromptContent;
-            PasswordPopup.Handler_ContinueClicked += new EventHandler<PasswordPrompt.PasswordArgs>(PasswordPromptContinue_Clicked);
-            PasswordPopup.Handler_CancelClicked += new EventHandler(PasswordPromptCancel_Clicked);
+            Handler_ToUserSelect?.Invoke(this, new EventArgs());
         }
 
         private void Browse(object sender, MouseButtonEventArgs e)
         {
             Handler_ToBrowser?.Invoke(this, new EventArgs());
-            Handler_ToUserSelect?.Invoke(this, new EventArgs());
         }
     }
 }
