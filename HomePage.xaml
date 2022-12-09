@@ -47,12 +47,8 @@
 
             <Image Grid.Column="4" Margin="1,5,5,5" Width="25" Source="/assets/bookmark.png" />
 
-            <Button Grid.Column="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" BorderThickness="0">
+            <Button Grid.Column="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" BorderThickness="0" Click="ChangeUser_Click">
                 <Image Source="/assets/user.png" Width="30"/>
-            </Button>
-
-            <Button x:Name="Lock" Grid.Column="6" Click="Lock_Click" Background="{x:Null}" BorderThickness="0">
-                <Image Height="25" Width="35" Source="/assets/lock.png"/>
             </Button>
 
             <Button x:Name="Settings" Grid.Column="7" Click="Settings_Click" Background="{x:Null}" BorderThickness="0">

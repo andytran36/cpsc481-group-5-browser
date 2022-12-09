@@ -23,6 +23,8 @@ namespace cpsc481_group5_browser
     {
         public event EventHandler Handler_ToSettings;
         public event EventHandler Handler_ToBrowser;
+        public event EventHandler Handler_ToHome;
+        public event EventHandler Handler_ToUserSelect;
         PasswordPrompt PasswordPopup;
 
         public HomePage()
@@ -42,7 +44,7 @@ namespace cpsc481_group5_browser
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {
-            
+            Handler_ToHome?.Invoke(this, new EventArgs());
         }
 
         private void SearchBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -57,12 +59,36 @@ namespace cpsc481_group5_browser
         }
         // End Routing
 
-        private void Lock_Click(object sender, RoutedEventArgs e)
+        private void Settings_Click(object sender, RoutedEventArgs e)
         {
-
+            PasswordPrompt.IsOpen = true;
+            PasswordPopup = PasswordPromptContent;
+            PasswordPopup.Handler_ContinueClicked += new EventHandler<PasswordPrompt.PasswordArgs>(PasswordPromptContinue_Clicked);
+            PasswordPopup.Handler_CancelClicked += new EventHandler(PasswordPromptCancel_Clicked);
         }
 
-        private void Settings_Click(object sender, RoutedEventArgs e)
+        private void PasswordPromptCancel_Clicked(object sender, EventArgs e)
+        {
+            PasswordPrompt.Visibility = Visibility.Collapsed;
+            PasswordPrompt.IsOpen = false;
+        }
+
+        private void PasswordPromptContinue_Clicked(object sender, PasswordPrompt.PasswordArgs e)
+        {
+            if (e.PasswordAccepted)
+            {
+                PasswordPrompt.Visibility = Visibility.Collapsed;
+                PasswordPrompt.IsOpen = false;
+                Handler_ToSettings?.Invoke(this, new EventArgs());
+            }
+            else
+            {
+                PasswordPopup.SetErrorMessage();
+                Debug.WriteLine("Profile password error");
+            }
+        }
+
+        private void ChangeUser_Click(object sender, RoutedEventArgs e)
         {
             PasswordPrompt.IsOpen = true;
             PasswordPopup = PasswordPromptContent;
@@ -94,6 +120,7 @@ namespace cpsc481_group5_browser
         private void Browse(object sender, MouseButtonEventArgs e)
         {
             Handler_ToBrowser?.Invoke(this, new EventArgs());
+            Handler_ToUserSelect?.Invoke(this, new EventArgs());
         }
     }
 }

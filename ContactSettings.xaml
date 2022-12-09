@@ -76,6 +76,18 @@
                 </Border>
                 <Border HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Width="132" Height="30" CornerRadius="10,10,10,10" Background="White">
                     <Button x:Name="CancelBtn" Content="Cancel" Background="{x:Null}" BorderBrush="{x:Null}" Click="CancelBtn_Click"/>
+                    <Button x:Name="SaveBtn" Content="Save" Foreground="White" BorderBrush="{x:Null}" Click="SaveBtn_Click">
+                        <Button.Background>
+                            <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                        </Button.Background>
+                    </Button>
+                </Border>
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Width="132" Height="30" CornerRadius="10,10,10,10" Background="White">
+                    <Button x:Name="CancelBtn" Content="Cancel" BorderBrush="{x:Null}" Click="CancelBtn_Click">
+                        <Button.Background>
+                            <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                        </Button.Background>
+                    </Button>
                 </Border>
             </Grid>
             <Label Content="Email" HorizontalAlignment="Left" Margin="10,32,0,0" Grid.Row="1" VerticalAlignment="Top"/>

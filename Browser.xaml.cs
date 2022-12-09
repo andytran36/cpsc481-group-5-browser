@@ -33,6 +33,9 @@ namespace cpsc481_group5_browser
         LockScreen LockPopup;
         public event EventHandler Handler_Unlock;
         UnlockScreen UnlockPopup;
+        public event EventHandler Handler_ToHome;
+        public event EventHandler Handler_ToUserSelect;
+        PasswordPrompt PasswordPopup;
 
         public Browser()
         {
@@ -67,9 +70,10 @@ namespace cpsc481_group5_browser
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {
-            SearchBox.Text = "https://www.google.com".Trim();
-            History.Add("https://www.google.com".Trim());
-            WebBrowser.Navigate(SearchBox.Text);
+            //SearchBox.Text = "https://www.google.com".Trim();
+            //History.Add("https://www.google.com".Trim());
+            //WebBrowser.Navigate(SearchBox.Text);
+            Handler_ToHome?.Invoke(this, new EventArgs());
         }
 
         private void SearchBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -181,6 +185,9 @@ namespace cpsc481_group5_browser
                 Debug.WriteLine("Unlock error");
             }
 
+        private void ChangeUser_Click(object sender, RoutedEventArgs e)
+        {
+            Handler_ToUserSelect?.Invoke(this, new EventArgs());
         }
     }
 }

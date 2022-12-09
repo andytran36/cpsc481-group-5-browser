@@ -87,6 +87,19 @@
                 </Border>
                 <Border HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Width="132" Height="30" CornerRadius="10,10,10,10" Background="White">
                     <Button x:Name="Cancelbtn" Content="Cancel" Background="{x:Null}" BorderBrush="{x:Null}" Click="Cancelbtn_Click"/>
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" Width="132" Height="30" Background="#FF4681F4" CornerRadius="10,10,10,10">
+                    <Button x:Name="Lockbtn" Content="Lock" Foreground="White" BorderBrush="{x:Null}" Click="Lockbtn_Click">
+                        <Button.Background>
+                            <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                        </Button.Background>
+                    </Button>
+                </Border>
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Width="132" Height="30" CornerRadius="10,10,10,10" Background="White">
+                    <Button x:Name="Cancelbtn" Content="Cancel" BorderBrush="{x:Null}" Click="Cancelbtn_Click">
+                        <Button.Background>
+                            <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                        </Button.Background>
+                    </Button>
                 </Border>
             </Grid>
         </Grid>
