@@ -28,6 +28,7 @@ namespace cpsc481_group5_browser
         // Event Listeners
         public event EventHandler Handler_LockedScreenClicked;
         public event EventHandler Handler_ToSettings;
+        public event EventHandler Handler_ToHome;
         public event EventHandler Handler_ToUserSelect;
         PasswordPrompt PasswordPopup;
 
@@ -64,9 +65,10 @@ namespace cpsc481_group5_browser
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {
-            SearchBox.Text = "https://www.google.com".Trim();
-            History.Add("https://www.google.com".Trim());
-            WebBrowser.Navigate(SearchBox.Text);
+            //SearchBox.Text = "https://www.google.com".Trim();
+            //History.Add("https://www.google.com".Trim());
+            //WebBrowser.Navigate(SearchBox.Text);
+            Handler_ToHome?.Invoke(this, new EventArgs());
         }
 
         private void SearchBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
