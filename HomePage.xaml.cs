@@ -22,6 +22,7 @@ namespace cpsc481_group5_browser
     public partial class HomePage : UserControl
     {
         public event EventHandler Handler_ToSettings;
+        public event EventHandler Handler_ToBrowser;
         public event EventHandler Handler_ToHome;
         public event EventHandler Handler_ToUserSelect;
         PasswordPrompt PasswordPopup;
@@ -89,6 +90,36 @@ namespace cpsc481_group5_browser
 
         private void ChangeUser_Click(object sender, RoutedEventArgs e)
         {
+            PasswordPrompt.IsOpen = true;
+            PasswordPopup = PasswordPromptContent;
+            PasswordPopup.Handler_ContinueClicked += new EventHandler<PasswordPrompt.PasswordArgs>(PasswordPromptContinue_Clicked);
+            PasswordPopup.Handler_CancelClicked += new EventHandler(PasswordPromptCancel_Clicked);
+        }
+
+        private void PasswordPromptCancel_Clicked(object sender, EventArgs e)
+        {
+            PasswordPrompt.Visibility = Visibility.Collapsed;
+            PasswordPrompt.IsOpen = false;
+        }
+
+        private void PasswordPromptContinue_Clicked(object sender, PasswordPrompt.PasswordArgs e)
+        {
+            if (e.PasswordAccepted)
+            {
+                PasswordPrompt.Visibility = Visibility.Collapsed;
+                PasswordPrompt.IsOpen = false;
+                Handler_ToSettings?.Invoke(this, new EventArgs());
+            }
+            else
+            {
+                PasswordPopup.SetErrorMessage();
+                Debug.WriteLine("Profile password error");
+            }
+        }
+
+        private void Browse(object sender, MouseButtonEventArgs e)
+        {
+            Handler_ToBrowser?.Invoke(this, new EventArgs());
             Handler_ToUserSelect?.Invoke(this, new EventArgs());
         }
     }

@@ -12,7 +12,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" VerticalAlignment="Center" Background="#F2DEBA">
+        <Grid x:Name="NormalBar" Grid.Row="0" VerticalAlignment="Center" Background="#F2DEBA">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50px"></ColumnDefinition>
                 <ColumnDefinition Width="50px"></ColumnDefinition>
@@ -57,11 +57,37 @@
 
         </Grid>
 
+        <Grid x:Name="LockedBar" Grid.Row="0" Background="#F2DEBA" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50px"></ColumnDefinition>
+                <ColumnDefinition Width="50px"></ColumnDefinition>
+                <ColumnDefinition Width="50px"></ColumnDefinition>
+                <ColumnDefinition Width="12*"></ColumnDefinition>
+                <ColumnDefinition Width="45px"></ColumnDefinition>
+                <ColumnDefinition Width="45"></ColumnDefinition>
+                <ColumnDefinition Width="45px"></ColumnDefinition>
+                <ColumnDefinition Width="45px"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="Unlock" Grid.Column="7" Click="Unlock_Click" Background="{x:Null}" BorderThickness="0">
+                <Image Height="25"  Width="35" Source="/assets/unlock.png"/>
+            </Button>
+
+        </Grid>
+
         <Border BorderThickness="1" BorderBrush="Black"></Border>
 
         <WebBrowser Grid.Row="1" x:Name="WebBrowser" HorizontalAlignment="Center" LoadCompleted="WebBrowser_LoadCompleted"/>
         <Popup x:Name="PasswordPrompt" Placement="Center" AllowsTransparency="True">
             <local:PasswordPrompt x:Name="PasswordPromptContent" />
+        </Popup>
+
+        <Popup x:Name="Lockpopup" Placement="Center" AllowsTransparency="True">
+            <local:LockScreen x:Name="Lockpopupcontent" />
+        </Popup>
+
+        <Popup x:Name="Unlockpopup" Placement="Center" AllowsTransparency="True">
+            <local:UnlockScreen x:Name="Unlockpopupcontent" />
         </Popup>
     </Grid>
 </UserControl>

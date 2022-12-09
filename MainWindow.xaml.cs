@@ -58,13 +58,15 @@ namespace cpsc481_group_5_browser
             UserProfilePasswordPopup = new UserProfilePassword();
 
             // Browser Handlers
+            //BrowserScreen.Handler_LockedScreenClicked += new EventHandler(Handle_LockScreenClicked);
+            BrowserScreen.Handler_ToSettings += new EventHandler(Handle_ToSettings);
             BrowserScreen.Handler_LockedScreenClicked += new EventHandler(Handle_LockScreenClicked);
             BrowserScreen.Handler_ToSettings += new EventHandler(Handle_ToSettings);
             BrowserScreen.Handler_ToHome += new EventHandler(Handle_ToHome);
             BrowserScreen.Handler_ToUserSelect += new EventHandler(Handle_ToUserSelect);
 
             // LockScreen Handlers
-            LockScreenPopup.Handler_LockClicked += new EventHandler(Handle_LockScreenClicked);
+            
 
             // User Select Handlers
             UserSelectScreen.Handler_UserProfileClicked += new EventHandler(Handle_UserProfileClicked);
@@ -88,6 +90,10 @@ namespace cpsc481_group_5_browser
             HomeScreen.Handler_ToSettings += new EventHandler(Handle_ToSettings);
             HomeScreen.Handler_ToHome += new EventHandler(Handle_ToHome);
             HomeScreen.Handler_ToUserSelect += new EventHandler(Handle_ToUserSelect);
+
+            //Home Screen Handlers
+            HomeScreen.Handler_ToSettings += new EventHandler(Handle_ToSettings);
+            HomeScreen.Handler_ToBrowser += new EventHandler(Handle_ToBrowser);
 
             // Set Screen to User Select on System Startup
             this.contentControl.Content = UserSelectScreen;
@@ -128,13 +134,6 @@ namespace cpsc481_group_5_browser
             this.contentControl.Content = UserSelectScreen;
         }
 
-        private void Handle_LockScreenClicked(object sender, EventArgs e)
-        {
-            Debug.WriteLine("Lock Screen clicked");
-            //TODO: deal with popup
-            this.contentControl.Content = LockScreenPopup;
-        }
-        
         private void Handle_BobChangeSettingsClicked(object sender, EventArgs e)
         {
             this.contentControl.Content = ChangeUserSettingsScreen;
@@ -151,6 +150,10 @@ namespace cpsc481_group_5_browser
             this.contentControl.Content = HomeScreen;
         }
 
+        private void Handle_ToBrowser(object sender, EventArgs e)
+        {
+            this.contentControl.Content = BrowserScreen;
+            
         private void Handle_ToUserSelect(object sender, EventArgs e)
         {
             this.contentControl.Content = UserSelectScreen;
