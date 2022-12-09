@@ -51,10 +51,6 @@
                 <Image Source="/assets/user.png" Width="30"/>
             </Button>
 
-            <Button x:Name="Lock" Grid.Column="6" Click="Lock_Click" Background="{x:Null}" BorderThickness="0">
-                <Image Height="25" Width="35" Source="/assets/lock.png"/>
-            </Button>
-
             <Button x:Name="Settings" Grid.Column="7" Click="Settings_Click" Background="{x:Null}" BorderThickness="0">
                 <Image Height="25"  Width="35" Source="/assets/setting.png"/>
             </Button>
