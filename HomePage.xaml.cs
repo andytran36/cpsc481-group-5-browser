@@ -96,27 +96,6 @@ namespace cpsc481_group5_browser
             PasswordPopup.Handler_CancelClicked += new EventHandler(PasswordPromptCancel_Clicked);
         }
 
-        private void PasswordPromptCancel_Clicked(object sender, EventArgs e)
-        {
-            PasswordPrompt.Visibility = Visibility.Collapsed;
-            PasswordPrompt.IsOpen = false;
-        }
-
-        private void PasswordPromptContinue_Clicked(object sender, PasswordPrompt.PasswordArgs e)
-        {
-            if (e.PasswordAccepted)
-            {
-                PasswordPrompt.Visibility = Visibility.Collapsed;
-                PasswordPrompt.IsOpen = false;
-                Handler_ToSettings?.Invoke(this, new EventArgs());
-            }
-            else
-            {
-                PasswordPopup.SetErrorMessage();
-                Debug.WriteLine("Profile password error");
-            }
-        }
-
         private void Browse(object sender, MouseButtonEventArgs e)
         {
             Handler_ToBrowser?.Invoke(this, new EventArgs());

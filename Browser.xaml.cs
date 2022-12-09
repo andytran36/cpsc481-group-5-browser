@@ -35,7 +35,6 @@ namespace cpsc481_group5_browser
         UnlockScreen UnlockPopup;
         public event EventHandler Handler_ToHome;
         public event EventHandler Handler_ToUserSelect;
-        PasswordPrompt PasswordPopup;
 
         public Browser()
         {
@@ -184,8 +183,9 @@ namespace cpsc481_group5_browser
                 UnlockPopup.SetErrorMsg();
                 Debug.WriteLine("Unlock error");
             }
+        }
 
-        private void ChangeUser_Click(object sender, RoutedEventArgs e)
+        void ChangeUser_Click(object sender, RoutedEventArgs e)
         {
             Handler_ToUserSelect?.Invoke(this, new EventArgs());
         }

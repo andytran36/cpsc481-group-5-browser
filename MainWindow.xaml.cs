@@ -60,7 +60,6 @@ namespace cpsc481_group_5_browser
             // Browser Handlers
             //BrowserScreen.Handler_LockedScreenClicked += new EventHandler(Handle_LockScreenClicked);
             BrowserScreen.Handler_ToSettings += new EventHandler(Handle_ToSettings);
-            BrowserScreen.Handler_LockedScreenClicked += new EventHandler(Handle_LockScreenClicked);
             BrowserScreen.Handler_ToSettings += new EventHandler(Handle_ToSettings);
             BrowserScreen.Handler_ToHome += new EventHandler(Handle_ToHome);
             BrowserScreen.Handler_ToUserSelect += new EventHandler(Handle_ToUserSelect);
@@ -153,8 +152,9 @@ namespace cpsc481_group_5_browser
         private void Handle_ToBrowser(object sender, EventArgs e)
         {
             this.contentControl.Content = BrowserScreen;
-            
-        private void Handle_ToUserSelect(object sender, EventArgs e)
+        }
+        
+        void Handle_ToUserSelect(object sender, EventArgs e)
         {
             this.contentControl.Content = UserSelectScreen;
         }
