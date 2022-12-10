@@ -29,7 +29,9 @@
                 <RowDefinition Height="80px"></RowDefinition>
                 <RowDefinition Height="1*"></RowDefinition>
                 <RowDefinition Height="140px"></RowDefinition>
-                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
             </Grid.RowDefinitions>
 
             <Label Grid.Row="1" FontSize="40px" HorizontalAlignment="Center" FontWeight="Bold">Who's Browsing? :)</Label>
@@ -47,6 +49,10 @@
         <Popup x:Name="PasswordPrompt" Placement="Center" AllowsTransparency="True">
             <local:PasswordPrompt x:Name="PasswordPromptContent" />
         </Popup>
-        
+
+        <Popup x:Name="CreateNewUserPopup" Placement="Center" AllowsTransparency="True">
+            <local:CreateNewUser x:Name="CreateNewUserContent" />
+        </Popup>
+
     </Grid>
 </UserControl>

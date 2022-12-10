@@ -16,7 +16,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Diagnostics;
 using cpsc481_group5_browser;
-using static cpsc481_group5_browser.CreateNewUser;
 
 namespace cpsc481_group_5_browser
 {
@@ -25,7 +24,6 @@ namespace cpsc481_group_5_browser
 
         Browser BrowserScreen;
         UserSelect UserSelectScreen;
-        CreateNewUser CreateNewUserScreen;
         TimeLimit TimeLimitPopup;
         HomePage HomeScreen;
         LockScreen LockScreenPopup;
@@ -48,7 +46,6 @@ namespace cpsc481_group_5_browser
             // Initialize all the screens
             BrowserScreen = new Browser();
             UserSelectScreen = new UserSelect(UserNames);
-            CreateNewUserScreen = new CreateNewUser();
             TimeLimitPopup = new TimeLimit();
             HomeScreen = new HomePage();
             LockScreenPopup = new LockScreen();
@@ -64,28 +61,17 @@ namespace cpsc481_group_5_browser
             BrowserScreen.Handler_ToHome += new EventHandler(Handle_ToHome);
             BrowserScreen.Handler_ToUserSelect += new EventHandler(Handle_ToUserSelect);
 
-            // LockScreen Handlers
-            
-
             // User Select Handlers
             UserSelectScreen.Handler_UserProfileClicked += new EventHandler(Handle_UserProfileClicked);
-            UserSelectScreen.Handler_CreateNewUserClicked += new EventHandler(Handle_CreateNewUserClicked);
             UserSelectScreen.Handler_ToSettings += new EventHandler(Handle_ToSettings);
             UserSelectScreen.Handler_ToHome += new EventHandler(Handle_ToHome);
-
-            // Create New User Handlers
-            CreateNewUserScreen.Handler_CreateNewUserHomeClicked += new EventHandler(Handle_HomeClicked);
-            CreateNewUserScreen.Handler_CreateNewUserSettingsClicked += new EventHandler(Handle_SettingsClicked);
-            CreateNewUserScreen.Handler_CreateNewUserCreateClicked += new EventHandler<CreateNewUserArgs>(Handle_CreateNewUserCreateClicked);
-
-            // Password Screen Handlers
-            
+            UserSelectScreen.Handler_NewUserProfile += new EventHandler<CreateNewUser.CreateNewUserArgs>(Handle_CreateNewUserProfile);
 
             // Parental Settings Screen Handlers
             ParentalSettingsScreen.Handler_BobChangeClicked += new EventHandler(Handle_BobChangeSettingsClicked);
             ParentalSettingsScreen.Handler_ToHome += new EventHandler(Handle_ToHome);
 
-            //Home Screen Handlers
+            // Home Screen Handlers
             HomeScreen.Handler_ToSettings += new EventHandler(Handle_ToSettings);
             HomeScreen.Handler_ToHome += new EventHandler(Handle_ToHome);
             HomeScreen.Handler_ToUserSelect += new EventHandler(Handle_ToUserSelect);
@@ -117,15 +103,7 @@ namespace cpsc481_group_5_browser
             Debug.WriteLine("User Profile clicked");
         }
 
-        private void Handle_CreateNewUserClicked(object sender, EventArgs e)
-        {
-            Debug.WriteLine("Create New User Screen clicked");
-
-            // Check for password first and then navigate here
-            this.contentControl.Content = CreateNewUserScreen;
-        }
-
-        private void Handle_CreateNewUserCreateClicked(object sender, CreateNewUserArgs e)
+        private void Handle_CreateNewUserProfile(object sender, CreateNewUser.CreateNewUserArgs e)
         {
             Debug.WriteLine("Create New User Create Button clicked");
             UserNames.Add(e.Name);
