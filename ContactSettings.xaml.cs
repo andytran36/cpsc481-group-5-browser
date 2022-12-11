@@ -32,6 +32,24 @@ namespace cpsc481_group5_browser
             PhoneInput.Text = "(123)-456-7890";
         }
 
+        public bool IsDefaultEmail()
+        {
+            if (EmailInput.Text == "user@email.com")
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool IsDefaultPhone()
+        {
+            if (PhoneInput.Text == "(123)-456-7890")
+            {
+                return true;
+            }
+            return false;
+        }
+
         public void SetOpen()
         {
             EmailInput.Text = "user@email.com";
@@ -40,10 +58,15 @@ namespace cpsc481_group5_browser
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
+            EmailPreferredBox.IsChecked = false;
+            PhonePreferredBox.IsChecked = false;
             EmailInput.Clear();
             PhoneInput.Clear();
             FixEmail();
             FixPhone();
+            HideEmailMessage();
+            HidePhoneMessage();
+            HideGeneralMessage();
             Handler_CancelClicked?.Invoke(this, e);
         }
 
@@ -54,11 +77,13 @@ namespace cpsc481_group5_browser
             contactinfo.PhoneNumber = PhoneInput.Text.Trim();
             contactinfo.EmailPreferred = (bool)EmailPreferredBox.IsChecked ? true : false;
             contactinfo.PhonePreferred = (bool)PhonePreferredBox.IsChecked ? true : false;
-            EmailInput.Clear();
-            PhoneInput.Clear();
+            Handler_SaveClicked?.Invoke(this, contactinfo);
+            //EmailInput.Clear();
+            //PhoneInput.Clear();
+            //EmailPreferredBox.IsChecked = false;
+            //PhonePreferredBox.IsChecked = false;
             FixEmail();
             FixPhone();
-            Handler_SaveClicked?.Invoke(this, contactinfo);
         }
 
         private void EmailInput_Clicked(object sender, RoutedEventArgs e)
@@ -103,6 +128,63 @@ namespace cpsc481_group5_browser
             {
                 EmailPreferredBox.IsChecked = false;
             }
+        }
+
+        public bool EmailValid()
+        {
+            if (EmailPreferredBox.IsChecked == true && (EmailInput.Text.Trim().Length == 0 || IsDefaultEmail()))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool PhoneValid()
+        {
+            if (PhonePreferredBox.IsChecked == true && (PhoneInput.Text.Trim().Length == 0 || IsDefaultPhone()))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool NothingToSave()
+        {
+            if (EmailPreferredBox.IsChecked == false && PhonePreferredBox.IsChecked == false)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void HideEmailMessage()
+        {
+            EmailMsg.Visibility = Visibility.Hidden;
+        }
+
+        public void SetEmailMessage()
+        {
+            EmailMsg.Visibility = Visibility.Visible;
+        }
+
+        public void HidePhoneMessage()
+        {
+            PhoneMsg.Visibility = Visibility.Hidden;
+        }
+
+        public void SetPhoneMessage()
+        {
+            PhoneMsg.Visibility = Visibility.Visible;
+        }
+
+        public void HideGeneralMessage()
+        {
+            GeneralMsg.Visibility = Visibility.Hidden;
+        }
+
+        public void SetGeneralMessage()
+        {
+            GeneralMsg.Visibility = Visibility.Visible;
         }
 
         public class ContactInformation: EventArgs

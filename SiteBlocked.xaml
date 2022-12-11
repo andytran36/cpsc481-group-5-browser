@@ -74,6 +74,8 @@
             <Label Content="Enter admin password to continue" HorizontalAlignment="Left" Margin="22,31,0,0" Grid.Row="3" VerticalAlignment="Top"/>
             <PasswordBox x:Name="Passwordinput" HorizontalAlignment="Left" Margin="10,1,0,0" Grid.Row="4" VerticalAlignment="Top" Width="256" Height="30" VerticalContentAlignment="Center"/>
 
+            <Label x:Name="ErrorMsg" Content="Sorry, incorrect password" HorizontalAlignment="Left" Margin="10,31,0,0" Grid.Row="4" VerticalAlignment="Top" Foreground="#FF890000" Visibility="Hidden"/>
+            
             <Grid Grid.Row="6">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
