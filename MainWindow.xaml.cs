@@ -127,8 +127,7 @@ namespace cpsc481_group_5_browser
 
         private void Handle_CreateNewUserProfile(object sender, CreateNewUser.CreateNewUserArgs e)
         {
-            Debug.WriteLine("Create New User Create Button clicked");
-            Users.Add(new User("Test", "12345"));
+            Users.Add(new User(e.Name, e.Password));
             UserSelectScreen.UpdateUserNames(Users);
             this.contentControl.Content = UserSelectScreen;
         }
