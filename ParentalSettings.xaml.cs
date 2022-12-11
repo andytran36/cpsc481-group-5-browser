@@ -125,7 +125,7 @@ namespace cpsc481_group5_browser
         private void ContactSettings_Clicked(object sender, MouseButtonEventArgs e)
         {
             ContactSettingsPopup.IsOpen = true;
-            ContactPopup = ContactSettingsPoupContent;
+            ContactPopup = ContactSettingsPopupContent;
             ContactPopup.SetOpen();
             ContactPopup.Handler_CancelClicked += new EventHandler(ContactCancel_Clicked);
             ContactPopup.Handler_SaveClicked += new EventHandler<ContactSettings.ContactInformation>(ContactSave_Clicked);

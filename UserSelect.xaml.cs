@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static cpsc481_group5_browser.CreateNewUser;
 
 namespace cpsc481_group5_browser
 {
@@ -25,13 +26,14 @@ namespace cpsc481_group5_browser
     {
 
         public event EventHandler Handler_UserProfileClicked;
-        public event EventHandler Handler_CreateNewUserClicked;
         public event EventHandler Handler_ToSettings;
         public event EventHandler Handler_ToHome;
+        public event EventHandler<CreateNewUserArgs> Handler_NewUserProfile;
         UserProfilePassword ProfilePassword;
         PasswordPrompt PasswordPopup;
         List<UserProfile> StoredUsers = new List<UserProfile>();
         UserProfile CreateNewUserProfile;
+        CreateNewUser CreateNewUserPrompt;
 
         public UserSelect(List<string> userNames)
         {
@@ -59,27 +61,43 @@ namespace cpsc481_group5_browser
             CreateNewUserProfile.SetValue(Grid.ColumnProperty, Index);
             CreateNewUserProfile.ProfileButton.Click += new RoutedEventHandler(CreateNewUser_Click);
             UsersGrid.Children.Add(CreateNewUserProfile);
+
+            // Create New User
+            CreateNewUserPrompt = CreateNewUserContent;
+            CreateNewUserPrompt.Handler_CreateNewUserCreateClicked += new EventHandler<CreateNewUser.CreateNewUserArgs>(CreateNewUserContinue_Click);
+            CreateNewUserPrompt.Handler_CancelClicked += new EventHandler(CreateNewUserCancel_Click);
+
+            // Profile Password
+            ProfilePassword = ProfilePasswordContent;
+            ProfilePassword.Handler_ContinueClicked += new EventHandler<UserProfilePassword.PasswordArgs>(ProfileContinue_Clicked);
+            ProfilePassword.Handler_CancelClicked += new EventHandler(ProfileCancel_Clicked);
+
+            // Settings Password
+            PasswordPopup = PasswordPromptContent;
+            PasswordPopup.Handler_ContinueClicked += new EventHandler<PasswordPrompt.PasswordArgs>(PasswordPromptContinue_Clicked);
+            PasswordPopup.Handler_CancelClicked += new EventHandler(PasswordPromptCancel_Clicked);
         }
 
         private void Profile_Click(object sender, RoutedEventArgs e)
         {
             ProfilePasswordPopup.IsOpen = true;
-            ProfilePassword = ProfilePasswordContent;
-            ProfilePassword.Handler_ContinueClicked += new EventHandler<UserProfilePassword.PasswordArgs>(ProfileContinue_Clicked);
-            ProfilePassword.Handler_CancelClicked += new EventHandler(ProfileCancel_Clicked);
         }
 
         private void CreateNewUser_Click(object sender, RoutedEventArgs e)
         {
-            Handler_CreateNewUserClicked?.Invoke(this, new EventArgs());
+            if (StoredUsers.Count < 5)
+            {
+                CreateNewUserPopup.IsOpen = true;
+            }
+            else
+            {
+                // too many users
+            }
         }
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
             PasswordPrompt.IsOpen = true;
-            PasswordPopup = PasswordPromptContent;
-            PasswordPopup.Handler_ContinueClicked += new EventHandler<PasswordPrompt.PasswordArgs>(PasswordPromptContinue_Clicked);
-            PasswordPopup.Handler_CancelClicked += new EventHandler(PasswordPromptCancel_Clicked);
         }
 
         public void UpdateUserNames(List<string> updatedUserNames)
@@ -103,7 +121,7 @@ namespace cpsc481_group5_browser
 
             ColumnDefinition CreateNewCol = new ColumnDefinition();
             UsersGrid.ColumnDefinitions.Add(CreateNewCol);
-
+            
             CreateNewUserProfile.SetValue(Grid.ColumnProperty, Index);
         }
 
@@ -151,6 +169,20 @@ namespace cpsc481_group5_browser
                 PasswordPopup.SetErrorMessage();
                 Debug.WriteLine("Profile password error");
             }
+        }
+
+        private void CreateNewUserContinue_Click(object sender, CreateNewUserArgs e)
+        {
+            Debug.WriteLine(e.GetType());
+            Handler_NewUserProfile?.Invoke(this, e);
+            CreateNewUserPopup.Visibility = Visibility.Collapsed;
+            CreateNewUserPopup.IsOpen = false;
+        }
+
+        private void CreateNewUserCancel_Click(object sender, EventArgs e)
+        {
+            CreateNewUserPopup.Visibility = Visibility.Collapsed;
+            CreateNewUserPopup.IsOpen = false;
         }
     }
 }
