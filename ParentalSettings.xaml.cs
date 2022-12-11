@@ -140,8 +140,33 @@ namespace cpsc481_group5_browser
 
         private void ContactSave_Clicked(object sender, ContactSettings.ContactInformation e)
         {
-            ContactSettingsPopup.Visibility = Visibility.Collapsed;
-            ContactSettingsPopup.IsOpen = false;
+            if (ContactSettingsPopupContent.EmailValid() == false)
+            {
+                ContactSettingsPopupContent.HideGeneralMessage();
+                ContactSettingsPopupContent.HidePhoneMessage();
+                ContactSettingsPopupContent.SetEmailMessage();
+            }
+
+            if (ContactSettingsPopupContent.PhoneValid() == false)
+            {
+                ContactSettingsPopupContent.HideGeneralMessage();
+                ContactSettingsPopupContent.HideEmailMessage();
+                ContactSettingsPopupContent.SetPhoneMessage();
+            }
+
+            if (ContactSettingsPopupContent.NothingToSave() == true)
+            {
+                ContactSettingsPopupContent.SetGeneralMessage();
+            }
+
+            if ((ContactSettingsPopupContent.EmailValid() == true  && ContactSettingsPopupContent.PhoneValid() == true) && ContactSettingsPopupContent.NothingToSave() == false)
+            {
+                ContactSettingsPopupContent.HideGeneralMessage();
+                ContactSettingsPopupContent.HidePhoneMessage();
+                ContactSettingsPopupContent.HideEmailMessage();
+                ContactSettingsPopup.Visibility = Visibility.Collapsed;
+                ContactSettingsPopup.IsOpen = false;
+            }
             //do something with contact info
         }
     }

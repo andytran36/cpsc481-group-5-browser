@@ -40,9 +40,20 @@ namespace cpsc481_group5_browser
                 args.PasswordAccepted = true;
             }
             Passwordinput.Clear();
+            HideErrorMsg();
             Handler_ContinueClicked?.Invoke(this, args);
         }
 
+        public void SetErrorMsg()
+        {
+            ErrorMsg.Visibility = Visibility.Visible;
+        }
+
+        public void HideErrorMsg()
+        {
+            ErrorMsg.Visibility = Visibility.Hidden;
+        }
+        
         public class PasswordArgs : EventArgs
         {
             public bool PasswordAccepted { get; set; }

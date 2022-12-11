@@ -91,6 +91,9 @@
             <Label Content="Phone Number" HorizontalAlignment="Left" Margin="10,32,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.RowSpan="2"/>
             <CheckBox x:Name="PhonePreferredBox" Content="Preferred" HorizontalAlignment="Left" Margin="238,38,0,0" Grid.Row="3" VerticalAlignment="Top" Checked="PhoneChecked"/>
             <TextBox x:Name="PhoneInput" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="256" Height="30" VerticalContentAlignment="Center" GotFocus="PhoneInput_Clicked" PreviewTextInput="ValidatePhoneInput"/>
+            <Label x:Name="EmailMsg" Content="You need to enter an email" HorizontalAlignment="Left" Margin="17,35,0,0" Grid.Row="2" VerticalAlignment="Top" Foreground="#FF890000" Visibility="Hidden"/>
+            <Label x:Name="PhoneMsg" Content="You need to enter a phone number" HorizontalAlignment="Left" Margin="17,35,0,0" Grid.Row="4" VerticalAlignment="Top" Foreground="#FF890000" Visibility="Hidden"/>
+            <Label x:Name="GeneralMsg" Content="There is nothing to save" HorizontalAlignment="Left" Margin="17,35,0,0" Grid.Row="4" VerticalAlignment="Top" Foreground="#FF890000" Visibility="Hidden"/>
         </Grid>
     </Border>
 </UserControl>
