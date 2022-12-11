@@ -35,17 +35,17 @@ namespace cpsc481_group5_browser
         UserProfile CreateNewUserProfile;
         CreateNewUser CreateNewUserPrompt;
 
-        public UserSelect(List<string> userNames)
+        public UserSelect(List<User> users)
         {
             InitializeComponent();
 
             int Index = 0;
-            foreach (string User in userNames)
+            foreach (User User in users)
             {
                 ColumnDefinition ColDef = new ColumnDefinition();
                 UsersGrid.ColumnDefinitions.Add(ColDef);
 
-                UserProfile TempUser = new UserProfile(User);
+                UserProfile TempUser = new UserProfile(User.Name);
                 TempUser.SetValue(Grid.ColumnProperty, Index);
                 TempUser.ProfileButton.Click += new RoutedEventHandler(Profile_Click);
                 UsersGrid.Children.Add(TempUser);
@@ -100,12 +100,12 @@ namespace cpsc481_group5_browser
             PasswordPrompt.IsOpen = true;
         }
 
-        public void UpdateUserNames(List<string> updatedUserNames)
+        public void UpdateUserNames(List<User> updatedUserNames)
         {
             int Index = 0;
-            foreach (string User in updatedUserNames)
+            foreach (User User in updatedUserNames)
             {
-                UserProfile TempUser = new UserProfile(User);
+                UserProfile TempUser = new UserProfile(User.Name);
                 TempUser.SetValue(Grid.ColumnProperty, Index);
                 TempUser.ProfileButton.Click += new RoutedEventHandler(Profile_Click);
 

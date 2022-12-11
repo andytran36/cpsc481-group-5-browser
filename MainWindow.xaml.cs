@@ -17,6 +17,28 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using cpsc481_group5_browser;
 
+public struct Settings
+{
+    public string Email { get; set; }
+    public string Phone { get; set; }
+    public string Password { get; set; }
+    // TODO: Preferred method of contact here
+}
+
+public struct User
+{
+    public string Name { get; set; }
+    public string Password { get; set; }
+    // TODO: User settings here 
+
+    public User(string Name, string Password)
+    {
+        this.Name = Name;
+        this.Password = Password;
+    }
+}
+
+
 namespace cpsc481_group_5_browser
 {
     public partial class MainWindow : Window
@@ -33,10 +55,10 @@ namespace cpsc481_group_5_browser
         UserProfilePassword UserProfilePasswordPopup;
 
         // Hardcoded Values
-        List<string> UserNames = new List<string>
+        List<User> Users = new List<User>
             {
-                "John",
-                "Bob",
+                new User("John", "1234"),
+                new User("Bob", "12345"),
             };
 
         public MainWindow()
@@ -45,7 +67,7 @@ namespace cpsc481_group_5_browser
 
             // Initialize all the screens
             BrowserScreen = new Browser();
-            UserSelectScreen = new UserSelect(UserNames);
+            UserSelectScreen = new UserSelect(Users);
             TimeLimitPopup = new TimeLimit();
             HomeScreen = new HomePage();
             LockScreenPopup = new LockScreen();
@@ -106,8 +128,8 @@ namespace cpsc481_group_5_browser
         private void Handle_CreateNewUserProfile(object sender, CreateNewUser.CreateNewUserArgs e)
         {
             Debug.WriteLine("Create New User Create Button clicked");
-            UserNames.Add(e.Name);
-            UserSelectScreen.UpdateUserNames(UserNames);
+            Users.Add(new User("Test", "12345"));
+            UserSelectScreen.UpdateUserNames(Users);
             this.contentControl.Content = UserSelectScreen;
         }
 
