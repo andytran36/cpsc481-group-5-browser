@@ -139,10 +139,12 @@ namespace cpsc481_group5_browser
             {
                 ProfilePasswordPopup.Visibility = Visibility.Collapsed;
                 ProfilePasswordPopup.IsOpen = false;
+                ProfilePasswordContent.HideErrorMessage();
                 Handler_ToHome?.Invoke(this, new EventArgs());
             }
             else
             {
+                ProfilePasswordContent.SetErrorMessage();
                 Debug.WriteLine("Profile password error");
             }
 
@@ -162,6 +164,7 @@ namespace cpsc481_group5_browser
                 PasswordPrompt.IsOpen = false;
                 ProfilePasswordPopup.Visibility = Visibility.Collapsed;
                 ProfilePasswordPopup.IsOpen = false;
+                PasswordPromptContent.HideErrorMessage();
                 Handler_ToSettings?.Invoke(this, new EventArgs());
             }
             else

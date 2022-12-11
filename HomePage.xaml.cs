@@ -79,6 +79,7 @@ namespace cpsc481_group5_browser
             {
                 PasswordPrompt.Visibility = Visibility.Collapsed;
                 PasswordPrompt.IsOpen = false;
+                PasswordPopup.HideErrorMessage();
                 Handler_ToSettings?.Invoke(this, new EventArgs());
             }
             else

@@ -16,7 +16,9 @@ using System.Windows.Shapes;
 namespace cpsc481_group5_browser
 {
     /// <summary>
-    /// Interaction logic for PasswordPrompt.xaml
+    /// Interaction logic for 
+    /// 
+    /// .xaml
     /// </summary>
     public partial class LockScreen : UserControl {
         public event EventHandler Handler_CancelClicked;
