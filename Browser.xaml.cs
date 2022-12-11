@@ -177,6 +177,7 @@ namespace cpsc481_group5_browser
                 Unlockpopup.IsOpen = false;
                 NormalBar.Visibility = Visibility.Visible;
                 LockedBar.Visibility = Visibility.Collapsed;
+                UnlockPopup.HideErrorMsg();
             }
             else
             {
