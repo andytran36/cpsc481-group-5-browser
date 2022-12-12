@@ -26,6 +26,7 @@ namespace cpsc481_group5_browser
         public event EventHandler Handler_ToHome;
         public event EventHandler Handler_ToUserSelect;
         PasswordPrompt PasswordPopup;
+        SiteBlocked BlockObj;
 
         public HomePage()
         {
@@ -102,7 +103,32 @@ namespace cpsc481_group5_browser
         private void Blocked(object sender, MouseButtonEventArgs e)
         {
             //pop up here
-            Handler_ToBrowser?.Invoke(this, new EventArgs());
+            BlockPrompt.IsOpen = true;
+            BlockObj = BlockContent;
+            BlockObj.Handler_ContinueClicked += new EventHandler<SiteBlocked.PasswordArgs>(BlockPromptContinue_Clicked);
+            BlockObj.Handler_ExitClicked += new EventHandler(BlockPromptExit_Clicked);
+            //
+        }
+
+        private void BlockPromptExit_Clicked(object sender, EventArgs e)
+        {
+            BlockPrompt.Visibility = Visibility.Collapsed;
+            BlockPrompt.IsOpen = false;
+        }
+
+        private void BlockPromptContinue_Clicked(object sender, SiteBlocked.PasswordArgs e)
+        {
+            if (e.PasswordAccepted)
+            {
+                BlockPrompt.Visibility = Visibility.Collapsed;
+                BlockPrompt.IsOpen = false;
+                BlockObj.HideErrorMsg();
+                Handler_ToBrowser?.Invoke(this, new EventArgs());
+            }
+            else
+            {
+                BlockObj.SetErrorMsg();
+            }
         }
     }
 }
