@@ -142,7 +142,7 @@
                         </Border>
                         <Label Grid.Column="1" Content="Bob" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20"></Label>
                         <Label Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">
-                            <TextBlock TextWrapping="Wrap" Text="Change" TextDecorations="Underline" FontSize="15"/>
+                            <TextBlock TextWrapping="Wrap" Text="Change" TextDecorations="Underline" FontSize="15" MouseLeftButtonUp="changebob"/>
                         </Label>
 
                         <Border Grid.Row="1" Grid.ColumnSpan="4" BorderBrush="Black" BorderThickness="1" CornerRadius="20" Background="PaleGreen">
@@ -152,7 +152,7 @@
                         </Border>
                         <Label Grid.Row="1" Grid.Column="1" Content="John" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20"></Label>
                         <Label Grid.Column="4" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">
-                            <TextBlock TextWrapping="Wrap" Text="Change" TextDecorations="Underline" FontSize="15"/>
+                            <TextBlock TextWrapping="Wrap" Text="Change" TextDecorations="Underline" FontSize="15" MouseLeftButtonUp="changejohn"/>
                         </Label>
 
                     </Grid>

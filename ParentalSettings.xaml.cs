@@ -19,15 +19,23 @@ namespace cpsc481_group5_browser
     /// <summary>
     /// Interaction logic for ParentalSettings.xaml
     /// </summary>
+
     public partial class ParentalSettings : UserControl
     {
         public event EventHandler Handler_BackClicked;
-        public event EventHandler Handler_BobChangeClicked;
+        public event EventHandler<UserArgs> Handler_BobChangeClicked;
         public event EventHandler Handler_ToHome;
+        public event EventHandler Handler_JohnChangeClicked;
         ContactSettings ContactPopup;
         PasswordInSettings PwSettingsContent;
 
-        public ParentalSettings()
+        public class UserArgs : EventArgs
+        {
+            public int UserID { get; set; }
+
+        }
+
+        public ParentalSettings(List<User> users)
         {
             InitializeComponent();
             this.Loaded += new RoutedEventHandler(ParentalSettingsLoaded);
@@ -38,9 +46,18 @@ namespace cpsc481_group5_browser
             Handler_BackClicked?.Invoke(this, new EventArgs());
         }
 
+        private void changejohn(object sender, MouseButtonEventArgs e)
+        {
+            UserArgs args = new UserArgs();
+            args.UserID = 0;
+            Handler_JohnChangeClicked.Invoke(this, new EventArgs());
+        }
+
         private void changebob(object sender, MouseButtonEventArgs e)
         {
-            Handler_BobChangeClicked.Invoke(this, new EventArgs());
+            UserArgs args = new UserArgs();
+            args.UserID = 1;
+            Handler_BobChangeClicked.Invoke(this, args);
         }
         
         private void ParentalSettingsLoaded(object sender, RoutedEventArgs e)
