@@ -103,7 +103,7 @@ namespace cpsc481_group_5_browser
             HomeScreen.Handler_ToBrowser += new EventHandler(Handle_ToBrowser);
 
             // Set Screen to User Select on System Startup
-            this.contentControl.Content = ChangeUserSettingsScreen;
+            this.contentControl.Content = UserSelectScreen;
 
         }
 
