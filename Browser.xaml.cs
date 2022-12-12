@@ -133,20 +133,17 @@ namespace cpsc481_group5_browser
             else
             {
                 PasswordPopup.SetErrorMessage();
-                Debug.WriteLine("Profile password error");
             }
         }
 
         private void LockCancel_Clicked(object sender, EventArgs e)
         {
-            Debug.WriteLine("Lock cancel clicked");
             Lockpopup.Visibility = Visibility.Collapsed;
             Lockpopup.IsOpen = false;
         }
 
         private void LockContinue_Clicked(object sender, LockScreen.PasswordArgs e)
         {
-            Debug.WriteLine("Lock continue clicked");
             if (e.PasswordAccepted)
             {
                 Lockpopup.Visibility = Visibility.Collapsed;
@@ -158,21 +155,18 @@ namespace cpsc481_group5_browser
             else
             {
                 LockPopup.SetErrorMsg();
-                Debug.WriteLine("Lock error");
             }
 
         }
 
         private void UnlockCancel_Clicked(object sender, EventArgs e)
         {
-            Debug.WriteLine("Unlock cancel clicked");
             Unlockpopup.Visibility = Visibility.Collapsed;
             Unlockpopup.IsOpen = false;
         }
 
         private void UnlockContinue_Clicked(object sender, UnlockScreen.PasswordArgs e)
         {
-            Debug.WriteLine("Unlock continue clicked");
             if (e.PasswordAccepted)
             {
                 Unlockpopup.Visibility = Visibility.Collapsed;
@@ -184,7 +178,6 @@ namespace cpsc481_group5_browser
             else
             {
                 UnlockPopup.SetErrorMsg();
-                Debug.WriteLine("Unlock error");
             }
         }
 
