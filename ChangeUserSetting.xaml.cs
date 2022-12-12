@@ -21,19 +21,21 @@ namespace cpsc481_group5_browser
     /// </summary>
     public partial class ChangeUserSetting : UserControl
     {
-        public User CurrentUser = new User();
+        User CurrentUser = new User("", "");
 
-        public event EventHandler Handler_ToUserSelect;
+        public event EventHandler Handler_ToSettings;
+        public event EventHandler<UserSettingsArgs> Handler_ChangeUserSettings;
 
-        public ChangeUserSetting()
+        public ChangeUserSetting(User user)
         {
             InitializeComponent();
+            CurrentUser = user;
+
             txtNum.Text = CurrentUser.Hours.ToString();
             txtNum2.Text = CurrentUser.Minutes.ToString();
-        }
 
-        public void Setup()
-        {
+            Heading.Content = CurrentUser.Name.ToUpper() + "'S SETTINGS";
+
             Notif_1.IsChecked = CurrentUser.Notif_1;
             Notif_2.IsChecked = CurrentUser.Notif_2;
             Notif_3.IsChecked = CurrentUser.Notif_3;
@@ -45,7 +47,7 @@ namespace cpsc481_group5_browser
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            
+            Handler_ToSettings?.Invoke(this, EventArgs.Empty);
         }
 
         private void Forward_Click(object sender, RoutedEventArgs e)
@@ -60,13 +62,12 @@ namespace cpsc481_group5_browser
 
         private void User_Click(object sender, RoutedEventArgs e)
         {
-            Handler_ToUserSelect?.Invoke(this, new EventArgs());
 
         }
 
         private void SearchBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            
+
         }
 
         private void WebBrowser_LoadCompleted(object sender, NavigationEventArgs e)
@@ -88,18 +89,16 @@ namespace cpsc481_group5_browser
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            CurrentUser.Notif_1 = Notif_1.IsChecked == true;
-            CurrentUser.Notif_2 = Notif_2.IsChecked == true;
-            CurrentUser.Notif_3 = Notif_3.IsChecked == true;
-            CurrentUser.Notif_4 = Notif_4.IsChecked == true;
-            CurrentUser.Notif_5 = Notif_5.IsChecked == true;  
-            CurrentUser.Notif_6 = Notif_6.IsChecked == true;
-            CurrentUser.Notif_7 = Notif_7.IsChecked == true;
-
-            Debug.WriteLine(CurrentUser.Name);
-
+            UserSettingsArgs args = new UserSettingsArgs();
+            args.Notif_1 = Notif_1.IsChecked == true;
+            args.Notif_2 = Notif_2.IsChecked == true;
+            args.Notif_3 = Notif_3.IsChecked == true;
+            args.Notif_4 = Notif_4.IsChecked == true;
+            args.Notif_5 = Notif_5.IsChecked == true;
+            args.Notif_6 = Notif_6.IsChecked == true;
+            args.Notif_7 = Notif_7.IsChecked == true;
+            Handler_ChangeUserSettings?.Invoke(this, args);
         }
-
 
         //Stack overflow numeric up down
 
@@ -188,6 +187,19 @@ namespace cpsc481_group5_browser
 
             txtNum2.Text =CurrentUser.Minutes.ToString();
 
+        }
+
+        public class UserSettingsArgs : EventArgs
+        {
+            public bool Notif_1 { get; set; }
+            public bool Notif_2 { get; set; }
+            public bool Notif_3 { get; set; }
+            public bool Notif_4 { get; set; }
+            public bool Notif_5 { get; set; }
+            public bool Notif_6 { get; set; }
+            public bool Notif_7 { get; set; }
+            public int Hours { get; set; }
+            public int Minutes { get; set; }
         }
     }
 }

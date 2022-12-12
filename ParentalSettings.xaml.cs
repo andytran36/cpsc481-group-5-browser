@@ -161,8 +161,6 @@ namespace cpsc481_group5_browser
                 {
                     PwSettingsContent.SetBadPswdMsg();
                 }
-                
-                Debug.WriteLine("Settings password error");
             }
         }
 
@@ -177,7 +175,6 @@ namespace cpsc481_group5_browser
 
         private void ContactCancel_Clicked(object sender, EventArgs e)
         {
-            Debug.WriteLine("Contact cancel clicked");
             ContactSettingsPopup.Visibility = Visibility.Collapsed;
             ContactSettingsPopup.IsOpen = false;
         }

@@ -24,8 +24,6 @@ namespace cpsc481_group5_browser
     /// </summary>
     public partial class UserSelect : UserControl
     {
-
-        public event EventHandler Handler_UserProfileClicked;
         public event EventHandler Handler_ToSettings;
         public event EventHandler Handler_ToHome;
         public event EventHandler<CreateNewUserArgs> Handler_NewUserProfile;
@@ -127,14 +125,12 @@ namespace cpsc481_group5_browser
 
         private void ProfileCancel_Clicked(object sender, EventArgs e)
         {
-            Debug.WriteLine("User select cancel clicked");
             ProfilePasswordPopup.Visibility = Visibility.Collapsed;
             ProfilePasswordPopup.IsOpen = false;
         }
 
         private void ProfileContinue_Clicked(object sender, UserProfilePassword.PasswordArgs e)
         {
-            Debug.WriteLine("User select continue clicked");
             if (e.PasswordAccepted)
             {
                 ProfilePasswordPopup.Visibility = Visibility.Collapsed;
@@ -145,7 +141,6 @@ namespace cpsc481_group5_browser
             else
             {
                 ProfilePasswordContent.SetErrorMessage();
-                Debug.WriteLine("Profile password error");
             }
 
         }
@@ -170,13 +165,11 @@ namespace cpsc481_group5_browser
             else
             {
                 PasswordPopup.SetErrorMessage();
-                Debug.WriteLine("Profile password error");
             }
         }
 
         private void CreateNewUserContinue_Click(object sender, CreateNewUserArgs e)
         {
-            Debug.WriteLine(e.GetType());
             Handler_NewUserProfile?.Invoke(this, e);
             CreateNewUserPopup.Visibility = Visibility.Collapsed;
             CreateNewUserPopup.IsOpen = false;
