@@ -98,5 +98,11 @@ namespace cpsc481_group5_browser
         {
             Handler_ToBrowser?.Invoke(this, new EventArgs());
         }
+
+        private void Blocked(object sender, MouseButtonEventArgs e)
+        {
+            //pop up here
+            Handler_ToBrowser?.Invoke(this, new EventArgs());
+        }
     }
 }
