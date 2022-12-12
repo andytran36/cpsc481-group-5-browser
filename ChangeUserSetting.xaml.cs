@@ -97,6 +97,7 @@ namespace cpsc481_group5_browser
             CurrentUser.Notif_7 = Notif_7.IsChecked == true;
 
             Debug.WriteLine(CurrentUser.Name);
+
         }
 
 
@@ -184,7 +185,9 @@ namespace cpsc481_group5_browser
             {
                 NumValue2 = 59;
             }
+
             txtNum2.Text =CurrentUser.Minutes.ToString();
+
         }
     }
 }

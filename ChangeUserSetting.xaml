@@ -118,6 +118,7 @@
             </Button>
 
             <Button x:Name="Home" Grid.Column="2" IsEnabled="False" Visibility="Collapsed" Click="Home_Click" Background="{x:Null}" BorderThickness="0"  >
+
                 <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="/assets/home.png"/>
             </Button>
 
@@ -130,6 +131,7 @@
             <Image Grid.Column="4" IsEnabled="False" Visibility="Collapsed" Margin="1,5,5,5" Width="25" Source="/assets/bookmark.png" />
 
             <Button x:Name="User" Grid.Column="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" BorderThickness="0" Click="User_Click">
+
                 <Image Source="/assets/user.png" Width="30"/>
             </Button>
 
