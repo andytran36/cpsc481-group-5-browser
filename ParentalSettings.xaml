@@ -7,72 +7,69 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800" Loaded="ParentalSettingsLoaded">
 
-    <Grid Background="White">
+    <Grid Background="#FFEFD6">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition/>
-
+            <RowDefinition Height="1*"></RowDefinition>
 
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" VerticalAlignment="Center">
+        <Grid Grid.Row="0" Background="#F2DEBA">
+        </Grid>
+
+        <Grid Grid.Row="0" VerticalAlignment="Center" Background="#F2DEBA">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="45px"></ColumnDefinition>
-                <ColumnDefinition Width="45px"></ColumnDefinition>
-                <ColumnDefinition Width="45px"></ColumnDefinition>
+                <ColumnDefinition Width="50px"></ColumnDefinition>
+                <ColumnDefinition Width="50px"></ColumnDefinition>
+                <ColumnDefinition Width="50px"></ColumnDefinition>
                 <ColumnDefinition Width="12*"></ColumnDefinition>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="45px"></ColumnDefinition>
                 <ColumnDefinition Width="45"></ColumnDefinition>
                 <ColumnDefinition Width="45px"></ColumnDefinition>
                 <ColumnDefinition Width="45px"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-
-            <Button x:Name="Back" Grid.Row="0" Grid.Column="0" Click="Back_Click">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/back.png"/>
+            <Button x:Name="Back" Grid.Column="0" Click="Back_Click" Background="{x:Null}" BorderThickness="0"  >
+                <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="/assets/left-arrow.png"/>
             </Button>
 
-            <Button x:Name="Forward" Grid.Row="0" Grid.Column="1" Click="Forward_Click">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/forward.png"/>
+            <Button x:Name="Forward" Grid.Column="1"  IsEnabled="False" Visibility="Collapsed"  Click="Forward_Click" Background="{x:Null}" BorderThickness="0"  >
+                <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28"  Source="/assets/right-arrow.png"/>
             </Button>
 
-            <Button x:Name="Home" Grid.Row="0" Grid.Column="2" Click="Home_Click">
+            <Button x:Name="Home" Grid.Column="2" Click="Home_Click" Background="{x:Null}" BorderThickness="0"  >
                 <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="/assets/home.png"/>
             </Button>
 
-            <TextBox Grid.Row="0" Grid.Column="3" KeyDown="SearchBox_KeyDown" x:Name="SearchBox" Foreground="Black" FontSize="20" FontWeight="SemiBold" Margin="14,0,5,0" Grid.ColumnSpan="2"></TextBox>
+            <Border Grid.Column="3"  IsEnabled="False" Visibility="Collapsed"  BorderThickness="1" BorderBrush="Black" CornerRadius="20" Margin="0,3,0,3" Background="White">
+                <TextBox KeyDown="SearchBox_KeyDown" x:Name="SearchBox" Foreground="Black" FontSize="20" FontWeight="SemiBold" Margin="10,3,10,3" BorderThickness="0" Background="{x:Null}">
+                </TextBox>
+            </Border>
 
-            <Image Source="/assets/bookmark.png" Grid.Column="4" Margin="1,5,5,5" />
 
-            <Button Grid.Column="5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-                <Image Source="/assets/user.png" />
+            <Image  Grid.Column="4" IsEnabled="False" Visibility="Collapsed"  Margin="1,5,5,5" Width="25" Source="/assets/bookmark.png" />
+
+            <Button Grid.Column="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" BorderThickness="0">
+                <Image Source="/assets/user.png" Width="30"/>
             </Button>
 
-            <Button x:Name="Lock" Grid.Row="0" Grid.Column="6" Click="Lock_Click">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/lock.png"/>
+            <Button x:Name="Lock"  IsEnabled="False" Visibility="Collapsed"  Grid.Column="6" Click="Lock_Click" Background="{x:Null}" BorderThickness="0">
+                <Image Height="25" Width="35" Source="/assets/lock.png"/>
             </Button>
 
-            <Button x:Name="Settings" Grid.Row="0" Grid.Column="7" Click="Settings_Click">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/settings.png"/>
+            <Button x:Name="Settings" Grid.Column="7" Click="Settings_Click" Background="{x:Null}" BorderThickness="0">
+                <Image Height="25"  Width="35" Source="/assets/setting.png"/>
             </Button>
 
-        </Grid>
-
-        <Grid x:Name="back" Grid.Row="1">
-            <Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,7,0,0" MouseLeftButtonUp="Back_Clicked">
-                <TextBlock TextWrapping="Wrap" Text="Back" FontSize="15" TextDecorations="Underline"/>
-            </Label>
-
-            <Image HorizontalAlignment="Left" Height="25" Margin="5,10,0,0" VerticalAlignment="Top" Width="35" Source="/assets/back.png" MouseLeftButtonUp="Back_Clicked"/>
         </Grid>
 
         <Grid x:Name="settingscontent" Grid.Row="2">
             <Grid.RowDefinitions>
+                <RowDefinition Height="20"></RowDefinition>
                 <RowDefinition Height="150"></RowDefinition>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Grid x:Name="generalsettings" Grid.Row="0">
+            <Grid x:Name="generalsettings" Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
@@ -81,63 +78,83 @@
 
                 <Grid Grid.Row="1" Loaded="ParentalSettingsLoaded">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="138"></ColumnDefinition>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width=".5*"></ColumnDefinition>
+                        <ColumnDefinition Width=".6*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Content="PASSWORD SETTINGS" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="22" Grid.Column="1"/>
-                    <Image x:Name="passwordarrow" Grid.Column="1" HorizontalAlignment="Left" Height="39" Margin="226,0,0,0" VerticalAlignment="Top" Width="43" Source="/assets/forwardarrow.png"/>
+                    <Label Content="Password settings" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="22" Grid.Column="1" FontWeight="Bold"/>
+                    <Image x:Name="PasswordArrow" Grid.Column="2" HorizontalAlignment="Left" Height="39" VerticalAlignment="Center" Width="43" Source="/assets/forwardarrow.png" MouseLeftButtonUp="PasswordSettings_Clicked"/>
+                    <Popup x:Name="PwSettingsPopup" Placement="Right" AllowsTransparency="True" PlacementTarget="{Binding ElementName=PasswordArrow, Mode=OneWay}">
+                        <local:PasswordInSettings x:Name="PwSettingsPopupContent" />
+                    </Popup>
                 </Grid>
 
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="138"></ColumnDefinition>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width=".5*"></ColumnDefinition>
+                        <ColumnDefinition Width=".6*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Content="CONTACT SETTINGS" HorizontalAlignment="Left" Margin="0,1,0,0" VerticalAlignment="Top" FontSize="22" Grid.Column="1" Width="227"/>
-                    <Image x:Name="contactarrow" Grid.Column="1" HorizontalAlignment="Left" Height="39" Margin="227,1,0,0" VerticalAlignment="Top" Width="43" Source="/assets/forwardarrow.png"/>
+                    <Label Content="Contact settings" HorizontalAlignment="Left" Margin="0,1,0,0" VerticalAlignment="Top" FontSize="22" Grid.Column="1" Width="227" FontWeight="Bold"/>
+                    <Image x:Name="ContactArrow" Grid.Column="2" HorizontalAlignment="Left" Height="39" VerticalAlignment="Center" Width="43" Source="/assets/forwardarrow.png" MouseLeftButtonUp="ContactSettings_Clicked"/>
+                    <Popup x:Name="ContactSettingsPopup" Placement="Right" AllowsTransparency="True" PlacementTarget="{Binding ElementName=ContactArrow, Mode=OneWay}">
+                        <local:ContactSettings x:Name="ContactSettingsPopupContent" />
+                    </Popup>
                 </Grid>
-                <Label Content="SETTINGS" HorizontalAlignment="Left" Margin="92,0,0,0" VerticalAlignment="Top" FontSize="25"/>
+                <Label Content="Settings" HorizontalAlignment="Left" Margin="92,0,0,0" VerticalAlignment="Center" FontSize="30"/>
             </Grid>
 
-            <Grid x:Name="usersettings" Grid.Row="1">
+            <Grid x:Name="usersettings" Grid.Row="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="160"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Label Grid.Row="0" Content="USERS" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25" Margin="92,0,0,0"/>
+                <Label Grid.Row="0" Content="Users" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30" Margin="92,0,0,0"/>
 
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="138"></ColumnDefinition>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="138"></ColumnDefinition>
+                        <ColumnDefinition Width=".35*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width=".35*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
                     <Grid x:Name="userlist" Grid.Column="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="100"></ColumnDefinition>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="70"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1.5*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1" Margin="0,0,2,80">
-                            <Image Source="/assets/user.png" Margin="3,5,3,5"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0" Grid.ColumnSpan="4" BorderBrush="Black" BorderThickness="1" CornerRadius="20" Background="Pink">
+
                         </Border>
-                        <Label Grid.Column="1" Content="Bob" Margin="0,27,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
-                        <Label Grid.Column="3" Margin="0,27,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" MouseLeftButtonUp="changebob">
-                            <TextBlock TextWrapping="Wrap" Text="CHANGE" TextDecorations="Underline"/>
-                        </Label>
-                        <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,0,80" Grid.ColumnSpan="4"/>
-                        <Border BorderBrush="Black" BorderThickness="1" Margin="0,80,2,0">
-                            <Image Source="/assets/user.png" Margin="3,5,3,5"/>
+                        <Border Grid.Row="0" Margin="8" CornerRadius="20" BorderThickness="1" BorderBrush="black" Background="white" >
+                            <Image Margin="5" Source="/assets/user.png"></Image>
                         </Border>
-                        <Label Grid.Column="1" Content="John" Margin="0,107,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
-                        <Label Grid.Column="3" Margin="0,107,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center">
-                            <TextBlock TextWrapping="Wrap" Text="CHANGE" TextDecorations="Underline"/>
+                        <Label Grid.Column="1" Content="Bob" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20"></Label>
+                        <Label Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">
+                            <TextBlock TextWrapping="Wrap" Text="Change" TextDecorations="Underline" FontSize="15"/>
                         </Label>
-                        <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="4" Margin="0,80,0,0"/>
+
+                        <Border Grid.Row="1" Grid.ColumnSpan="4" BorderBrush="Black" BorderThickness="1" CornerRadius="20" Background="PaleGreen">
+                        </Border>
+                        <Border Grid.Row="1" Margin="8" CornerRadius="20" BorderThickness="1" BorderBrush="black" Background="white" >
+                            <Image Margin="5" Source="/assets/user.png"></Image>
+                        </Border>
+                        <Label Grid.Row="1" Grid.Column="1" Content="John" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20"></Label>
+                        <Label Grid.Column="4" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">
+                            <TextBlock TextWrapping="Wrap" Text="Change" TextDecorations="Underline" FontSize="15"/>
+                        </Label>
+
                     </Grid>
                 </Grid>
 

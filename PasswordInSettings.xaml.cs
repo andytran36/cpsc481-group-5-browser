@@ -28,28 +28,76 @@ namespace cpsc481_group5_browser
             InitializeComponent();
         }
 
-        private void Cancelbtn_Click(object sender, RoutedEventArgs e)
+        private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
+            PasswordInput.Clear();
+            PasswordInputConfirm.Clear();
+            HideBadPswdMsg();
+            HideNoMatchMsg();
             Handler_CancelClicked?.Invoke(this, e);
         }
 
-        private void Confirmbtn_Click(object sender, RoutedEventArgs e)
+        private void ConfirmBtn_Click(object sender, RoutedEventArgs e)
         {
             PasswordArgs args = new PasswordArgs();
             args.PasswordMatch = false;
-            bool ValidLength = Passwordinput.Password.Length >= 6 && Passwordinputconfirm.Password.Length >= 6;
-            bool Matches = Passwordinput.Password.Equals(Passwordinputconfirm.Password);
+            bool ValidLength = PasswordInput.Password.Length >= 6 && PasswordInputConfirm.Password.Length >= 6;
+            bool Matches = PasswordInput.Password.Equals(PasswordInputConfirm.Password);
             if (ValidLength && Matches) 
             {
                 args.PasswordMatch = true;
+                args.GoodPassword = true;
+            }else if (!ValidLength && Matches)
+            {
+                args.PasswordMatch = true;
+                args.GoodPassword = false;
+            }else if (ValidLength && !Matches)
+            {
+                args.PasswordMatch = false;
+                args.GoodPassword = true;
             }
-            Passwordinput.Clear();
+            else
+            {
+                args.PasswordMatch = false;
+                args.GoodPassword = false;
+            }
+            PasswordInput.Clear();
+            PasswordInputConfirm.Clear();
+            HideNoMatchMsg();
+            HideBadPswdMsg();
             Handler_ConfirmClicked?.Invoke(this, args);
+        }
+
+        public void HideNoMatchMsg()
+        {
+            NoMatchMsg.Visibility = Visibility.Hidden;
+        }
+
+        public void HideBadPswdMsg()
+        {
+            BadPwMsg.Visibility = Visibility.Hidden;
+        }
+
+        public void SetNoMatchMsg()
+        {
+            NoMatchMsg.Visibility = Visibility.Visible;
+        }
+
+        public void SetBadPswdMsg()
+        {
+            if (NoMatchMsg.Visibility == Visibility.Visible)
+            {
+                Thickness mymargin = BadPwMsg.Margin;
+                mymargin.Top = 21;
+                BadPwMsg.Margin = mymargin;
+                BadPwMsg.Visibility = Visibility.Visible;
+            }
         }
 
         public class PasswordArgs : EventArgs
         {
             public bool PasswordMatch { get; set; }
+            public bool GoodPassword { get; set; }
         }
     }
 }

@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static cpsc481_group5_browser.LockScreen;
 
 namespace cpsc481_group5_browser
 {
@@ -28,21 +27,63 @@ namespace cpsc481_group5_browser
             InitializeComponent();
         }
 
-        private void Cancelbtn_Click(object sender, RoutedEventArgs e)
+        private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
+            Reset();
             Handler_CancelClicked?.Invoke(this, e);
         }
 
-        private void Continuebtn_Click(object sender, RoutedEventArgs e)
+        private void ContinueBtn_Click(object sender, RoutedEventArgs e)
         {
-            PasswordArgs args = new PasswordArgs();
-            args.PasswordAccepted = false;
-            if (Passwordinput.Password.Length >= 6)
+            if (PopupTitle.Content.ToString() == "Settings")
             {
-                args.PasswordAccepted = true;
+                PasswordArgs args = new PasswordArgs();
+                args.PasswordAccepted = false;
+                if (PasswordInput.Password.Length >= 6)
+                {
+                    args.PasswordAccepted = true;
+                }
+                PasswordInput.Clear();
+                Handler_ContinueClicked?.Invoke(this, args);
             }
-            Passwordinput.Clear();
-            Handler_ContinueClicked?.Invoke(this, args);
+            else
+            {
+                //sends pass to recovery
+                Reset();
+                //Handler_CancelClicked?.Invoke(this, e);
+            }
+        }
+
+        public void HideErrorMessage()
+        {
+            ErrorMsg.Visibility = Visibility.Hidden;
+        }
+
+        public void SetErrorMessage()
+        {
+            ErrorMsg.Visibility = Visibility.Visible;
+        }
+
+        private void Forgot_Clicked(object sender, RoutedEventArgs e)
+        {
+            PopupTitle.Content = "Forgot Admin Password";
+            Instruction.Visibility = Visibility.Collapsed;
+            PasswordInput.Visibility = Visibility.Collapsed;
+            HideErrorMessage();
+            ContinueBtn.Content = "Confirm";
+            ForgotBtn.Visibility = Visibility.Collapsed;
+            ForgotPswdDesc.Visibility = Visibility.Visible;
+        }
+
+        private void Reset()
+        {
+            PopupTitle.Content = "Settings";
+            Instruction.Visibility = Visibility.Visible;
+            PasswordInput.Visibility = Visibility.Visible;
+            HideErrorMessage();
+            ContinueBtn.Content = "Continue";
+            ForgotBtn.Visibility = Visibility.Visible;
+            ForgotPswdDesc.Visibility = Visibility.Collapsed;
         }
 
         public class PasswordArgs : EventArgs

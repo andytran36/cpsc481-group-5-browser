@@ -7,141 +7,224 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid Background="White">
+    <Grid Background="#FFEFD6">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="0.1*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" VerticalAlignment="Center">
+        <Grid Grid.Row="0" VerticalAlignment="Center" Background="#F2DEBA">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="45px"></ColumnDefinition>
-                <ColumnDefinition Width="45px"></ColumnDefinition>
-                <ColumnDefinition Width="45px"></ColumnDefinition>
+                <ColumnDefinition Width="50px"></ColumnDefinition>
+                <ColumnDefinition Width="50px"></ColumnDefinition>
+                <ColumnDefinition Width="50px"></ColumnDefinition>
                 <ColumnDefinition Width="12*"></ColumnDefinition>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="45px"></ColumnDefinition>
                 <ColumnDefinition Width="45"></ColumnDefinition>
                 <ColumnDefinition Width="45px"></ColumnDefinition>
                 <ColumnDefinition Width="45px"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-
-            <Button x:Name="Back" Grid.Row="0" Grid.Column="0" Click="Back_Click">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/back.png"/>
+            <Button x:Name="Back" Grid.Column="0" Click="Back_Click" Background="{x:Null}" BorderThickness="0"  >
+                <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="/assets/left-arrow.png"/>
             </Button>
 
-            <Button x:Name="Forward" Grid.Row="0" Grid.Column="1" Click="Forward_Click">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/forward.png"/>
+            <Button x:Name="Forward" Grid.Column="1" Click="Forward_Click" Background="{x:Null}" BorderThickness="0"  >
+                <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28"  Source="/assets/right-arrow.png"/>
             </Button>
 
-            <Button x:Name="Home" Grid.Row="0" Grid.Column="2" Click="Home_Click">
+            <Button x:Name="Home" Grid.Column="2" Click="Home_Click" Background="{x:Null}" BorderThickness="0"  >
                 <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="/assets/home.png"/>
             </Button>
 
-            <TextBox Grid.Row="0" Grid.Column="3" KeyDown="SearchBox_KeyDown" x:Name="SearchBox" Foreground="Black" FontSize="20" FontWeight="SemiBold" Margin="14,0,5,0" Grid.ColumnSpan="2"></TextBox>
+            <Border Grid.Column="3" BorderThickness="1" BorderBrush="Black" CornerRadius="20" Margin="0,3,0,3" Background="White">
+                <TextBox KeyDown="SearchBox_KeyDown" x:Name="SearchBox" Foreground="Black" FontSize="20" FontWeight="SemiBold" Margin="10,3,10,3" BorderThickness="0" Background="{x:Null}">
+                </TextBox>
+            </Border>
 
-            <Image Source="/assets/bookmark.png" Grid.Column="4" Margin="1,5,5,5" />
+            <Image Grid.Column="4" Margin="1,5,5,5" Width="25" Source="/assets/bookmark.png" />
 
-            <Button Grid.Column="5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-                <Image Source="/assets/user.png" />
+            <Button Grid.Column="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" BorderThickness="0" Click="ChangeUser_Click">
+                <Image Source="/assets/user.png" Width="30"/>
             </Button>
 
-            <Button x:Name="Lock" Grid.Row="0" Grid.Column="6" Click="Lock_Click">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/lock.png"/>
+            <Button x:Name="Settings" Grid.Column="7" Click="Settings_Click" Background="{x:Null}" BorderThickness="0">
+                <Image Height="25"  Width="35" Source="/assets/setting.png"/>
             </Button>
-
-            <Button x:Name="Settings" Grid.Row="0" Grid.Column="7" Click="Settings_Click">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/settings.png"/>
-            </Button>
-
         </Grid>
 
-        <Border BorderBrush="Black" BorderThickness="0,0,0,1"/>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.4*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="0.4*"/>
+                <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
-
-            <Grid x:Name="bookmark">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Label Content="BOOKMARKS" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Top" FontSize="25"/>
-                <Border BorderBrush="Black" BorderThickness="1" Margin="50,0,0,0" Grid.RowSpan="4"/>
-                <Grid x:Name="bookmarkrow1" Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Button x:Name="leapfrog" Grid.Column="1" Background="{x:Null}" Padding="1,1,1,1" Margin="3,3,3,3">
-                        <Image Source="/assets/LeapFrog-logo.png" Stretch="Fill"/>
-                    </Button>
-                </Grid>
-                <Grid x:Name="bookmarkrow2" Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                </Grid>
-                <Grid x:Name="bookmarkrow3" Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                </Grid>
-            </Grid>
-
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40"></RowDefinition>
-                    <RowDefinition/>
-                    <RowDefinition Height="40"></RowDefinition>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Label Content="SUGGESTED" FontSize="25"/>
-                <Label Content="RECENTLY VIEWED" Grid.Row="2" FontSize="25"/>
-
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="50"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Border BorderBrush="Black" BorderThickness="1" Margin="2,2,2,2">
-                        <Image Source="/assets/pbs.png"/>
-                    </Border>
-                    <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Margin="2,2,2,2">
-                        <Image Source="/assets/funbrain.png"/>
-                    </Border>
-                    <Border BorderBrush="Black" BorderThickness="0,1,1,1" Grid.ColumnSpan="2" Margin="0,-40,0,0"/>
-
-                </Grid>
-
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="50"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Border BorderBrush="Black" BorderThickness="1" Margin="2,2,2,2">
-                        <Image Source="/assets/Scholastic.png" Stretch="Fill"/>
-                    </Border>
-                    <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Margin="2,2,2,2">
-                        <Image Source="/assets/Disney_D.png"/>
-                    </Border>
-                    <Border BorderBrush="Black" BorderThickness="0,0,1,1" Grid.ColumnSpan="2" Margin="0,-40,0,0"/>
-
-                </Grid>
-            </Grid>
+            <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="/assets/balloons.png" Grid.Column="1"></Image>
+            <Label Grid.Column="2" HorizontalAlignment="Center" Content="Welcome Back User!" FontSize="28" FontWeight="Bold" VerticalContentAlignment="Center"></Label>
+            <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="/assets/balloons.png" Grid.Column="3"></Image>
         </Grid>
 
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.25*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="0.25*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="1" CornerRadius="30" Background="White">
+                <Border.Effect >
+                    <DropShadowEffect Opacity="0.8" BlurRadius="15" />
+                </Border.Effect>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.25*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="0.25*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="1" CornerRadius="30" Background="#F2DEBA">
+                <Grid Margin="15px">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.05*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.15*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Padding="0" HorizontalAlignment="Left" Content="Bookmarks" FontSize="20" FontWeight="Bold" VerticalContentAlignment="Top"></Label>
+                            <Border Grid.Row="1" CornerRadius="50" BorderThickness="1" BorderBrush="Black" Background="white">
+                                <Grid Margin="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Border Margin="2" Grid.Row="0" Grid.Column="0" CornerRadius="50" BorderThickness="1.2" BorderBrush="Black" MouseLeftButtonUp="Browse">
+                                        <Border.Background>
+                                            <ImageBrush Stretch="UniformToFill"  ImageSource="/assets/LeapFrog-logo.png"/>
+                                        </Border.Background>
+                                    </Border>
+
+                                    <Border Margin="2" Grid.Row="0" Grid.Column="1" CornerRadius="50" BorderThickness="1.2" BorderBrush="Black">
+                                        <Border.Background>
+                                            <ImageBrush Stretch="UniformToFill"  ImageSource="/assets/funbrain.png"/>
+                                        </Border.Background>
+                                    </Border>
+
+                                    <Border Margin="2" Grid.Row="1" Grid.Column="0" CornerRadius="50" BorderThickness="1.2" BorderBrush="Black">
+                                        <Border.Background>
+                                            <ImageBrush Stretch="UniformToFill"  ImageSource="/assets/Symbol-Minecraft.png"/>
+                                        </Border.Background>
+                                    </Border>
+
+                                    <Border Margin="2" Grid.Row="1" Grid.Column="1" CornerRadius="50" BorderThickness="1.2" BorderBrush="Black">
+                                        <Border.Background>
+                                            <ImageBrush Stretch="UniformToFill"  ImageSource="/assets/Scholastic.png"/>
+                                        </Border.Background>
+                                    </Border>
+
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.15*"></RowDefinition>
+                            <RowDefinition Height=".5*"></RowDefinition>
+                            <RowDefinition Height="0.15*"></RowDefinition>
+                            <RowDefinition Height=".5*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Padding="0" HorizontalAlignment="Left" Content="Suggested" FontSize="20" FontWeight="Bold" VerticalContentAlignment="Top"></Label>
+                        <Label Grid.Row="2" Padding="0" HorizontalAlignment="Left" Content="Recently viewed" FontSize="20" FontWeight="Bold" VerticalContentAlignment="Top"></Label>
+
+                        <Border Grid.Row="1" CornerRadius="50" BorderThickness="1" BorderBrush="Black" Background="white">
+                            <Grid>
+                                <Grid Margin="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Margin="2" Grid.Column="0" CornerRadius="50" BorderThickness="1.2" BorderBrush="Black">
+                                        <Border.Background>
+                                            <ImageBrush Stretch="UniformToFill"  ImageSource="/assets/Scholastic.png"/>
+                                        </Border.Background>
+                                    </Border>
+
+                                    <Border Margin="2" Grid.Column="1" CornerRadius="50" BorderThickness="1.2" BorderBrush="Black">
+                                        <Border.Background>
+                                            <ImageBrush Stretch="UniformToFill"  ImageSource="/assets/Scholastic.png"/>
+                                        </Border.Background>
+                                    </Border>
+
+                                    <Border Margin="2" Grid.Column="2" CornerRadius="50" BorderThickness="1.2" BorderBrush="Black">
+                                        <Border.Background>
+                                            <ImageBrush Stretch="UniformToFill"  ImageSource="/assets/Scholastic.png"/>
+                                        </Border.Background>
+                                    </Border>
+
+                                </Grid>
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Row="3" CornerRadius="50" BorderThickness="1" BorderBrush="Black" Background="white">
+                            <Grid Margin="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Margin="2" Grid.Column="0" CornerRadius="50" BorderThickness="1.2" BorderBrush="Black">
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill"  ImageSource="/assets/Scholastic.png"/>
+                                    </Border.Background>
+                                </Border>
+
+                                <Border Margin="2" Grid.Column="1" CornerRadius="50" BorderThickness="1.2" BorderBrush="Black">
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill"  ImageSource="/assets/Scholastic.png"/>
+                                    </Border.Background>
+                                </Border>
+
+                                <Border Margin="2" Grid.Column="2" CornerRadius="50" BorderThickness="1.2" BorderBrush="Black">
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill"  ImageSource="/assets/Scholastic.png"/>
+                                    </Border.Background>
+                                </Border>
+                            </Grid>
+                        </Border>
+
+
+                    </Grid>
+
+                </Grid>
+            </Border>
+
+
+
+        </Grid>
+        <Popup x:Name="PasswordPrompt" Placement="Center" AllowsTransparency="True">
+            <local:PasswordPrompt x:Name="PasswordPromptContent" />
+        </Popup>
     </Grid>
 </UserControl>

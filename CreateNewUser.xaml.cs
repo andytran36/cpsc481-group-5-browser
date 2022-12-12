@@ -15,12 +15,12 @@ using System.Windows.Shapes;
 
 namespace cpsc481_group5_browser
 {
+    /// <summary>
+    /// Interaction logic for CreateNewUser.xaml
+    /// </summary>
     public partial class CreateNewUser : UserControl
     {
-
-        // Event Handlers
-        public event EventHandler Handler_CreateNewUserHomeClicked;
-        public event EventHandler Handler_CreateNewUserSettingsClicked;
+        public EventHandler Handler_CancelClicked;
         public event EventHandler<CreateNewUserArgs> Handler_CreateNewUserCreateClicked;
 
         public CreateNewUser()
@@ -28,35 +28,37 @@ namespace cpsc481_group5_browser
             InitializeComponent();
         }
 
-        private void Home_Click(object sender, RoutedEventArgs e)
+        private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
-            Handler_CreateNewUserHomeClicked?.Invoke(this, new EventArgs());
+            NameTextBox.Text = "";
+            UserPasswordInput.Password = "";
+            PasswordInput.Password = "";
+
+            Handler_CancelClicked?.Invoke(this, e);
         }
 
-        private void Settings_Click(object sender, RoutedEventArgs e)
-        {
-            Handler_CreateNewUserSettingsClicked?.Invoke(this, new EventArgs());
-        }
-
-        private void Create_Click(object sender, RoutedEventArgs e)
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             CreateNewUserArgs args = new CreateNewUserArgs();
-            args.Name = CreateUserName.Text.Trim();
-            args.Age = CreateUserAge.Text.Trim();
+            args.Name = NameTextBox.Text.Trim();
+            args.Password = UserPasswordInput.Password.Trim();
 
+            NameTextBox.Text = "";
+            UserPasswordInput.Password = "";
+            PasswordInput.Password = "";
 
             Handler_CreateNewUserCreateClicked?.Invoke(this, args);
         }
 
-        private void Cancel_Click(object sender, RoutedEventArgs e)
+        public class PasswordArgs : EventArgs
         {
-            Handler_CreateNewUserHomeClicked?.Invoke(this, new EventArgs());
+            public bool PasswordAccepted { get; set; }
         }
 
         public class CreateNewUserArgs : EventArgs
         {
             public string Name { get; set; }
-            public string Age { get; set; }
+            public string Password { get; set; }
         }
     }
 }

@@ -6,63 +6,131 @@
              xmlns:local="clr-namespace:cpsc481_group5_browser"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40px"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+        <Style TargetType="{x:Type PasswordBox}">
+            <Setter Property="PasswordChar" Value="●"/>
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type PasswordBox}">
+                        <Border x:Name="border" CornerRadius="10" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" CornerRadius="10" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
 
-        <Grid Grid.Row="0" VerticalAlignment="Center" Background="White">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="45px"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="45px"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-
-            <Button x:Name="Home" Grid.Row="0" Grid.Column="0" Click="Home_Click">
-                <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="/assets/home.png"/>
-            </Button>
-
-            <Button x:Name="Settings" Grid.Row="0" Grid.Column="2" Click="Settings_Click">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/settings.png"/>
-            </Button>
-        </Grid>
-
-        <Border BorderThickness="1" BorderBrush="Black"></Border>
-
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="400px"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-
+    <Border Height="400" Width="319" BorderBrush="Black" BorderThickness="1,1,1,1" CornerRadius="15,15,15,15" Background="#FFF2DEBA">
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="50px"></RowDefinition>
-                <RowDefinition Height="60px"></RowDefinition>
-                <RowDefinition Height="30px"></RowDefinition>
-                <RowDefinition Height="40px"></RowDefinition>
-                <RowDefinition Height="20px"></RowDefinition>
-                <RowDefinition Height="30px"></RowDefinition>
-                <RowDefinition Height="40px"></RowDefinition>
-                <RowDefinition Height="20px"></RowDefinition>
-                <RowDefinition Height="40px"></RowDefinition>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
+            <Label Content="Create New User" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Margin="10,0,0,0"/>
+            
+            <Label Content="Name" HorizontalAlignment="Left" Margin="17,24,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+            <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Margin="10,6,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" VerticalContentAlignment="Center" Height="30"/>
 
-            <Label Grid.Row="1" Grid.Column="1" FontSize="40px" HorizontalAlignment="Center">Create a New User</Label>
-            <Label Grid.Row="2" Grid.Column="1" FontSize="18px" HorizontalAlignment="Left">Name</Label>
-            <TextBox x:Name="CreateUserName" Grid.Row="3" Grid.Column="1"></TextBox>
-            <Label Grid.Row="5" Grid.Column="1" FontSize="18px" HorizontalAlignment="Left">Age</Label>
-            <TextBox x:Name="CreateUserAge" Grid.Row="6" Grid.Column="1"></TextBox>
+            <Label Content="New user password" HorizontalAlignment="Left" Margin="17,24,0,0" Grid.Row="3" VerticalAlignment="Top" Height="30"/>
+            <PasswordBox x:Name="UserPasswordInput" HorizontalAlignment="Left" Margin="10,6,0,0" Grid.Row="4" VerticalAlignment="Top" Width="256" Height="30" VerticalContentAlignment="Center"/>
+            
+            <Label Content="Admin password" HorizontalAlignment="Left" Margin="17,24,0,0" Grid.Row="5" VerticalAlignment="Top"/>
+            <PasswordBox x:Name="PasswordInput" HorizontalAlignment="Left" Margin="10,6,0,0" Grid.Row="6" VerticalAlignment="Top" Width="256" Height="30" VerticalContentAlignment="Center"/>
+            <Label x:Name="ErrorMsg" Content="Sorry, you have entered an incorrect password" HorizontalAlignment="Left" Grid.Row="7" VerticalAlignment="Top" Margin="17,46,0,0" Foreground="#FF890000" Visibility="Hidden"/>
 
-            <Grid Grid.Row="8" Grid.Column="1">
+            <Grid Grid.Row="7" VerticalAlignment="Bottom" Margin="0,0,0,16">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Margin="0,0,10px,0" Click="Create_Click">Create</Button>
-                <Button Grid.Column="1" Margin="10px,0,0,0" Click="Cancel_Click">Cancel</Button>
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" Width="132" Height="30" Background="#FF4681F4" CornerRadius="10,10,10,10">
+                    <Button x:Name="ContinueBtn" Content="Continue" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" Click="SaveBtn_Click"/>
+                </Border>
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Width="132" Height="30" CornerRadius="10,10,10,10" Background="White">
+                    <Button x:Name="CancelBtn" Content="Cancel" Background="{x:Null}" BorderBrush="{x:Null}" Click="CancelBtn_Click"/>
+                </Border>
             </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </UserControl>

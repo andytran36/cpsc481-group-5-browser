@@ -75,16 +75,26 @@
             <Label Content="Enter admin password" HorizontalAlignment="Left" Margin="22,31,0,0" Grid.Row="3" VerticalAlignment="Top"/>
             <PasswordBox x:Name="Passwordinput" HorizontalAlignment="Left" Margin="10,1,0,0" Grid.Row="4" VerticalAlignment="Top" Width="256" Height="30" VerticalContentAlignment="Center"/>
 
+            <Label x:Name="ErrorMsg" Content="Sorry, incorrect password" HorizontalAlignment="Left" Margin="10,31,0,0" Grid.Row="4" VerticalAlignment="Top" Foreground="#FF890000" Visibility="Hidden"/>
+
             <Grid Grid.Row="6">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Border HorizontalAlignment="Center" VerticalAlignment="Center" Width="132" Height="30" Background="#FF4681F4" CornerRadius="10,10,10,10">
-                    <Button x:Name="Lockbtn" Content="Lock" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" Click="Lockbtn_Click"/>
+                    <Button x:Name="Lockbtn" Content="Lock" Foreground="White" BorderBrush="{x:Null}" Click="Lockbtn_Click">
+                        <Button.Background>
+                            <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                        </Button.Background>
+                    </Button>
                 </Border>
                 <Border HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Width="132" Height="30" CornerRadius="10,10,10,10" Background="White">
-                    <Button x:Name="Cancelbtn" Content="Cancel" Background="{x:Null}" BorderBrush="{x:Null}" Click="Cancelbtn_Click"/>
+                    <Button x:Name="Cancelbtn" Content="Cancel" BorderBrush="{x:Null}" Click="Cancelbtn_Click">
+                        <Button.Background>
+                            <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                        </Button.Background>
+                    </Button>
                 </Border>
             </Grid>
         </Grid>
