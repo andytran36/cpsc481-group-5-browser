@@ -32,23 +32,22 @@
                 <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="/assets/left-arrow.png"/>
             </Button>
 
-            <Button x:Name="Forward" Grid.Column="1"  IsEnabled="False" Visibility="Collapsed"  Click="Forward_Click" Background="{x:Null}" BorderThickness="0"  >
+            <Button x:Name="Forward" IsEnabled="False" Grid.Column="1" Visibility="Collapsed" Click="Forward_Click" Background="{x:Null}" BorderThickness="0"  >
                 <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28"  Source="/assets/right-arrow.png"/>
             </Button>
 
-            <Button x:Name="Home" Grid.Column="2" Click="Home_Click" Background="{x:Null}" BorderThickness="0"  >
+            <Button x:Name="Home" IsEnabled="False" Visibility="Collapsed" Grid.Column="2" Click="Home_Click" Background="{x:Null}" BorderThickness="0"  >
                 <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="/assets/home.png"/>
             </Button>
 
-            <Border Grid.Column="3"  IsEnabled="False" Visibility="Collapsed"  BorderThickness="1" BorderBrush="Black" CornerRadius="20" Margin="0,3,0,3" Background="White">
+            <Border Grid.Column="3" IsEnabled="False" Visibility="Collapsed"  BorderThickness="1" BorderBrush="Black" CornerRadius="20" Margin="0,3,0,3" Background="White">
                 <TextBox KeyDown="SearchBox_KeyDown" x:Name="SearchBox" Foreground="Black" FontSize="20" FontWeight="SemiBold" Margin="10,3,10,3" BorderThickness="0" Background="{x:Null}">
                 </TextBox>
             </Border>
 
-
             <Image  Grid.Column="4" IsEnabled="False" Visibility="Collapsed"  Margin="1,5,5,5" Width="25" Source="/assets/bookmark.png" />
 
-            <Button Grid.Column="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" BorderThickness="0">
+            <Button Grid.Column="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="UserSelect_Click" Background="{x:Null}" BorderThickness="0">
                 <Image Source="/assets/user.png" Width="30"/>
             </Button>
 
