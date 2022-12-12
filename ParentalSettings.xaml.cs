@@ -29,10 +29,9 @@ namespace cpsc481_group5_browser
         ContactSettings ContactPopup;
         PasswordInSettings PwSettingsContent;
         Settings settings;
-
-        public ParentalSettings(ref Settings settings)
         List<ParentalSettingsUser> StoredUsers = new List<ParentalSettingsUser>();
-        public ParentalSettings(List<User> users)
+
+        public ParentalSettings(ref Settings settings, List<User> users)
         {
             InitializeComponent();
             this.settings = settings;

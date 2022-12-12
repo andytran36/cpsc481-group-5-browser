@@ -99,8 +99,7 @@ namespace cpsc481_group_5_browser
             LockScreenPopup = new LockScreen();
             SettingsPasswordPrompt = new PasswordPrompt();
             
-            ParentalSettingsScreen = new ParentalSettings(ref GeneralSettings);
-            ParentalSettingsScreen = new ParentalSettings(Users);
+            ParentalSettingsScreen = new ParentalSettings(ref GeneralSettings, Users);
             
             ChangeUserSettingsScreen = new ChangeUserSetting();
             UserProfilePasswordPopup = new UserProfilePassword();

@@ -18,8 +18,8 @@
             <RowDefinition Height="80px"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="1" Grid.ColumnSpan="4" BorderBrush="Black" BorderThickness="1" CornerRadius="20" Background="PaleGreen"/>
-        <Border Grid.Row="1" Margin="8" CornerRadius="20" BorderThickness="1" BorderBrush="black" Background="white" >
+        <Border Grid.Row="1" Grid.ColumnSpan="4" BorderBrush="Black" BorderThickness="1" CornerRadius="20" Background="PaleGreen" Margin="5, 5, 5, 5"/>
+        <Border Grid.Row="1" Margin="12" CornerRadius="20" BorderThickness="1" BorderBrush="black" Background="white" >
             <Image Margin="5" Source="/assets/user.png"></Image>
         </Border>
         <Label Grid.Row="1" Grid.Column="1" x:Name="Name" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20"></Label>
