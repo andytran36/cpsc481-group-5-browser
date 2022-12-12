@@ -32,6 +32,17 @@ namespace cpsc481_group5_browser
             txtNum2.Text = currentuser.Minutes.ToString();
         }
 
+        public void Setup()
+        {
+            Notif_1.IsChecked = currentuser.Notif_1;
+            Notif_2.IsChecked = currentuser.Notif_2;
+            Notif_3.IsChecked = currentuser.Notif_3;
+            Notif_4.IsChecked = currentuser.Notif_4;
+            Notif_5.IsChecked = currentuser.Notif_5;
+            Notif_6.IsChecked = currentuser.Notif_6;
+            Notif_7.IsChecked = currentuser.Notif_7;
+        }
+
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             

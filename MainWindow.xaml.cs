@@ -161,14 +161,18 @@ namespace cpsc481_group_5_browser
 
         private void Handle_JohnChangeSettingsClicked(object sender, EventArgs e)
         {
-            this.contentControl.Content = ChangeUserSettingsScreen;
             ChangeUserSettingsScreen.currentuser = Users[0];
+            ChangeUserSettingsScreen.Setup();
+            this.contentControl.Content = ChangeUserSettingsScreen;
+            
         }
 
         private void Handle_BobChangeSettingsClicked(object sender, EventArgs e)
         {
-            this.contentControl.Content = ChangeUserSettingsScreen;
             ChangeUserSettingsScreen.currentuser = Users[1];
+            ChangeUserSettingsScreen.Setup();
+            this.contentControl.Content = ChangeUserSettingsScreen;
+            
         }
 
 
