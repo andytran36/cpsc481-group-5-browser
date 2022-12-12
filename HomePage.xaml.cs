@@ -28,6 +28,7 @@ namespace cpsc481_group5_browser
         public event EventHandler Handler_ToUserSelect;
         PasswordPrompt PasswordPopup;
         SiteBlocked BlockObj;
+        TimeLimit TLObj;
 
         public HomePage()
         {
@@ -117,6 +118,28 @@ namespace cpsc481_group5_browser
         }
 
         private void BlockPromptContinue_Clicked(object sender, SiteBlocked.PasswordArgs e)
+        {
+            if (e.PasswordAccepted)
+            {
+                BlockPrompt.Visibility = Visibility.Collapsed;
+                BlockPrompt.IsOpen = false;
+                BlockObj.HideErrorMsg();
+                Handler_ToBrowser?.Invoke(this, new EventArgs());
+            }
+            else
+            {
+                BlockObj.SetErrorMsg();
+            }
+        }
+
+        private void TimeLimiit(object sender, MouseButtonEventArgs e)
+        {
+            TimeLimitPrompt.IsOpen = true;
+            TLObj = TimeLimitContent;
+            TLObj.Handler_ContinueClicked += new EventHandler<TimeLimit.PasswordArgs>(TLPromptContinue_Clicked);
+        }
+
+        private void TLPromptContinue_Clicked(object sender, TimeLimit.PasswordArgs e)
         {
             if (e.PasswordAccepted)
             {
