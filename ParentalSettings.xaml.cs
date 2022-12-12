@@ -25,7 +25,9 @@ namespace cpsc481_group5_browser
     {
         public event EventHandler Handler_BackClicked;
         public event EventHandler Handler_ToHome;
+        public event EventHandler Handler_UserSelectClicked;
         public event EventHandler<ParentalSettingsUser.UserProfileArgs> Handler_UserSettingsClicked;
+
         ContactSettings ContactPopup;
         PasswordInSettings PwSettingsContent;
         Settings settings;
@@ -80,7 +82,7 @@ namespace cpsc481_group5_browser
             Handler_UserSettingsClicked?.Invoke(this, e);
         }
 
-        private void Back_Clicked(object sender, MouseButtonEventArgs e)
+        private void Back_Click(object sender, RoutedEventArgs e)
         {
             Handler_BackClicked?.Invoke(this, new EventArgs());
         }
@@ -89,15 +91,15 @@ namespace cpsc481_group5_browser
         {
             
         }
-            
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
 
         private void Forward_Click(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void UserSelect_Click(object sender, RoutedEventArgs e)
+        {
+            Handler_UserSelectClicked?.Invoke(this, new EventArgs());
         }
 
         private void Home_Click(object sender, RoutedEventArgs e)

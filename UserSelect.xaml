@@ -19,7 +19,7 @@
             </Grid.ColumnDefinitions>
 
             <Button x:Name="Settings" Grid.Column="1" Click="Settings_Click" Background="{x:Null}" BorderThickness="0">
-                <Image HorizontalAlignment="Left" Height="25" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="35" Source="/assets/settings.png"/>
+                <Image Height="25"  Width="35" Source="/assets/setting.png"/>
             </Button>
         </Grid>
 

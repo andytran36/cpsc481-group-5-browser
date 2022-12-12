@@ -114,7 +114,7 @@
                 <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="/assets/left-arrow.png"/>
             </Button>
 
-            <Button x:Name="Forward" Grid.Column="1" Click="Forward_Click" Background="{x:Null}" BorderThickness="0"  >
+            <Button IsEnabled="False" Visibility="Hidden" x:Name="Forward" Grid.Column="1" Click="Forward_Click" Background="{x:Null}" BorderThickness="0"  >
                 <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28"  Source="/assets/right-arrow.png"/>
             </Button>
 

@@ -117,7 +117,8 @@ namespace cpsc481_group_5_browser
 
             // Parental Settings Screen Handlers
             ParentalSettingsScreen.Handler_UserSettingsClicked += new EventHandler<ParentalSettingsUser.UserProfileArgs>(Handle_UserSettingsClicked);
-            ParentalSettingsScreen.Handler_ToHome += new EventHandler(Handle_ToHome);
+            ParentalSettingsScreen.Handler_BackClicked += new EventHandler(Handle_ToUserSelect);
+            ParentalSettingsScreen.Handler_UserSelectClicked += new EventHandler(Handle_ToUserSelect);
 
             // Home Screen Handlers
             HomeScreen.Handler_ToSettings += new EventHandler(Handle_ToSettings);
@@ -137,6 +138,7 @@ namespace cpsc481_group_5_browser
             CurrentUser = e.Index;
             ChangeUserSettingsScreen = new ChangeUserSetting(Users[CurrentUser]);
             ChangeUserSettingsScreen.Handler_ToSettings += new EventHandler(Handle_ToSettings);
+            ChangeUserSettingsScreen.Handler_ToUserSelect += new EventHandler(Handle_ToUserSelect);
             ChangeUserSettingsScreen.Handler_ChangeUserSettings += new EventHandler<ChangeUserSetting.UserSettingsArgs>(Handle_ChangeUserSettings);
             this.contentControl.Content = ChangeUserSettingsScreen;
         }

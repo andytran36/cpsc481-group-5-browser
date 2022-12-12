@@ -24,6 +24,7 @@ namespace cpsc481_group5_browser
         User CurrentUser = new User("", "");
 
         public event EventHandler Handler_ToSettings;
+        public event EventHandler Handler_ToUserSelect;
         public event EventHandler<UserSettingsArgs> Handler_ChangeUserSettings;
 
         public ChangeUserSetting(User user)
@@ -62,7 +63,7 @@ namespace cpsc481_group5_browser
 
         private void User_Click(object sender, RoutedEventArgs e)
         {
-
+            Handler_ToUserSelect?.Invoke(this, EventArgs.Empty);
         }
 
         private void SearchBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -84,7 +85,7 @@ namespace cpsc481_group5_browser
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
-            
+            Handler_ToSettings?.Invoke(sender, EventArgs.Empty);
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
