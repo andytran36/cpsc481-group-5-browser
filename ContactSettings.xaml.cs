@@ -75,6 +75,16 @@ namespace cpsc481_group5_browser
             {
                 PhoneInput.Text = "(123)-456-7890";
             }
+
+            if (settings.EmailPreferred == true)
+            {
+                EmailPreferredBox.IsChecked = true;
+            }
+
+            if (settings.PhonePreferred == true)
+            {
+                PhonePreferredBox.IsChecked = true;
+            }
         }
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)

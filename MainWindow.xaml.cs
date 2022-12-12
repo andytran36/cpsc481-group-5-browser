@@ -23,6 +23,8 @@ public struct Settings
     public string Phone { get; set; }
     public string Password { get; set; }
     // TODO: Preferred method of contact here
+    public bool EmailPreferred { get; set; }
+    public bool PhonePreferred { get; set; }
 }
 
 public struct User

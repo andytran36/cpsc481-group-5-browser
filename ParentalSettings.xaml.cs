@@ -167,6 +167,8 @@ namespace cpsc481_group5_browser
             {
                 settings.Email = e.Email;
                 settings.Phone = e.PhoneNumber;
+                settings.EmailPreferred = e.EmailPreferred;
+                settings.PhonePreferred = e.PhonePreferred;
                 ContactSettingsPopupContent.HideGeneralMessage();
                 ContactSettingsPopupContent.HidePhoneMessage();
                 ContactSettingsPopupContent.HideEmailMessage();
