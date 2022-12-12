@@ -13,7 +13,11 @@
     <None Remove="assets\balloons.png" />
     <None Remove="assets\banned.png" />
     <None Remove="assets\bookmark.png" />
+    <None Remove="assets\forbidden.png" />
+    <None Remove="assets\github.png" />
+    <None Remove="assets\google.png" />
     <None Remove="assets\left-arrow.png" />
+    <None Remove="assets\parking.png" />
     <None Remove="assets\right-arrow.png" />
     <None Remove="assets\setting.png" />
     <None Remove="assets\timer.png" />
@@ -24,6 +28,8 @@
     <None Remove="assets\Symbol-Minecraft.png" />
     <None Remove="assets\unlock.png" />
     <None Remove="assets\user.png" />
+    <None Remove="assets\visualstudio.png" />
+    <None Remove="assets\youtube.png" />
     <None Remove="back.png" />
     <None Remove="forwar.png" />
     <None Remove="home.png" />
@@ -38,9 +44,13 @@
     <Resource Include="assets\banned.png" />
     <Resource Include="assets\bookmark.png" />
     <Resource Include="assets\Disney_D.png" />
+    <Resource Include="assets\forbidden.png" />
     <Resource Include="assets\funbrain.png" />
+    <Resource Include="assets\github.png" />
+    <Resource Include="assets\google.png" />
     <Resource Include="assets\LeapFrog-logo.png" />
     <Resource Include="assets\left-arrow.png" />
+    <Resource Include="assets\parking.png" />
     <Resource Include="assets\right-arrow.png" />
     <Resource Include="assets\Scholastic.png" />
   </ItemGroup>
@@ -59,6 +69,8 @@
     <Resource Include="assets\Symbol-Minecraft.png" />
     <Resource Include="assets\unlock.png" />
     <Resource Include="assets\user.png" />
+    <Resource Include="assets\visualstudio.png" />
+    <Resource Include="assets\youtube.png" />
   </ItemGroup>
 
 </Project>

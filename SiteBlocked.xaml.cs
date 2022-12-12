@@ -21,7 +21,7 @@ namespace cpsc481_group5_browser
     public partial class SiteBlocked : UserControl
     {
         public event EventHandler Handler_ExitClicked;
-        public event EventHandler Handler_ContinueClicked;
+        public event EventHandler<PasswordArgs> Handler_ContinueClicked;
 
         public SiteBlocked()
         {
