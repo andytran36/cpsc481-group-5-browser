@@ -61,6 +61,8 @@ namespace cpsc481_group_5_browser
                 new User("Bob", "12345"),
             };
 
+        Settings GeneralSettings; 
+
         public MainWindow()
         {
             InitializeComponent();
@@ -72,7 +74,7 @@ namespace cpsc481_group_5_browser
             HomeScreen = new HomePage();
             LockScreenPopup = new LockScreen();
             SettingsPasswordPrompt = new PasswordPrompt();
-            ParentalSettingsScreen = new ParentalSettings();
+            ParentalSettingsScreen = new ParentalSettings(ref GeneralSettings);
             ChangeUserSettingsScreen = new ChangeUserSetting();
             UserProfilePasswordPopup = new UserProfilePassword();
 

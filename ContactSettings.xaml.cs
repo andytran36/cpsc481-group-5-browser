@@ -50,10 +50,31 @@ namespace cpsc481_group5_browser
             return false;
         }
 
-        public void SetOpen()
+        public void SetOpen(Settings settings)
         {
-            EmailInput.Text = "user@email.com";
-            PhoneInput.Text = "(123)-456-7890";
+            if (settings.Email != null)
+            {
+                if (settings.Email.Length != 0)
+                {
+                    EmailInput.Text = settings.Email;
+                }
+            }
+            else
+            {
+                EmailInput.Text = "user@email.com";
+            }
+
+            if (settings.Phone != null)
+            {
+                if (settings.Phone.Length != 0)
+                {
+                    PhoneInput.Text = settings.Phone;
+                }   
+            }
+            else
+            {
+                PhoneInput.Text = "(123)-456-7890";
+            }
         }
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)

@@ -26,10 +26,12 @@ namespace cpsc481_group5_browser
         public event EventHandler Handler_ToHome;
         ContactSettings ContactPopup;
         PasswordInSettings PwSettingsContent;
+        Settings settings;
 
-        public ParentalSettings()
+        public ParentalSettings(ref Settings settings)
         {
             InitializeComponent();
+            this.settings = settings;
             this.Loaded += new RoutedEventHandler(ParentalSettingsLoaded);
         }
 
@@ -103,8 +105,10 @@ namespace cpsc481_group5_browser
         {
             if (e.PasswordMatch && e.GoodPassword)
             {
+               
                 PwSettingsPopup.Visibility = Visibility.Collapsed;
                 PwSettingsPopup.IsOpen = false;
+                settings.Password = e.Password;
             }
             else
             {
@@ -126,7 +130,7 @@ namespace cpsc481_group5_browser
         {
             ContactSettingsPopup.IsOpen = true;
             ContactPopup = ContactSettingsPopupContent;
-            ContactPopup.SetOpen();
+            ContactPopup.SetOpen(this.settings);
             ContactPopup.Handler_CancelClicked += new EventHandler(ContactCancel_Clicked);
             ContactPopup.Handler_SaveClicked += new EventHandler<ContactSettings.ContactInformation>(ContactSave_Clicked);
         }
@@ -161,6 +165,8 @@ namespace cpsc481_group5_browser
 
             if ((ContactSettingsPopupContent.EmailValid() == true  && ContactSettingsPopupContent.PhoneValid() == true) && ContactSettingsPopupContent.NothingToSave() == false)
             {
+                settings.Email = e.Email;
+                settings.Phone = e.PhoneNumber;
                 ContactSettingsPopupContent.HideGeneralMessage();
                 ContactSettingsPopupContent.HidePhoneMessage();
                 ContactSettingsPopupContent.HideEmailMessage();
