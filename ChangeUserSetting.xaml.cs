@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,13 +21,26 @@ namespace cpsc481_group5_browser
     /// </summary>
     public partial class ChangeUserSetting : UserControl
     {
-        private int _numValue = 0;
-        private int _numValue2 = 0;
+        public User CurrentUser = new User();
+
+        public event EventHandler Handler_ToUserSelect;
+
         public ChangeUserSetting()
         {
             InitializeComponent();
-            txtNum.Text = _numValue.ToString();
-            txtNum2.Text = _numValue2.ToString();
+            txtNum.Text = CurrentUser.Hours.ToString();
+            txtNum2.Text = CurrentUser.Minutes.ToString();
+        }
+
+        public void Setup()
+        {
+            Notif_1.IsChecked = CurrentUser.Notif_1;
+            Notif_2.IsChecked = CurrentUser.Notif_2;
+            Notif_3.IsChecked = CurrentUser.Notif_3;
+            Notif_4.IsChecked = CurrentUser.Notif_4;
+            Notif_5.IsChecked = CurrentUser.Notif_5;
+            Notif_6.IsChecked = CurrentUser.Notif_6;
+            Notif_7.IsChecked = CurrentUser.Notif_7;
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -41,7 +55,13 @@ namespace cpsc481_group5_browser
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {
-            
+
+        }
+
+        private void User_Click(object sender, RoutedEventArgs e)
+        {
+            Handler_ToUserSelect?.Invoke(this, new EventArgs());
+
         }
 
         private void SearchBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -68,6 +88,15 @@ namespace cpsc481_group5_browser
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
+            CurrentUser.Notif_1 = Notif_1.IsChecked == true;
+            CurrentUser.Notif_2 = Notif_2.IsChecked == true;
+            CurrentUser.Notif_3 = Notif_3.IsChecked == true;
+            CurrentUser.Notif_4 = Notif_4.IsChecked == true;
+            CurrentUser.Notif_5 = Notif_5.IsChecked == true;  
+            CurrentUser.Notif_6 = Notif_6.IsChecked == true;
+            CurrentUser.Notif_7 = Notif_7.IsChecked == true;
+
+            Debug.WriteLine(CurrentUser.Name);
 
         }
 
@@ -76,28 +105,30 @@ namespace cpsc481_group5_browser
 
         public int NumValue
         {
-            get { return _numValue; }
+            get { return CurrentUser.Hours; }
             set
             {
-                _numValue = value;
+                CurrentUser.Hours = value;
                 txtNum.Text = value.ToString();
             }
         }
 
         public int NumValue2
         {
-            get { return _numValue2; }
+            get { return CurrentUser.Minutes; }
             set
             {
-                _numValue2 = value;
+                CurrentUser.Minutes = value;
                 txtNum2.Text = value.ToString();
             }
         }
 
+        //1 is hours
+        //2 is minutes
+
         private void cmdUp_Click(object sender, RoutedEventArgs e)
         {
             NumValue++;
-
         }
 
         private void cmdUp_Click2(object sender, RoutedEventArgs e)
@@ -135,8 +166,7 @@ namespace cpsc481_group5_browser
                 NumValue = 24;
             }
 
-            if (!int.TryParse(txtNum.Text, out _numValue))
-                txtNum.Text = _numValue.ToString();
+            txtNum.Text = CurrentUser.Hours.ToString();
         }
 
         private void txtNum_TextChanged2(object sender, TextChangedEventArgs e)
@@ -156,8 +186,8 @@ namespace cpsc481_group5_browser
                 NumValue2 = 59;
             }
 
-            if (!int.TryParse(txtNum2.Text, out _numValue2))
-                txtNum2.Text = _numValue2.ToString();
+            txtNum2.Text =CurrentUser.Minutes.ToString();
+
         }
     }
 }

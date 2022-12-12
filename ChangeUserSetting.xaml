@@ -117,7 +117,8 @@
                 <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28"  Source="/assets/right-arrow.png"/>
             </Button>
 
-            <Button x:Name="Home" Grid.Column="2" Click="Home_Click" Background="{x:Null}" BorderThickness="0"  >
+            <Button x:Name="Home" Grid.Column="2" IsEnabled="False" Visibility="Collapsed" Click="Home_Click" Background="{x:Null}" BorderThickness="0"  >
+
                 <Image HorizontalAlignment="Left" Margin="5px,0,5px,0" VerticalAlignment="Center" Width="31" Height="28" Source="/assets/home.png"/>
             </Button>
 
@@ -129,7 +130,8 @@
 
             <Image Grid.Column="4" IsEnabled="False" Visibility="Collapsed" Margin="1,5,5,5" Width="25" Source="/assets/bookmark.png" />
 
-            <Button Grid.Column="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" BorderThickness="0">
+            <Button x:Name="User" Grid.Column="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" BorderThickness="0" Click="User_Click">
+
                 <Image Source="/assets/user.png" Width="30"/>
             </Button>
 
@@ -200,10 +202,10 @@
                             </Grid.RowDefinitions>
                             <TextBlock FontSize="20" Text="Notifications"></TextBlock>
 
-                            <CheckBox HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="1" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
-                            <CheckBox HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="2" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
-                            <CheckBox HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="3" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
-                            <CheckBox HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="4" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
+                            <CheckBox x:Name="Notif_1" HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="1" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
+                            <CheckBox x:Name="Notif_2" HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="2" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
+                            <CheckBox x:Name="Notif_3" HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="3" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
+                            <CheckBox x:Name="Notif_4" HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="4" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
 
 
                         </Grid>
@@ -317,9 +319,9 @@
                             </Grid.RowDefinitions>
                             <TextBlock FontSize="20" Text="Blocked Sites"></TextBlock>
 
-                            <CheckBox HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="1" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
-                            <CheckBox HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="2" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
-                            <CheckBox HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="3" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
+                            <CheckBox x:Name="Notif_5" HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="1" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
+                            <CheckBox x:Name="Notif_6" HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="2" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
+                            <CheckBox x:Name="Notif_7" HorizontalAlignment="Left" Style="{DynamicResource OrangeSwitchStyle}" Grid.Row="3" Checked="CheckBox_Checked" Margin="10px"></CheckBox>
 
                         </Grid>
 

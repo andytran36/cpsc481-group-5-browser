@@ -29,12 +29,34 @@ public struct User
 {
     public string Name { get; set; }
     public string Password { get; set; }
+    public bool Notif_1 { get; set; }
+    public bool Notif_2 { get; set; }
+    public bool Notif_3 { get; set; }
+    public bool Notif_4 { get; set; }
+
+    public int Hours { get; set; }
+    public int Minutes { get; set; }
+
+    public bool Notif_5 { get; set; }
+    public bool Notif_6 { get; set; }
+    public bool Notif_7{ get; set; }
     // TODO: User settings here 
 
     public User(string Name, string Password)
     {
         this.Name = Name;
         this.Password = Password;
+        this.Notif_1 = false;
+        this.Notif_2 = false;
+        this.Notif_3 = false;
+        this.Notif_4 = false;
+
+        this.Hours = 0;
+        this.Minutes = 0;
+
+        this.Notif_5 = false;
+        this.Notif_6 = false;
+        this.Notif_7 = false;
     }
 }
 
@@ -72,7 +94,7 @@ namespace cpsc481_group_5_browser
             HomeScreen = new HomePage();
             LockScreenPopup = new LockScreen();
             SettingsPasswordPrompt = new PasswordPrompt();
-            ParentalSettingsScreen = new ParentalSettings();
+            ParentalSettingsScreen = new ParentalSettings(Users);
             ChangeUserSettingsScreen = new ChangeUserSetting();
             UserProfilePasswordPopup = new UserProfilePassword();
 
@@ -90,7 +112,7 @@ namespace cpsc481_group_5_browser
             UserSelectScreen.Handler_NewUserProfile += new EventHandler<CreateNewUser.CreateNewUserArgs>(Handle_CreateNewUserProfile);
 
             // Parental Settings Screen Handlers
-            ParentalSettingsScreen.Handler_BobChangeClicked += new EventHandler(Handle_BobChangeSettingsClicked);
+            ParentalSettingsScreen.Handler_UserSettingsClicked += new EventHandler<ParentalSettingsUser.UserProfileArgs>(Handle_UserSettingsClicked);
             ParentalSettingsScreen.Handler_ToHome += new EventHandler(Handle_ToHome);
 
             // Home Screen Handlers
@@ -102,14 +124,19 @@ namespace cpsc481_group_5_browser
             HomeScreen.Handler_ToSettings += new EventHandler(Handle_ToSettings);
             HomeScreen.Handler_ToBrowser += new EventHandler(Handle_ToBrowser);
 
+            //Change User Setting Handlers
+
+            ChangeUserSettingsScreen.Handler_ToUserSelect += new EventHandler(Handle_ToUserSelect);
+
             // Set Screen to User Select on System Startup
             this.contentControl.Content = UserSelectScreen;
 
+            Debug.WriteLine(Users[0].Notif_1);
         }
 
-        private void Handle_HomeClicked(object sender, EventArgs e)
+        private void Handle_UserSettingsClicked(object sender, ParentalSettingsUser.UserProfileArgs e)
         {
-            this.contentControl.Content = UserSelectScreen;
+            Debug.WriteLine(e.Index);
         }
 
         private void Handle_SettingsClicked(object sender, EventArgs e)
@@ -129,12 +156,8 @@ namespace cpsc481_group_5_browser
         {
             Users.Add(new User(e.Name, e.Password));
             UserSelectScreen.UpdateUserNames(Users);
+            ParentalSettingsScreen.UpdateUsers(Users);
             this.contentControl.Content = UserSelectScreen;
-        }
-
-        private void Handle_BobChangeSettingsClicked(object sender, EventArgs e)
-        {
-            this.contentControl.Content = ChangeUserSettingsScreen;
         }
 
         private void Handle_ToSettings(object sender, EventArgs e)
@@ -146,6 +169,7 @@ namespace cpsc481_group_5_browser
         private void Handle_ToHome(object sender, EventArgs e)
         {
             this.contentControl.Content = HomeScreen;
+            Debug.WriteLine(Users[0].Notif_1);
         }
 
         private void Handle_ToBrowser(object sender, EventArgs e)
