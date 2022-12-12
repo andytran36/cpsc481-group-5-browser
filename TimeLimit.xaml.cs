@@ -24,7 +24,7 @@ namespace cpsc481_group5_browser
 
 
         // Event Listeners
-        public event EventHandler Handler_ContinueClicked;
+        public event EventHandler<PasswordArgs> Handler_ContinueClicked;
 
         public TimeLimit()
         {
