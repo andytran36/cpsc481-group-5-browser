@@ -62,14 +62,14 @@
 
         </Grid>
 
-        <Grid x:Name="settingscontent" Grid.Row="2">
+        <Grid x:Name="SettingsContent" Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"></RowDefinition>
                 <RowDefinition Height="150"></RowDefinition>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Grid x:Name="generalsettings" Grid.Row="1">
+            <Grid x:Name="GeneralSettings" Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
@@ -106,10 +106,11 @@
                 <Label Content="Settings" HorizontalAlignment="Left" Margin="92,0,0,0" VerticalAlignment="Center" FontSize="30"/>
             </Grid>
 
-            <Grid x:Name="usersettings" Grid.Row="2">
+            <Grid x:Name="UserSettings" Grid.Row="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"></RowDefinition>
-                    <RowDefinition Height="160"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
                 </Grid.RowDefinitions>
 
                 <Label Grid.Row="0" Content="Users" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30" Margin="92,0,0,0"/>
@@ -118,43 +119,12 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width=".35*"></ColumnDefinition>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
-                        <ColumnDefinition Width=".35*"></ColumnDefinition>
+                        <ColumnDefinition Width=".3*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <Grid x:Name="userlist" Grid.Column="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1.5*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-
+                    <Grid x:Name="UsersList" Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-
-                        <Border Grid.Row="0" Grid.ColumnSpan="4" BorderBrush="Black" BorderThickness="1" CornerRadius="20" Background="Pink">
-
-                        </Border>
-                        <Border Grid.Row="0" Margin="8" CornerRadius="20" BorderThickness="1" BorderBrush="black" Background="white" >
-                            <Image Margin="5" Source="/assets/user.png"></Image>
-                        </Border>
-                        <Label Grid.Column="1" Content="Bob" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20"></Label>
-                        <Label Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">
-                            <TextBlock TextWrapping="Wrap" Text="Change" TextDecorations="Underline" FontSize="15"/>
-                        </Label>
-
-                        <Border Grid.Row="1" Grid.ColumnSpan="4" BorderBrush="Black" BorderThickness="1" CornerRadius="20" Background="PaleGreen">
-                        </Border>
-                        <Border Grid.Row="1" Margin="8" CornerRadius="20" BorderThickness="1" BorderBrush="black" Background="white" >
-                            <Image Margin="5" Source="/assets/user.png"></Image>
-                        </Border>
-                        <Label Grid.Row="1" Grid.Column="1" Content="John" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20"></Label>
-                        <Label Grid.Column="4" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">
-                            <TextBlock TextWrapping="Wrap" Text="Change" TextDecorations="Underline" FontSize="15"/>
-                        </Label>
-
                     </Grid>
                 </Grid>
 
