@@ -112,8 +112,7 @@ namespace cpsc481_group_5_browser
             UserSelectScreen.Handler_NewUserProfile += new EventHandler<CreateNewUser.CreateNewUserArgs>(Handle_CreateNewUserProfile);
 
             // Parental Settings Screen Handlers
-            ParentalSettingsScreen.Handler_JohnChangeClicked += new EventHandler(Handle_JohnChangeSettingsClicked);
-            ParentalSettingsScreen.Handler_BobChangeClicked += new EventHandler<ParentalSettings.UserArgs>(Handle_BobChangeSettingsClicked);
+            ParentalSettingsScreen.Handler_UserSettingsClicked += new EventHandler<ParentalSettingsUser.UserProfileArgs>(Handle_UserSettingsClicked);
             ParentalSettingsScreen.Handler_ToHome += new EventHandler(Handle_ToHome);
 
             // Home Screen Handlers
@@ -132,11 +131,12 @@ namespace cpsc481_group_5_browser
             // Set Screen to User Select on System Startup
             this.contentControl.Content = UserSelectScreen;
 
+            Debug.WriteLine(Users[0].Notif_1);
         }
 
-        private void Handle_HomeClicked(object sender, EventArgs e)
+        private void Handle_UserSettingsClicked(object sender, ParentalSettingsUser.UserProfileArgs e)
         {
-            this.contentControl.Content = UserSelectScreen;
+            Debug.WriteLine(e.Index);
         }
 
         private void Handle_SettingsClicked(object sender, EventArgs e)
@@ -156,25 +156,9 @@ namespace cpsc481_group_5_browser
         {
             Users.Add(new User(e.Name, e.Password));
             UserSelectScreen.UpdateUserNames(Users);
+            ParentalSettingsScreen.UpdateUsers(Users);
             this.contentControl.Content = UserSelectScreen;
         }
-
-        private void Handle_JohnChangeSettingsClicked(object sender, EventArgs e)
-        {
-            ChangeUserSettingsScreen.currentuser = Users[0];
-            ChangeUserSettingsScreen.Setup();
-            this.contentControl.Content = ChangeUserSettingsScreen;
-            
-        }
-
-        private void Handle_BobChangeSettingsClicked(object sender, EventArgs e)
-        {
-            ChangeUserSettingsScreen.currentuser = Users[1];
-            ChangeUserSettingsScreen.Setup();
-            this.contentControl.Content = ChangeUserSettingsScreen;
-            
-        }
-
 
         private void Handle_ToSettings(object sender, EventArgs e)
         {
@@ -185,6 +169,7 @@ namespace cpsc481_group_5_browser
         private void Handle_ToHome(object sender, EventArgs e)
         {
             this.contentControl.Content = HomeScreen;
+            Debug.WriteLine(Users[0].Notif_1);
         }
 
         private void Handle_ToBrowser(object sender, EventArgs e)

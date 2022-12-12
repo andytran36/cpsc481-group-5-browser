@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -23,22 +24,58 @@ namespace cpsc481_group5_browser
     public partial class ParentalSettings : UserControl
     {
         public event EventHandler Handler_BackClicked;
-        public event EventHandler<UserArgs> Handler_BobChangeClicked;
         public event EventHandler Handler_ToHome;
-        public event EventHandler Handler_JohnChangeClicked;
+        public event EventHandler<ParentalSettingsUser.UserProfileArgs> Handler_UserSettingsClicked;
         ContactSettings ContactPopup;
         PasswordInSettings PwSettingsContent;
-
-        public class UserArgs : EventArgs
-        {
-            public int UserID { get; set; }
-
-        }
+        List<ParentalSettingsUser> StoredUsers = new List<ParentalSettingsUser>();
 
         public ParentalSettings(List<User> users)
         {
             InitializeComponent();
             this.Loaded += new RoutedEventHandler(ParentalSettingsLoaded);
+
+            int Index = 0;
+            foreach (User User in users)
+            {
+                RowDefinition RowDef = new RowDefinition();
+                UsersList.RowDefinitions.Add(RowDef);
+
+                ParentalSettingsUser TempUser = new ParentalSettingsUser(Index, User.Name);
+                TempUser.SetValue(Grid.RowProperty, Index);
+                TempUser.Handler_UserSettingsClicked += new EventHandler<ParentalSettingsUser.UserProfileArgs>(UserProfileClicked);
+                UsersList.Children.Add(TempUser);
+                StoredUsers.Add(TempUser);
+
+                Index += 1;
+            }
+        }
+
+        public void UpdateUsers(List<User> users) {
+            int Index = 0;
+            foreach (User User in users)
+            {
+                ParentalSettingsUser TempUser = new ParentalSettingsUser(Index, User.Name);
+                TempUser.SetValue(Grid.RowProperty, Index);
+                TempUser.Handler_UserSettingsClicked += new EventHandler<ParentalSettingsUser.UserProfileArgs>(UserProfileClicked);
+
+                if (Index >= StoredUsers.Count)
+                {
+                    UsersList.Children.Add(TempUser);
+                    StoredUsers.Add(TempUser);
+                }
+                else StoredUsers[Index] = TempUser;
+
+                Index += 1;
+            }
+
+            RowDefinition RowDef = new RowDefinition();
+            UsersList.RowDefinitions.Add(RowDef);
+        }
+
+        private void UserProfileClicked(object sender, ParentalSettingsUser.UserProfileArgs e)
+        {
+            Handler_UserSettingsClicked?.Invoke(this, e);
         }
 
         private void Back_Clicked(object sender, MouseButtonEventArgs e)
@@ -46,20 +83,6 @@ namespace cpsc481_group5_browser
             Handler_BackClicked?.Invoke(this, new EventArgs());
         }
 
-        private void changejohn(object sender, MouseButtonEventArgs e)
-        {
-            UserArgs args = new UserArgs();
-            args.UserID = 0;
-            Handler_JohnChangeClicked.Invoke(this, new EventArgs());
-        }
-
-        private void changebob(object sender, MouseButtonEventArgs e)
-        {
-            UserArgs args = new UserArgs();
-            args.UserID = 1;
-            Handler_BobChangeClicked.Invoke(this, args);
-        }
-        
         private void ParentalSettingsLoaded(object sender, RoutedEventArgs e)
         {
             
