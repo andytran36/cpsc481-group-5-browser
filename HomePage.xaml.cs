@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -35,7 +36,7 @@ namespace cpsc481_group5_browser
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            
+            Handler_ToUserSelect?.Invoke(this, new EventArgs());
         }
 
         private void Forward_Click(object sender, RoutedEventArgs e)
