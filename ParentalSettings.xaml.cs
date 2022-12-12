@@ -28,11 +28,14 @@ namespace cpsc481_group5_browser
         public event EventHandler<ParentalSettingsUser.UserProfileArgs> Handler_UserSettingsClicked;
         ContactSettings ContactPopup;
         PasswordInSettings PwSettingsContent;
-        List<ParentalSettingsUser> StoredUsers = new List<ParentalSettingsUser>();
+        Settings settings;
 
+        public ParentalSettings(ref Settings settings)
+        List<ParentalSettingsUser> StoredUsers = new List<ParentalSettingsUser>();
         public ParentalSettings(List<User> users)
         {
             InitializeComponent();
+            this.settings = settings;
             this.Loaded += new RoutedEventHandler(ParentalSettingsLoaded);
 
             int Index = 0;
@@ -143,8 +146,10 @@ namespace cpsc481_group5_browser
         {
             if (e.PasswordMatch && e.GoodPassword)
             {
+               
                 PwSettingsPopup.Visibility = Visibility.Collapsed;
                 PwSettingsPopup.IsOpen = false;
+                settings.Password = e.Password;
             }
             else
             {
@@ -166,7 +171,7 @@ namespace cpsc481_group5_browser
         {
             ContactSettingsPopup.IsOpen = true;
             ContactPopup = ContactSettingsPopupContent;
-            ContactPopup.SetOpen();
+            ContactPopup.SetOpen(this.settings);
             ContactPopup.Handler_CancelClicked += new EventHandler(ContactCancel_Clicked);
             ContactPopup.Handler_SaveClicked += new EventHandler<ContactSettings.ContactInformation>(ContactSave_Clicked);
         }
@@ -201,6 +206,10 @@ namespace cpsc481_group5_browser
 
             if ((ContactSettingsPopupContent.EmailValid() == true  && ContactSettingsPopupContent.PhoneValid() == true) && ContactSettingsPopupContent.NothingToSave() == false)
             {
+                settings.Email = e.Email;
+                settings.Phone = e.PhoneNumber;
+                settings.EmailPreferred = e.EmailPreferred;
+                settings.PhonePreferred = e.PhonePreferred;
                 ContactSettingsPopupContent.HideGeneralMessage();
                 ContactSettingsPopupContent.HidePhoneMessage();
                 ContactSettingsPopupContent.HideEmailMessage();

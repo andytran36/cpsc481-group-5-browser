@@ -47,6 +47,7 @@ namespace cpsc481_group5_browser
             {
                 args.PasswordMatch = true;
                 args.GoodPassword = true;
+                args.Password = PasswordInput.Password;
             }else if (!ValidLength && Matches)
             {
                 args.PasswordMatch = true;
@@ -96,6 +97,7 @@ namespace cpsc481_group5_browser
 
         public class PasswordArgs : EventArgs
         {
+            public string Password { get; set; }
             public bool PasswordMatch { get; set; }
             public bool GoodPassword { get; set; }
         }
